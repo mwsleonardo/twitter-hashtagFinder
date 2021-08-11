@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap');
+
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+    height: 100vh;
+}
+
+.banner {
+    background-image: url(./imgs/hero-bg.jpg);
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    height: 788px;
+    width: 100%;
+    
+}
+
+div.title {
+    padding: 36px 62px 0  62px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+button.aboutButton {
+    width: 170px;
+    height: 49px;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2.55px;
+    background-color: #D842BD;
+    border: 1px solid #D842BD;
+    border-radius: 50px;
+    margin-right: 35px;
+    cursor: pointer;
+}
+
+button.loginButton {
+    width: 170px;
+    height: 49px;
+    color: white;
+    font-size: 17px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2.55px;
+    background-color: #3633F7;
+    border: 1px solid #3633F7;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+div.textBox {
+    margin: 168px 600px 350px 140px;
+}
+
+h1 {
+    color: white;
+    font-family: 'Rubik Regular 400', sans-serif;
+    font-size: 60px;
+}
+
+.footer {
+    position: absolute;
+    width: 100%;
+    height: 10vw;
+    
+}
