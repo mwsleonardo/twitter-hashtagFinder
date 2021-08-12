@@ -1,0 +1,49 @@
+body {
+    background-color: blueviolet;
+}
+.container {
+    margin: 2vw;
+}
+
+.headerLogin {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+}
+
+.butHome {
+    background-color: #d842db;
+    border-radius: 1vw;
+}
+
+.loginBox {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    align-items: center;
+    border-radius: 1vw;
+    width: 30vw;
+    margin-left: 32vw;
+    margin-top: 12vw;
+    padding: 7vw 3vw;
+}
+
+.formLogin {
+    display: flex;
+    flex-direction: column;
+}
+
+.titleLogin {
+    margin: 2vw;
+}
+
+.itensLogin {
+    width: 20vw;
+    margin: 2vw;
+    ;
+}
+
+.buttonLogin {
+    margin: 2vw;
+}
