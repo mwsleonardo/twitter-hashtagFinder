@@ -1,11 +1,9 @@
 import React from 'react';
-import './homepage.css'
-import homepageFooter from "./imgs/homepageFooter.png"
-import logoWhite from "./imgs/logo-white.svg"
-// Ícones do FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
-import { faUserAlt } from "@fortawesome/free-solid-svg-icons";
+import './homepage.css';
+// import homepageFooter from "./imgs/homepageFooter.png"
+import logoWhite from "./imgs/logo-white.svg";
+import logoSobre from "./imgs/icon-info-circle.svg";
+import logoLogin from "./imgs/icon-user-alt.svg";
 
 function Homepage() {
 
@@ -17,8 +15,14 @@ function Homepage() {
                     <div className="title">
                         <img src={logoWhite} alt="Logo" class="logo"></img>
                         <div className="buttons">
-                            <button className="aboutButton"> <FontAwesomeIcon icon={faInfoCircle} /> Sobre </button>
-                            <button className="loginButton"> <FontAwesomeIcon icon={faUserAlt} /> Login </button>
+                            <button className="aboutButton">
+                                <img src={logoSobre} alt="logoSobre" class="logoSobre"></img>
+                                Sobre
+                            </button>
+                            <button className="loginButton">
+                                <img src={logoLogin} alt="logoLogin" class="logoLogin"></img>
+                                Login
+                            </button>
                         </div>
                     </div>
                     <div className="textBox">
@@ -26,8 +30,9 @@ function Homepage() {
                         <p className="subtitle"> Digite o que deseja no campo de buscas e confira os resultados do Twitter abaixo </p>
                     </div>
 
-                    <input type="text" clasName="searchBar"></input>
-
+                    <div className="inputDiv">
+                        <input type="text" className="searchBar" placeholder="Buscar..."></input>
+                    </div>
                 </header>
 
 
@@ -40,8 +45,9 @@ function Homepage() {
                     </div>
                 </div>
 
-                <footer>
-                    <img className="footer" src={homepageFooter} />
+                <footer className="footer">
+                    @NewTab Academy 2021. Todos os direitos reservados
+                    {/* <img className="footer" src={homepageFooter} /> */}
                 </footer>
 
             </div>

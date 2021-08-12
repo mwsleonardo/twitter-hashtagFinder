@@ -15,37 +15,37 @@ body {
     background-image: url(./imgs/hero-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100vh;
+    height: 95vh;
     width: 100%;
 }
 
 div.title {
-    padding: 36px 62px 0  62px;
+    padding: 36px 50px 0  50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 button.aboutButton {
-    width: 15vw;
+    width: 13vw;
     height: 7vh;
     color: white;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2.55px;
     background-color: #D842BD;
     border: 1px solid #D842BD;
     border-radius: 50px;
-    margin-right: 35px;
+    margin-right: 3vw;
     cursor: pointer;
 }
 
 button.loginButton {
-    width: 15vw;
+    width: 13vw;
     height: 7vh;
     color: white;
-    font-size: 17px;
+    font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 2.55px;
@@ -53,6 +53,11 @@ button.loginButton {
     border: 1px solid #3633F7;
     border-radius: 50px;
     cursor: pointer;
+}
+
+img.logoSobre, img.logoLogin {
+    padding-right: 2px;
+    height: 0.7rem;
 }
 
 div.textBox {
@@ -70,10 +75,40 @@ p.subtitle{
     font-size: 22px;
 }
 
+div.inputDiv {
+    position: relative;
+    bottom: 6vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+input.searchBar {
+    width: 40%;
+    height: 8vh;
+    border: none;
+    box-shadow: 8px 14px 30px #5538EE29;
+    border-radius: 72px;
+    z-index: 1;
+    color: #8D9DA2;
+    font-size: 22px;
+    padding-left: 5%;
+}
+
+div.container {
+    height: 600px;
+}
+
 .footer {
-    position: absolute;
+    position: relative;
+    bottom: 0;
+    background-color: #D842BD;
+    color: white;
     width: 100%;
-    height: 10vw;
+    height: 13vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* MEDIA TABLET */
@@ -83,7 +118,7 @@ p.subtitle{
         background-image: url(./imgs/hero-bg-mobile.jpg);
         background-size: 100% 90%;
         background-repeat: no-repeat;
-        height: 100vh;
+        height: 90vh;
         width: 100%;
     }
 
@@ -108,22 +143,51 @@ p.subtitle{
         font-size: 10px;
     }
 
+    img.logoSobre, img.logoLogin {
+        height: 0.6rem;
+    }
+
     div.textBox {
         margin: 10% 10% 15% 10%;
     }
 
     h1 {
-        font-size: 50px;
+        font-size: 40px;
     }
 
     p.subtitle{
         font-size: 20px;
     }
 
+    div.inputDiv {
+        bottom: 1vh; 
+    }
+    
+    input.searchBar {
+        width: 80%;
+        height: 7vh;
+        margin-top: 6vh;
+        z-index: 1;
+        font-size: 18px;
+    }
+
+    .footer {
+        height: 12vh;
+        font-size: 12px;
+    }
+
 }
 
 /* MEDIA MOBILE */
 @media (max-width: 414px) {
+
+    .banner {
+        /* background-image: url(./imgs/hero-bg-mobile.jpg);
+        background-size: 100% 90%;
+        background-repeat: no-repeat; */
+        height: 70vh;
+        /* width: 100%; */
+    }
 
     div.title {
         padding: 36px 16px 0  16px;
@@ -146,6 +210,10 @@ p.subtitle{
         font-size: 10px;
     }
 
+    img.logoSobre, img.logoLogin {
+        height: 0.5rem;
+    }
+
     div.textBox {
         margin: 10% 10% 15% 10%;
     }
@@ -156,6 +224,23 @@ p.subtitle{
 
     p.subtitle{
         font-size: 16px;
+    }
+
+    div.inputDiv {
+        bottom: 1vh; 
+    }
+    
+    input.searchBar {
+        width: 80%;
+        height: 7vh;
+        margin-top: 5vh;
+        z-index: 1;
+        font-size: 18px;
+    }
+
+    .footer {
+        height: 10vh;
+        font-size: 10px;
     }
 
 }
