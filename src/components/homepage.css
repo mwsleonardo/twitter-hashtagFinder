@@ -111,6 +111,27 @@ div.container {
     align-items: center;
 }
 
+
+.searchTitle {
+    color: #3633F7;
+    opacity: 1;
+    font: normal normal bold 32px/35px Rubik;
+    margin-top: 10vh;
+    margin-bottom: 8vh;
+    text-align: center;
+}
+
+.carouselImages {
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.resultImage {
+    border-radius: 21px;
+    box-shadow: 0px 9px 27px #5538EE29;
+}
+
+
 /* MEDIA TABLET */
 @media (max-width: 700px) {
 
@@ -177,6 +198,9 @@ div.container {
     }
 
 }
+
+
+
 
 /* MEDIA MOBILE */
 @media (max-width: 414px) {
