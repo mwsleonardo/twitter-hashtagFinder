@@ -139,6 +139,67 @@ div.container {
     box-shadow: 0px 9px 27px #5538EE29;
 }
 
+.postBox {
+    display: flex;
+    height: 253px;
+    width: 735px;
+    border: 2px solid red;
+    margin: 3rem;
+    flex-wrap: wrap;
+    border: 1px solid #5538ee24;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 10px #5538EE14;
+    border-radius: 15px;
+    opacity: 1;
+}
+
+.postImg {
+    height: 82px;
+    width: 82px;
+    border-radius: 50px;
+    margin-left: 5vh;
+    margin-top: 2vh;
+}
+
+.postContainer {
+    display: flex;
+    justify-content: space-between;
+    margin: 6rem;
+}
+
+.postUser {
+    margin-left: 2vh;
+    margin-top: 2vh;
+    font-size: 32px;
+    letter-spacing: 0px;
+    color: #292929;
+}
+
+.postUsername {
+    margin-left: 1vh;
+    margin-top: 3vh;
+    font-size: 20px;
+    letter-spacing: 0px;
+    color: #292929;
+    opacity: 0.43;
+}
+
+.postText {
+    width: 490px;
+    position: absolute;
+    margin-top: 8vh;
+    margin-left: 16vh;    
+}
+
+.postLink {
+    width: 185px;
+    position: absolute;
+    margin-left: 16vh;
+    margin-top: 20vh;
+    letter-spacing: 0px;
+    color: #3634F7;
+}
+
 
 /* MEDIA TABLET */
 @media (max-width: 1050px) {

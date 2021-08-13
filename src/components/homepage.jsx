@@ -79,7 +79,96 @@ function Homepage() {
                         <Item><img className="resultImage" src={search10}></img></Item>
                     </Carousel>
                 </div>
-                <div className="imageResult1">teste</div>
+                <div className="resultPosts">
+                    <div className="postContainer">   
+                        <div className="postBox">
+                            <img className="postImg" src={search1}></img>
+                            <div className="postUser">UserName</div>
+                            <div className="postUsername">@twitterusername</div>
+                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                            <div className="postLink">Ver mais no Twitter</div>
+                        </div>
+                        <div className="postBox">
+                            <img className="postImg" src={search1}></img>
+                            <div className="postUser">UserName</div>
+                            <div className="postUsername">@twitterusername</div>
+                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                            <div className="postLink">Ver mais no Twitter</div>
+                        </div>
+                    </div>
+                    <div className="postContainer">   
+                        <div className="postBox">
+                            <img className="postImg" src={search1}></img>
+                            <div className="postUser">UserName</div>
+                            <div className="postUsername">@twitterusername</div>
+                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                            <div className="postLink">Ver mais no Twitter</div>
+                        </div>
+                        <div className="postBox">
+                            <img className="postImg" src={search1}></img>
+                            <div className="postUser">UserName</div>
+                            <div className="postUsername">@twitterusername</div>
+                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                            <div className="postLink">Ver mais no Twitter</div>
+                        </div>
+                    </div>
+                    <div className="postContainer">   
+                        <div className="postBox">
+                            <img className="postImg" src={search1}></img>
+                            <div className="postUser">UserName</div>
+                            <div className="postUsername">@twitterusername</div>
+                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                            <div className="postLink">Ver mais no Twitter</div>
+                        </div>
+                        <div className="postBox">
+                            <img className="postImg" src={search1}></img>
+                            <div className="postUser">UserName</div>
+                            <div className="postUsername">@twitterusername</div>
+                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                            <div className="postLink">Ver mais no Twitter</div>
+                        </div>
+                    </div>
+                    <div className="postContainer">   
+                        <div className="postBox">
+                            <img className="postImg" src={search1}></img>
+                            <div className="postUser">UserName</div>
+                            <div className="postUsername">@twitterusername</div>
+                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                            <div className="postLink">Ver mais no Twitter</div>
+                        </div>
+                        <div className="postBox">
+                            <img className="postImg" src={search1}></img>
+                            <div className="postUser">UserName</div>
+                            <div className="postUsername">@twitterusername</div>
+                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                            <div className="postLink">Ver mais no Twitter</div>
+                        </div>
+                    </div>
+                    <div className="postContainer">   
+                        <div className="postBox">
+                            <img className="postImg" src={search1}></img>
+                            <div className="postUser">UserName</div>
+                            <div className="postUsername">@twitterusername</div>
+                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                            <div className="postLink">Ver mais no Twitter</div>
+                        </div>
+                        <div className="postBox">
+                            <img className="postImg" src={search1}></img>
+                            <div className="postUser">UserName</div>
+                            <div className="postUsername">@twitterusername</div>
+                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                            <div className="postLink">Ver mais no Twitter</div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+                
+
+
                 <footer className="footer">
                     @NewTab Academy 2021. Todos os direitos reservados
                 </footer>
