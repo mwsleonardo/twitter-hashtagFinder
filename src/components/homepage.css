@@ -76,8 +76,10 @@ p.subtitle{
 }
 
 div.inputDiv {
-    position: relative;
-    bottom: 6vh;
+    position: absolute;
+    bottom: 2vh;
+    left: 4vw;
+    width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;    
@@ -92,7 +94,7 @@ img.logoSearch {
     
 
 input.searchBar {
-    width: 40%;
+    width: 50%;
     height: 8vh;
     border: none;
     box-shadow: 8px 14px 30px #5538EE29;
@@ -118,7 +120,6 @@ div.container {
     justify-content: center;
     align-items: center;
 }
-
 
 .searchTitle {
     color: #3633F7;
@@ -224,13 +225,13 @@ div.container {
         width: 22vw;
         height: 5vh;
         margin-right: 13px;
-        font-size: 17px;
+        font-size: 16px;
     }
 
     button.loginButton{
         width: 22vw;
         height: 5vh;
-        font-size: 17px;
+        font-size: 16px;
     }
 
     img.logoSobre, img.logoLogin {
@@ -250,7 +251,9 @@ div.container {
     }
 
     div.inputDiv {
-        bottom: 1vh; 
+        position: relative;
+        bottom: 2vh;
+        left: 4vw;
     }
 
     img.logoSearch {
@@ -264,8 +267,8 @@ div.container {
         height: 7vh;
         margin-top: 6vh;
         z-index: 1;
-        font-size: 18px;
-        padding-left: 6%;
+        font-size: 16px;
+        padding-left: 8%;
     }
 
     .footer {
@@ -336,13 +339,12 @@ div.container {
         left: 7vw;
     }
         
-    
     input.searchBar {
         width: 80%;
         height: 7vh;
         margin-top: 5vh;
-        font-size: 18px;
-        padding-left: 8%;
+        font-size: 16px;
+        padding-left: 10%;
     }
 
     .footer {
