@@ -56,7 +56,7 @@ button.loginButton {
 }
 
 img.logoSobre, img.logoLogin {
-    padding-right: 2px;
+    padding-right: 4px;
     height: 0.7rem;
 }
 
@@ -82,6 +82,14 @@ div.inputDiv {
     justify-content: center;
     align-items: center;    
 }
+
+img.logoSearch {
+    height: 20px;
+    position: relative;
+    left: 4vw;
+    z-index: 2;
+}
+    
 
 input.searchBar {
     width: 40%;
@@ -133,11 +141,11 @@ div.container {
 
 
 /* MEDIA TABLET */
-@media (max-width: 700px) {
+@media (max-width: 1050px) {
 
     .banner {
         background-image: url(./imgs/hero-bg-mobile.jpg);
-        background-size: 100% 90%;
+        background-size: cover;
         background-repeat: no-repeat;
         height: 90vh;
         width: 100%;
@@ -148,20 +156,20 @@ div.container {
     }
 
     img.logo {
-        width: 180px;
+        width: 40vw;
     }
 
     button.aboutButton{
         width: 22vw;
         height: 5vh;
         margin-right: 13px;
-        font-size: 10px;
+        font-size: 17px;
     }
 
     button.loginButton{
         width: 22vw;
         height: 5vh;
-        font-size: 10px;
+        font-size: 17px;
     }
 
     img.logoSobre, img.logoLogin {
@@ -183,13 +191,20 @@ div.container {
     div.inputDiv {
         bottom: 1vh; 
     }
-    
+
+    img.logoSearch {
+        height: 15px;
+        top: 2.8vh;
+        left: 5vw;
+    }
+        
     input.searchBar {
         width: 80%;
         height: 7vh;
         margin-top: 6vh;
         z-index: 1;
         font-size: 18px;
+        padding-left: 6%;
     }
 
     .footer {
@@ -253,13 +268,20 @@ div.container {
     div.inputDiv {
         bottom: 1vh; 
     }
+
+    img.logoSearch {
+        height: 15px;
+        top: 2.4vh;
+        left: 7vw;
+    }
+        
     
     input.searchBar {
         width: 80%;
         height: 7vh;
         margin-top: 5vh;
-        z-index: 1;
         font-size: 18px;
+        padding-left: 8%;
     }
 
     .footer {

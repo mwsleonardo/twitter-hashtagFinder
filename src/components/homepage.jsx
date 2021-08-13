@@ -9,6 +9,7 @@ import Item from './item.js';
 import logoWhite from "./imgs/logo-white.svg";
 import logoSobre from "./imgs/icon-info-circle.svg";
 import logoLogin from "./imgs/icon-user-alt.svg";
+import logoSearch from "./imgs/icon-search.svg"
 
 // Import das imagens teste para o resultado da busca
 import search1 from "./imgsSearch/search1.png";
@@ -28,7 +29,7 @@ const breakPoints = [
     { width: 550, itemsToShow: 2 },
     { width: 768, itemsToShow: 3 },
     { width: 1200, itemsToShow: 5 },
-  ];
+];
 
 
 // Function retornando todo o conteúdo da homepage
@@ -57,14 +58,15 @@ function Homepage() {
                         <p className="subtitle"> Digite o que deseja no campo de buscas e confira os resultados do Twitter abaixo </p>
                     </div>
                     <div className="inputDiv">
+                        <img src={logoSearch} alt="logoSearch" class="logoSearch"></img>
                         <input type="text" className="searchBar" placeholder="Buscar..."></input>
                     </div>
                 </header>
 
 
                 <h1 className="searchTitle">Exibindo os 10 resultados mais recentes de #vikings</h1>
-                    <div className="carouselImages">
-                     <Carousel breakPoints={breakPoints}>
+                <div className="carouselImages">
+                    <Carousel breakPoints={breakPoints}>
                         <Item><img className="resultImage" src={search1}></img></Item>
                         <Item><img className="resultImage" src={search2}></img></Item>
                         <Item><img className="resultImage" src={search3}></img></Item>
