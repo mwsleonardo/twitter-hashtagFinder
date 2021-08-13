@@ -1,20 +1,46 @@
+/* BACKGROUND */
 body {
-    background-color: blueviolet;
+    margin: -2vw;
 }
+
+.backgroundImg {
+    position: absolute;
+    display: flex;
+    height: 100%;  
+    width: 105%;
+}
+
+/*----------CONTAINER---------- */
 .container {
     margin: 2vw;
 }
 
+/* ----------HEADER---------- */
 .headerLogin {
     display: flex;
     position: relative;
     justify-content: space-between;
+
+}
+
+.itensHeader {
+    margin: 2vw;
 }
 
 .butHome {
     background-color: #d842db;
     border-radius: 1vw;
+    width: 8vw;
+    height: 2vw;
+
 }
+
+.butHome a {
+    text-decoration: none;
+    color: white;
+}
+
+/* ----------LOGIN FORM----------  */
 
 .loginBox {
     background-color: white;
@@ -23,10 +49,14 @@ body {
     position: relative;
     align-items: center;
     border-radius: 1vw;
-    width: 30vw;
-    margin-left: 32vw;
-    margin-top: 12vw;
-    padding: 7vw 3vw;
+    width: 25vw;
+    margin-left: 35vw;
+    margin-top: 3vw;
+    padding: 5vw 3vw;
+}
+
+.titleBox {
+    color: #3634f7;
 }
 
 .formLogin {
@@ -41,9 +71,55 @@ body {
 .itensLogin {
     width: 20vw;
     margin: 2vw;
-    ;
+    box-shadow: 0px 1px 0px 0px;
+    border: 0 none;
+    outline: 1;
+
 }
 
 .buttonLogin {
-    margin: 2vw;
+    color: white;
+    background-color: #3634f7;
+    border-radius: 1vw;
+    width: 8vw;
+    height: 2vw;
+}
+
+
+@media screen and (max-width:411px) {
+
+    .butHome {
+        border-radius: 6vw;
+        width: 25vw;
+    }
+
+    .loginBox {
+        width: 80vw;
+        height: 100vw;
+        margin-left: 7vw;
+        margin-top: 25vw;
+    }
+
+    .itensLogin {
+        width: 65vw;
+        margin: 10vw;
+
+    }
+
+    .buttonLogin {
+        color: white;
+        background-color: #3634f7;
+        border-radius: 13vw;
+        width: 24vw;
+        height: 10vw;
+    }   
+    .butHome a {
+        text-decoration: none;
+        color: white;
+    }
+
+    .itensHeader {
+        margin: 2vw;
+        height: 9vw;
+    }
 }
