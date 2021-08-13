@@ -43,6 +43,8 @@ body {
     box-shadow: #5538ee29 0px 3px 6px 0px;
 }
 
+/* Lista de hashtags*/
+
 .container {
     margin: 40px 183px 85px 184px;
 }
@@ -54,11 +56,6 @@ body {
 table {
     border-collapse: collapse;
     width: 100%;
-    
-}
-
-thead {
-    
 }
 
 thead th {
@@ -72,6 +69,7 @@ thead th {
 tbody{
     background-color: white;
     font-size: 24px;
+    
 }
 
 tbody td {
@@ -81,4 +79,22 @@ tbody td {
 
 tbody td:nth-child(n+2) {
     color: #D842BD;
+}
+
+tbody td:nth-child(1) {
+    width: 80%;
+}
+
+/* Media versão mobile*/
+
+@media screen and (max-width: 767px) {
+
+    .container {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-left: 9px;
+        margin-right: 9px;
+    }
+
 }
