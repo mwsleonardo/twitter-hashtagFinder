@@ -24,7 +24,7 @@ function Search() {
     <div class="container">
         <h1>Buscas realizadas</h1>
         
-        <table>
+        <table class= "hashtagList">
             <thead>
                 <tr>
                     <th>Hashtag</th>
@@ -33,6 +33,26 @@ function Search() {
                 </tr>
             </thead>
             <tbody>
+                <tr>
+                    <td>#hashtagname</td>
+                    <td>25/02</td>
+                    <td>09:30</td>
+                </tr>
+                <tr>
+                    <td>#hashtagname</td>
+                    <td>25/02</td>
+                    <td>09:30</td>
+                </tr>
+                <tr>
+                    <td>#hashtagname</td>
+                    <td>25/02</td>
+                    <td>09:30</td>
+                </tr>
+                <tr>
+                    <td>#hashtagname</td>
+                    <td>25/02</td>
+                    <td>09:30</td>
+                </tr>
                 <tr>
                     <td>#hashtagname</td>
                     <td>25/02</td>

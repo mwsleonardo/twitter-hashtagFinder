@@ -31,6 +31,10 @@ body {
     box-shadow: #5538ee29 0px 3px 6px 0px;
 }
 
+.homeButton img {
+    margin-right: 5px;
+}
+
 .exitButton {
     width: 170px;
     height: 49px;
@@ -43,7 +47,15 @@ body {
     box-shadow: #5538ee29 0px 3px 6px 0px;
 }
 
+.exitButton img {
+    margin-right: 5px;
+}
+
 /* Lista de hashtags*/
+
+.homeTitle {
+    font-size: 19px;
+}
 
 .container {
     margin: 40px 183px 85px 184px;
@@ -51,19 +63,27 @@ body {
 
 .container h1 {
     color: white;
+    font-size: 40px;
 }
 
 table {
     border-collapse: collapse;
     width: 100%;
+    border-radius: 1em;
+    overflow: hidden;
 }
+
 
 thead th {
     background-color:#F1F1F1;color: #3633F7;
-    text-align: left;
-    padding: 56px 0px 22px 62px;;
+    text-align: center;
+    padding: 56px 0px 22px 0px;;
     font-size: 28px;
-    
+}
+
+thead th:nth-child(1) {
+    text-align: left;
+    padding-left: 62px;
 }
 
 tbody{
@@ -89,6 +109,34 @@ tbody td:nth-child(1) {
 
 @media screen and (max-width: 767px) {
 
+    .header {
+        margin: 36px 9px 0px 9px;
+    }
+
+    .homeButton {
+        width: 106px;
+        height: 30px;
+        font-size: 10px;
+    }
+
+    .homeButton img {
+        width: 12px;
+        height: auto;
+        margin-right: 5px;
+    }
+    
+    .exitButton {
+        width: 104px;
+        height: 30px;
+        font-size: 10px;
+    }
+
+    .exitButton img {
+        width: 12px;
+        height: auto;
+        margin-right: 5px;
+    }
+
     .container {
         display: flex;
         align-items: center;
@@ -96,5 +144,24 @@ tbody td:nth-child(1) {
         margin-left: 9px;
         margin-right: 9px;
     }
+
+    .container h1 {
+        font-size: 33px;
+    }
+
+    thead th {
+        font-size: 17px;
+        padding: 18px 0px 11px 0px;
+    }
+
+    tbody{
+        font-size: 14px;  
+    }
+
+    tbody td:nth-child(1) {
+        width: 70%;
+    }
+
+    
 
 }
