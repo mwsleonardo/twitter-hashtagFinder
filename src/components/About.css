@@ -1,36 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    font-family: "Rubik",sans-serif;
+}
 /*header*/
 .aboutWrapper{
     width: 100%;
     height: 100vh;
-    margin: 0;
-    padding: 0;
 }
 
-.aboutHeader{
+.aboutHeader{   
     background-image: url(./imgs/about-bg.jpg);
     width: 100%;
-    height: 26.375em;
-    background-size: cover;
+    height: 26.375em;    
 }
-
-.header{  
-    border: 1px solid rgb(248, 245, 245);  
-    width: 93%;
+.header{           /*TOP COM HASHTAG E BOTOES*/  
+     
+    width: 95vw;
+    height: 80px;
+    opacity: 1;
+    padding: 0 16px;
+   /* position: fixed; /*PARA DEIXAR O TOPO FIXO NA TELA*/
+    z-index: 9999;      
+    
 }
+.header .headerContent{    
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ }
+ .header .headerContent .headerLogo{
+    margin-left: 64px;
+    width: 239px;
+    height: 42px;
+}
+.header .headerContent .headerLogo img{ /*TAMANHO DO LOGO HASHTAG FINDER*/
+    width: 100%;
+    height: 100%;
+}
+.header .headerContent .headerButtons{ /*alinhamento botoes */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /*margin-right: 61px;*/
+}
+.header .headerContent .headerButtons button{ /** TAMANHO BOTOES*/
+    width: 170px;
+    height: 49px;
+    border-radius: 25px;
+    border: none;
+    font-size: 17px;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*margin-top: 36px;*/
+    
+}
+.header .headerContent .headerButtons button img{ /*IMAGEM DO BOTAO */
+    
+    width: 13px;
+    height: 13px;
+    margin-right: 8px;
+}
+.aboutBtn{
+    background: #D842BD;
+    color: #fff;
+    margin-right: 13px;
+   
 
-.aboutProject {
+}
+.aboutBtnLogin{
+    background: #3633f7;
+    color: #fff;
+
+}
+ /*ESCRITA NO TOPO SOBRE PROJETO*/
+.aboutProject{
     color: #ffff;
     font-size: 5.625em;
     margin-top: 8.25rem;
     padding-left: 8.75rem;
 }
 
-/*descrição do projeto projeto*/
+/*descrição do projeto projeto TEXTO LOREMIPSIM*/
 .aboutAside{
     width: 35.8125em;
     padding-right: 12.875em;
 }
-
+/*O QUE É*/
 .aboutAside h3{
     color: #3634F7;
     margin-top: 0;
@@ -48,18 +112,20 @@
 .aboutText{
     padding-top: 12.0625rem;
     text-align: left;
-    width: 96.625rem;
+   /* width: 96.625rem;*/
     align-items: flex-start;
     margin: 0 auto;
     display: flex;
 }
 
 .aboutSvg {
+    
     width: 39.75rem;
 }
 
 /*quem somos nós*/
 .aboutWe{
+  
     padding-top: 12.0625rem;
     color: #3634F7;
     font-size: 2.75em;
@@ -69,12 +135,14 @@
 }
 
 .aboutTeam{
-    margin-right: 3.125rem;
+    
+    margin-right: 1rem;
     
 }
-.wrapperPhoto{
+.wrapperPhoto{ /*CONTAINER DOS CARTOES*/
+    
     padding-bottom: 10.3125rem;
-    width: 108.875rem;
+    width: 108rem;
     display: -webkit-flex;
     display: flex;
     margin: 0 auto;
@@ -89,8 +157,6 @@
     border: 1px solid rgba(85,56,238,.1411764705882353);
     height: 32.8125rem;
 }
-
-
 
 .about-team-content{
     width: 19.25rem;
@@ -146,10 +212,7 @@
     margin-right: 2.0625rem;
 }
 
-.aboutSocials img{
-    font-size: 1.5625rem;
-    margin-right: 2.0625rem;
-}
+
 
 .footerBackground {
     background-color: #d842bd;
@@ -164,90 +227,153 @@
 
 .footerText {
     color: #fff;
-    font-family: "Rubik",sans-serif;
     font-size: 1.5625rem;
-
 }
 
-/* responsivo mobile */
+@media(min-width: 660px){
+    html{
+        font-size: .833vw;
+    }
+  .header .headerContent .headerButtons button{
+    width: 70px;
+  }
+
+
+.header .headerContent .headerButtons .aboutBtn{
+  margin-right: 13px;
+  font-size: 13px;
+  width: 106px;
+  height: 30px;
+}
+
+.header .headerContent .headerButtons .aboutBtnLogin{
+    font-size: 13px;
+    width: 106px;
+    height: 30px;
+}
+}
+
 @media(max-width: 660px){
-/* reponsividade header*/
-.aboutHeader{
-    height: 12.875rem;
-}
+    /* reponsividade header*/
+    .aboutHeader {
+        height: 12.875rem;
+    }
+    .header .headerContent .headerButtons .aboutBtn{
+        
+        margin-right: 13px;
+        font-size: 13px;
+        width: 106px;
+        height: 30px;
+      }
+      
+      .header .headerContent .headerButtons .aboutBtnLogin{
+          font-size: 13px;
+          width: 106px;
+          height: 30px;
+        }
+    .aboutProject{
+        font-size: 2.0625em;
+        width: 100%;
+        margin-top: 0.875rem;
+        padding-left: 0;
+        text-align: center;
+    }
+    /* reponsividade descrição do projeto*/
+    .aboutText{
+        padding-top: 3.4375rem;
+        width: 82%;
+        flex-direction: column;
+    }
 
-.aboutProject{
-    font-size: 2.0625em;
-    width: 100%;
-    margin-top: 0.875rem;
-    padding-left: 0;
-    text-align: center;
-}
-/* reponsividade descrição do projeto*/
-.aboutText {
-    padding-top: 3.4375rem;
-    width: 82%;
-    flex-direction: column;
-}
+    .aboutAside{
+        width: 100%;
+        padding-right: 0;
+        margin-bottom: 2.875rem;
+    }
 
-.aboutAside {
-    width: 100%;
-    padding-right: 0;
-    margin-bottom: 2.875rem;
-}
+    .aboutAside h3{
+        font-size: 1.6875em;
+        margin-bottom: 0.9375rem;
+    }
 
-.aboutAside h3 {
-    font-size: 1.6875em;
-    margin-bottom: 0.9375rem;
-}
+    .aboutAside p{
+        font-size: 0.9375em;
+    }
 
-.aboutAside p {
-    font-size: 0.9375em;
-}
+    .aboutSvg{
+        width: 100%;
+    }
+    /*reponsividade seção quem somos nós*/
+    .aboutWe{
+        padding-top: 7.0625rem;
+        padding-bottom: 2.875rem;
+        font-size: 1.375em;
+        width: 82%;
+    }
 
-.aboutSvg {
-    width: 100%;
-}
- /*reponsividade seção quem somos nós*/
-.aboutWe {
-    padding-top: 7.0625rem;
-    padding-bottom: 2.875rem;
-    font-size: 1.375em;
-    width: 82%;
-}
+    .aboutTeam{
+        padding-bottom: 1.75rem;
+        width: 86%;
+        flex-direction: column;
+    }
+    /*reponsividade cards equipe*/
+   
+    .wrapperPhoto{/*EMBRULHO FOTOS*/
+        display: inline;
+    }  
+    .aboutCard{
+        width: 100%;
+        margin-right: 0px;
+        height: initial;    
+        margin-bottom: 2.875rem;
+    }
 
-.aboutTeam {
-    padding-bottom: 1.75rem;
-    width: 86%;
-    flex-direction: column;
-}
-/*reponsividade cards equipe*/
-.aboutCard {
-    width: 100%;
-    margin-right: 0px;
-    height: initial;    
-    margin-bottom: 2.875rem;
-}
+    .aboutPhoto{
+        height: 11.375rem;
+        width: 11.375rem;
+        margin-top: 2.25rem;
+        margin-bottom: 1.375em;
+    }
 
-.aboutPhoto {
-    height: 11.375rem;
-    width: 11.375rem;
-    margin-top: 2.25rem;
-    margin-bottom: 1.375em;
-}
-
-.aboutCard h2 {
+    .aboutCard h2{
         font-size: 28px;
         margin-bottom: 24px;
+    }
+
+    .aboutSocials{
+        padding-bottom: 37px;
+    }
+
+    .aboutSocials img{
+        font-size: 27px;
+        margin-right: 30px;
+    }
 }
 
-.aboutSocials {
-    padding-bottom: 37px;
+@media screen and (min-width: 1024px){
+   
+    .header .headerContent .headerLogo{
+      width: 210px;
+      height: 30px;
+    }
+   
+    .header .headerContent .headerButtons button img{
+      width: 13px;
+      height: 13px;
+    }
+    
+    .header .headerContent .headerButtons .aboutBtn{
+      width: 170px;
+      height: 49px;
+      font-size: 17px;
+      margin-right: 35px;
+    }
+      
+    .header .headerContent .headerButtons .aboutBtnLogin{
+      width: 170px;
+      height: 49px;
+      font-size: 17px;
+          
+    }
 }
 
-.aboutSocials img{
-    font-size: 27px;
-    margin-right: 30px;
-}
-
-}
