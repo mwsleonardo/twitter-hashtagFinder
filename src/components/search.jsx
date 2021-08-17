@@ -5,23 +5,28 @@ import exitIcon from './images_v01/icon-power-off.svg'
 
 
 function Search() {
-
+ 
     return (
         <>
+        {/* navegador */}   
         <div>
             <div class="header">
                 <p class="homeTitle">hashtag<strong>finder</strong></p>
+                {/* botão HOME */} 
                 <button class="homeButton">
                     <img src={homeIcon} alt="home-icon"/>
                     HOME
                 </button>
+
+                {/* botão SAIR */} 
                 <button class="exitButton">
                     <img src={exitIcon} alt="home-icon"/>
                     SAIR
                 </button>
         </div>
 
-    <div class="container">
+        {/* listagem das hashtags */} 
+    <div class="container"> 
         <h1>Buscas realizadas</h1>
         
         <table class= "hashtagList">
