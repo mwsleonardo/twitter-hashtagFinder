@@ -1,18 +1,19 @@
 /* ---------- BACKGROUND----------  */
 body {
     margin: -2vw;
+    font-family: 'Rubik', sans-serif;
 }
 
-.backgroundImg {
-    position: absolute;
-    display: flex;
-    height: 105%;
-    width: 105%;
+.backgroundImg { 
+    position: fixed;  
+    height: 100%;
+    width: 100%;
 }
 
 /* ----------CONTAINER---------- */
 .container {
     margin: 2vw;
+    overflow: hidden; 
 }
 
 /* ----------HEADER---------- */
@@ -43,7 +44,6 @@ body {
 }
 
 /* ----------LOGIN FORM----------  */
-
 .loginBox {
     background-color: white;
     display: flex;
@@ -76,7 +76,7 @@ body {
     box-shadow: 0px 1px 0px 0px;
     border: 0 none;
     outline: 1;
-
+    height: 50px;
 }
 
 .buttonLogin {
@@ -88,57 +88,46 @@ body {
 }
 
 
-@media screen and (max-width:2000px) {
+@media screen and (max-width:1920px) {
     .itensLogin {
-        width: 20vw;
-        margin: 2vw;
-        box-shadow: 0px 1px 0px 0px;
-        border: 0 none;
-        outline: 1;
         font-size: 20px;
     }
 
     .itensHeader {
-        margin: 2vw;
         height: 50px;
     }
 
     .titleBox {
-        color: #3634f7;
         font-size: 3vw;
     }
 
     .buttonLogin {
-        color: white;
-        background-color: #3634f7;
-        border-radius: 2vw;
         width: 12vw;
         height: 4vw;
         font-size: 30px;
     }
+
     .loginBox {
-        margin-top: 6vw;
+        margin-top: 2vw;
     }
 
     .butHome {
-        background-color: #d842db;
-        border-radius: 2vw;
         width: 10vw;
-        height: 4vw;
+        height: 3vw;
     }
 
-    .butHome a{
-       font-size: 30px;
+    .butHome a {
+        font-size: 30px;
     }
 
-    .butHome img{
-            height: 25px;
+    .butHome img {
+        height: 20px;
     }
 }
 
 
 /* ---------- VERSAO MOB----------  */
-@media screen and (max-width:600px) {
+@media screen and (max-width:900px) {
 
     .butHome {
         border-radius: 6vw;
@@ -155,12 +144,14 @@ body {
     .itensLogin {
         width: 65vw;
         margin: 10vw;
+    }
 
+    .titleBox {
+        font-size: 10vw;
+        margin-bottom: -10px;
     }
 
     .buttonLogin {
-        color: white;
-        background-color: #3634f7;
         border-radius: 13vw;
         width: 50vw;
         height: 15vw;
@@ -168,13 +159,15 @@ body {
         margin-top: 4vw;
     }
 
+    .butHome img {
+        height: 15px;
+    }
+
     .butHome a {
-        text-decoration: none;
-        color: white;
+        font-size: 16px;
     }
 
     .itensHeader {
-        margin: 2vw;
         height: 9vw;
     }
 

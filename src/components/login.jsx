@@ -3,9 +3,6 @@ import "./login.css"
 
 function Login() {
 
-
-
-
     return (
         <div className="container">
             <img src="/images/login-bg.jpg" className="backgroundImg"></img>
@@ -16,9 +13,7 @@ function Login() {
             <div className="loginBox">
                 <h1 className="titleBox">Login</h1>
                 <form className="formLogin">
-                    {/* <label>Email</label> */}
-                    <input className="itensLogin" placeholder="Email" />
-                    {/* <label>Senha</label> */}
+                    <input className="itensLogin" placeholder="Usuário" />
                     <input className="itensLogin" type="password" placeholder="Senha" />
                 </form>
                 <button className="buttonLogin">Acessar</button>
