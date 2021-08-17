@@ -4,8 +4,8 @@ body {
     font-family: 'Rubik', sans-serif;
 }
 
-.backgroundImg { 
-    position: fixed;  
+.backgroundImg {
+    position: fixed;
     height: 100%;
     width: 100%;
 }
@@ -13,7 +13,7 @@ body {
 /* ----------CONTAINER---------- */
 .container {
     margin: 2vw;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 /* ----------HEADER---------- */
@@ -28,12 +28,12 @@ body {
     margin: 2vw;
 }
 
+
 .butHome {
     background-color: #d842db;
     border-radius: 2vw;
-    width: 8vw;
-    height: 2vw;
-
+    width: 10vw;
+    height: 3vw;
 }
 
 .butHome a {
@@ -50,11 +50,12 @@ body {
     flex-direction: column;
     position: relative;
     align-items: center;
-    border-radius: 2vw;
-    width: 25vw;
+    border-radius: 1vw;
+    width: 26vw;
     margin-left: 35vw;
-    margin-top: 3vw;
-    padding: 5vw 3vw;
+    margin-top: 4vw;
+    padding: 7vw 3vw;
+    margin-bottom: 10vw;
 }
 
 .titleBox {
@@ -71,7 +72,7 @@ body {
 }
 
 .itensLogin {
-    width: 20vw;
+    width: 22vw;
     margin: 2vw;
     box-shadow: 0px 1px 0px 0px;
     border: 0 none;
@@ -79,18 +80,33 @@ body {
     height: 50px;
 }
 
+.itensLogin::placeholder{
+    color: black;
+    margin: 2vw;
+    font-size: 20px;
+    padding: 5px;
+}
+
 .buttonLogin {
     color: white;
     background-color: #3634f7;
     border-radius: 2vw;
-    width: 8vw;
-    height: 2vw;
+    width: 9vw;
+    height: 3vw;
+    font-size: 22px;
 }
 
 
-@media screen and (max-width:1920px) {
+@media screen and (max-width:1100px) {
     .itensLogin {
         font-size: 20px;
+        width: 30vw;
+        margin: 2vw;
+        box-shadow: 0px 1px 0px 0px;
+        border: 0 none;
+        outline: 0;
+        height: 50px;
+        margin: 4vw;
     }
 
     .itensHeader {
@@ -98,22 +114,31 @@ body {
     }
 
     .titleBox {
-        font-size: 3vw;
+        font-size: 4vw;
     }
 
     .buttonLogin {
-        width: 12vw;
-        height: 4vw;
+        width: 20vw;
+        height: 6vw;
         font-size: 30px;
+        border-radius: 10vw;
+        margin-bottom: -2vw;
     }
 
     .loginBox {
-        margin-top: 2vw;
+        margin-top: 20vw;
+        border-radius: 2vw;
+        width: 40vw;
+        height: 40vw;
+        margin-left: 28vw;
+        padding: 4vw 3vw;
+        margin-bottom: 10vw;
     }
 
     .butHome {
-        width: 10vw;
-        height: 3vw;
+        width: 17vw;
+        height: 5vw;
+        border-radius: 10vw;
     }
 
     .butHome a {
@@ -127,7 +152,7 @@ body {
 
 
 /* ---------- VERSAO MOB----------  */
-@media screen and (max-width:900px) {
+@media screen and (max-width:800px) {
 
     .butHome {
         border-radius: 6vw;
@@ -139,6 +164,7 @@ body {
         height: 100vw;
         margin-left: 7vw;
         margin-top: 35vw;
+        margin-bottom: 20vw;
     }
 
     .itensLogin {
@@ -164,7 +190,7 @@ body {
     }
 
     .butHome a {
-        font-size: 16px;
+        font-size: 20px;
     }
 
     .itensHeader {
