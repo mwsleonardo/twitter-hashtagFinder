@@ -1,9 +1,11 @@
+/* Alterações Giovanni  */
 body {
     margin: 0;
     padding: 0;
     font-family: 'Rubik';
-    background-image: url(./images_v01/login-bg.jpg);
+    /* background-image: url(./images_v01/login-bg.jpg); */
 }
+/* Alterações Giovanni  */
 
 .homeTitle {
     color: white;
@@ -21,12 +23,12 @@ body {
 .homeButton {
     width: 170px;
     height: 49px;
-    background-color:#D842BD;
+    background-color: #D842BD;
     color: white;
     font-family: 'Rubik', bold;
     font-size: 17px;
     border-radius: 30px;
-    border-style:hidden;
+    border-style: hidden;
     margin-right: 35px;
     box-shadow: #5538ee29 0px 3px 6px 0px;
 }
@@ -38,12 +40,12 @@ body {
 .exitButton {
     width: 170px;
     height: 49px;
-    background-color:#3633F7;
+    background-color: #3633F7;
     color: white;
     font-family: 'Rubik', bold;
     font-size: 17px;
     border-radius: 30px;
-    border-style:hidden;
+    border-style: hidden;
     box-shadow: #5538ee29 0px 3px 6px 0px;
 }
 
@@ -75,9 +77,11 @@ table {
 
 
 thead th {
-    background-color:#F1F1F1;color: #3633F7;
+    background-color: #F1F1F1;
+    color: #3633F7;
     text-align: center;
-    padding: 56px 0px 22px 0px;;
+    padding: 56px 0px 22px 0px;
+    ;
     font-size: 28px;
 }
 
@@ -86,10 +90,10 @@ thead th:nth-child(1) {
     padding-left: 62px;
 }
 
-tbody{
+tbody {
     background-color: white;
     font-size: 24px;
-    
+
 }
 
 tbody td {
@@ -124,7 +128,7 @@ tbody td:nth-child(1) {
         height: auto;
         margin-right: 5px;
     }
-    
+
     .exitButton {
         width: 104px;
         height: 30px;
@@ -154,8 +158,8 @@ tbody td:nth-child(1) {
         padding: 18px 0px 11px 0px;
     }
 
-    tbody{
-        font-size: 14px;  
+    tbody {
+        font-size: 14px;
     }
 
     tbody td:nth-child(1) {

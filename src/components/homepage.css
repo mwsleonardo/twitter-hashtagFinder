@@ -40,7 +40,11 @@ button.aboutButton {
     margin-right: 3vw;
     cursor: pointer;
 }
-
+/* Alterações Giovanni  */
+button span {
+    text-decoration: none;
+}
+/* Alterações Giovanni  */
 button.loginButton {
     width: 13vw;
     height: 7vh;

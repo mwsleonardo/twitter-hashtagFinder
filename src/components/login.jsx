@@ -3,15 +3,16 @@ import "./login.css"
 import loginBg from './imgs/login-bg.jpg'
 import logoWhite from './imgs/logo-white.svg'
 import iconHome from './imgs/icon-home.svg'
+import {Link} from 'react-router-dom'
 
 function Login() {
 
     return (
-        <div className="container">
+        <div className="containerLogin">
             <img src={loginBg} className="backgroundImg"></img>
             <div className="headerLogin">
                 <img src={logoWhite} className="itensHeader"></img>
-                <button className="butHome itensHeader"><img src={iconHome}></img> <a href="#">home</a></button>
+                <Link to="/"><button className="butHome itensHeader"><img src={iconHome}></img> <span>Home</span></button></Link>
             </div>
             <div className="loginBox">
                 <h1 className="titleBox">Login</h1>

@@ -1,21 +1,23 @@
-/* ---------- BACKGROUND----------  */
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    margin: -2vw;
     font-family: 'Rubik', sans-serif;
 }
 
+.containerLogin {
+        display: flex;
+        flex-direction: column;
+}
+
+/* ---------- BACKGROUND----------  */
 .backgroundImg {
     position: fixed;
     height: 100%;
     width: 100%;
 }
-
-/* ----------CONTAINER---------- */
-.container {
-    margin: 2vw;
-    overflow: hidden;
-}
-
 /* ----------HEADER---------- */
 .headerLogin {
     display: flex;
@@ -36,11 +38,10 @@ body {
     height: 3vw;
 }
 
-.butHome a {
+.butHome span {
     text-decoration: none;
     color: white;
     font-size: 16px;
-
 }
 
 /* ----------LOGIN FORM----------  */
@@ -51,12 +52,13 @@ body {
     position: relative;
     align-items: center;
     border-radius: 1vw;
-    width: 26vw;
+    width: 25vw;
     margin-left: 35vw;
-    margin-top: 4vw;
-    padding: 7vw 3vw;
+    margin-top: 7vw;
+    padding: 4vw 3vw;
     margin-bottom: 10vw;
 }
+
 
 .titleBox {
     color: #3634f7;
@@ -141,7 +143,7 @@ body {
         border-radius: 10vw;
     }
 
-    .butHome a {
+    .butHome span {
         font-size: 30px;
     }
 
@@ -189,7 +191,7 @@ body {
         height: 15px;
     }
 
-    .butHome a {
+    .butHome span {
         font-size: 20px;
     }
 

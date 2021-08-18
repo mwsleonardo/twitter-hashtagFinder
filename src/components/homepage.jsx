@@ -46,18 +46,18 @@ function Homepage() {
                     <div className="title">
                         <img src={logoWhite} alt="Logo" class="logo"></img>
                         <div className="buttons">
-                            
+                            {/* Alterações Giovanni */}
                             <button className="aboutButton">
                                 <img src={logoSobre} alt="logoSobre" class="logoSobre"></img>
-                                <Link to="/About">Sobre</Link>  
+                                <Link to="/About"><span className="linkPags">Sobre</span></Link>  
                             </button>
                             
 
                             <button className="loginButton">
                                 <img src={logoLogin} alt="logoLogin" class="logoLogin"></img>
-                                <Link to="/login">Login</Link>
+                                <Link to="/login"><span className="linkPags">Login</span></Link>
                             </button>
-                            
+                            {/* Alterações Giovanni */}
                         </div>
                     </div>
                     <div className="textBox">
