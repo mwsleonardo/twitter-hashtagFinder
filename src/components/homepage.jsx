@@ -1,6 +1,9 @@
 import React from 'react';
 import './homepage.css';
 
+// Import do router para transação entre páginas
+import {Link} from 'react-router-dom'
+
 // Import do carousel e styled-components(css) das imagens 
 import Carousel from "react-elastic-carousel";
 import Item from './item.js';
@@ -36,21 +39,25 @@ const breakPoints = [
 function Homepage() {
 
     return (
-
+        
         <div>
             <div className="homepage">
                 <header className="banner">
                     <div className="title">
                         <img src={logoWhite} alt="Logo" class="logo"></img>
                         <div className="buttons">
+                            
                             <button className="aboutButton">
                                 <img src={logoSobre} alt="logoSobre" class="logoSobre"></img>
-                                Sobre
+                                <Link to="/About">Sobre</Link>  
                             </button>
+                            
+
                             <button className="loginButton">
                                 <img src={logoLogin} alt="logoLogin" class="logoLogin"></img>
-                                Login
+                                <Link to="/login">Login</Link>
                             </button>
+                            
                         </div>
                     </div>
                     <div className="textBox">
@@ -161,12 +168,10 @@ function Homepage() {
                         </div>
                     </div>
 
-
-
-
+                    
 
                 </div>
-                
+
 
 
                 <footer className="footer">
@@ -174,10 +179,14 @@ function Homepage() {
                 </footer>
             </div>
         </div>
+        
 
+
+        
 
     )
 }
+
 
 
 export default Homepage;
