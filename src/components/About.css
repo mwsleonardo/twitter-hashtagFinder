@@ -1,56 +1,64 @@
-*{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
+
 body{
     font-family: "Rubik",sans-serif;
 }
+
 /*header*/
-.aboutWrapper{
+div.aboutWrapper{
     width: 100%;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
-.aboutHeader{   
+div.aboutHeader{   
     background-image: url(./imgs/about-bg.jpg);
     width: 100%;
     height: 26.375em;    
 }
-.header{           /*TOP COM HASHTAG E BOTOES*/  
-     
+
+/*TOP COM HASHTAG E BOTOES*/
+section.header{             
     width: 95vw;
     height: 80px;
     opacity: 1;
     padding: 0 16px;
    /* position: fixed; /*PARA DEIXAR O TOPO FIXO NA TELA*/
-    z-index: 9999;      
-    
+    margin: 0;    
 }
-.header .headerContent{    
+
+div.headerContent{    
     width: 100%;
     height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-between;
  }
- .header .headerContent .headerLogo{
+
+ div.headerLogo{
     margin-left: 64px;
     width: 239px;
     height: 42px;
 }
-.header .headerContent .headerLogo img{ /*TAMANHO DO LOGO HASHTAG FINDER*/
+
+/*TAMANHO DO LOGO HASHTAG FINDER*/
+img.logoWhite{ 
     width: 100%;
     height: 100%;
 }
-.header .headerContent .headerButtons{ /*alinhamento botoes */
+
+/*alinhamento botoes */
+div.headerButtons{ 
     height: 100%;
     display: flex;
     align-items: center;
-    /*margin-right: 61px;*/
 }
-.header .headerContent .headerButtons button{ /** TAMANHO BOTOES*/
-    width: 170px;
-    height: 49px;
+
+/* BOTOES */
+div.headerButtons button{ 
     border-radius: 25px;
     border: none;
     font-size: 17px;
@@ -59,30 +67,31 @@ body{
     text-transform: uppercase;
     display: flex;
     justify-content: center;
-    align-items: center;
-    /*margin-top: 36px;*/
-    
+    align-items: center;    
 }
-.header .headerContent .headerButtons button img{ /*IMAGEM DO BOTAO */
-    
+
+/* IMAGEM DO BOTAO */
+div.headerButtons button img{ 
     width: 13px;
     height: 13px;
     margin-right: 8px;
 }
-.aboutBtn{
+
+button.aboutBtn{
     background: #D842BD;
     color: #fff;
     margin-right: 13px;
-   
-
+    cursor: pointer;
 }
-.aboutBtnLogin{
+
+button.aboutBtnLogin{
     background: #3633f7;
     color: #fff;
-
+    cursor: pointer;
 }
+
  /*ESCRITA NO TOPO SOBRE PROJETO*/
-.aboutProject{
+h1.aboutProject{
     color: #ffff;
     font-size: 5.625em;
     margin-top: 8.25rem;
@@ -90,41 +99,44 @@ body{
 }
 
 /*descrição do projeto projeto TEXTO LOREMIPSIM*/
-.aboutAside{
+div.aboutAside{
     width: 35.8125em;
-    padding-right: 12.875em;
+    margin-right: 4vw;
 }
+
 /*O QUE É*/
-.aboutAside h3{
+div.aboutAside h3{
     color: #3634F7;
     margin-top: 0;
     font-size: 2.75em;
     margin-bottom: 1.5625rem;
 }
 
-.aboutAside p{
+div.aboutAside p{
     text-align: left;
     letter-spacing: 0px;
     color: #292929;
     font-size: 1.5625em;
 }
 
-.aboutText{
+div.aboutText{
     padding-top: 12.0625rem;
     text-align: left;
-   /* width: 96.625rem;*/
+    /* width: 96.625rem; */
     align-items: flex-start;
-    margin: 0 auto;
+    margin: 0 2vw;
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
-.aboutSvg {
-    
+img.aboutSvg {
     width: 39.75rem;
+    margin-left: 5vw;
 }
 
 /*quem somos nós*/
-.aboutWe{
+h1.aboutWe{
   
     padding-top: 12.0625rem;
     color: #3634F7;
@@ -134,23 +146,21 @@ body{
     margin: 0 auto;
 }
 
-.aboutTeam{
-    
-    margin-right: 1rem;
-    
-}
-.wrapperPhoto{ /*CONTAINER DOS CARTOES*/
-    
+div.wrapperPhoto{ /*CONTAINER DOS CARTOES*/    
     padding-bottom: 10.3125rem;
     width: 108rem;
-    display: -webkit-flex;
-    display: flex;
     margin: 0 auto;
-    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.aboutTeam{
+    margin-right: 1rem;
 }
 
 /*cards da equipe*/
-.aboutCard{
+div.aboutCard{
     width: 19rem;
     box-shadow: 0 5px 10px rgb(85 56 238 / 8%);
     border-radius: 10px;
@@ -158,7 +168,7 @@ body{
     height: 32.8125rem;
 }
 
-.about-team-content{
+div.about-team-content{
     width: 19.25rem;
     display: flex;
     align-items: center;
@@ -166,7 +176,7 @@ body{
     flex-direction: column;
 }
 
-.aboutPhoto{
+div.aboutPhoto{
     height: 12.6875rem;
     width: 12.6875rem;
     margin-bottom: 1.5625rem;
@@ -176,14 +186,14 @@ body{
     background-color: rgb(255, 255, 255)
 }
 
-.aboutPhoto img{
+div.aboutPhoto img{
     width: 100%;
     border: 1px solid #5538EE24;
     border-radius: 100%;
     height: 100%;
 }
 
-.aboutCard h2{
+div.aboutCard h2{
     color: #292929;
     font-size: 2em;
     margin-top: 0;
@@ -191,7 +201,7 @@ body{
     margin-bottom: 1.5625rem;
 }
 
-.aboutCard p{
+div.aboutCard p{
     color: #292929;
     margin-top: 0;
     font-size: 1.1875rem;
@@ -201,126 +211,174 @@ body{
     letter-spacing: 0.23px;
 }
 
-.aboutSocials{
+div.aboutSocials{
     display: flex;
     width: 100%;
     justify-content: center;
 }
 
-.aboutSocials img{
+div.aboutSocials img{
     font-size: 1.5625rem;   
     margin-right: 2.0625rem;
 }
 
-
-
-.footerBackground {
-    background-color: #d842bd;
-    display: -webkit-flex;
+footer.footer {
+    position: relative;
+    bottom: 0;
+    background-color: #D842BD;
+    color: white;
+    width: 100%;
+    height: 13vh;
     display: flex;
-    -webkit-align-items: center;
-    align-items: center;
-    height: 12.5rem;
-    -webkit-justify-content: center;
     justify-content: center;
+    align-items: center;
 }
 
-.footerText {
-    color: #fff;
-    font-size: 1.5625rem;
-}
+/* MEDIA QUERY */
 
-@media(min-width: 660px){
+@media (min-width: 660px){
+
     html{
         font-size: .833vw;
     }
-  .header .headerContent .headerButtons button{
+
+    .header .headerContent .headerButtons button{
     width: 70px;
-  }
-
-
-.header .headerContent .headerButtons .aboutBtn{
-  margin-right: 13px;
-  font-size: 13px;
-  width: 106px;
-  height: 30px;
-}
-
-.header .headerContent .headerButtons .aboutBtnLogin{
-    font-size: 13px;
-    width: 106px;
-    height: 30px;
-}
-}
-
-@media(max-width: 660px){
-    /* reponsividade header*/
-    .aboutHeader {
-        height: 12.875rem;
     }
+    
     .header .headerContent .headerButtons .aboutBtn{
-        
         margin-right: 13px;
         font-size: 13px;
         width: 106px;
         height: 30px;
-      }
-      
-      .header .headerContent .headerButtons .aboutBtnLogin{
-          font-size: 13px;
-          width: 106px;
-          height: 30px;
-        }
-    .aboutProject{
-        font-size: 2.0625em;
-        width: 100%;
-        margin-top: 0.875rem;
-        padding-left: 0;
-        text-align: center;
     }
+
+    .header .headerContent .headerButtons .aboutBtnLogin{
+        font-size: 13px;
+        width: 106px;
+        height: 30px;
+    }
+}
+
+/* MEDIA TABLET */
+@media (max-width: 1050px) {
+    
+
+    
+
+}
+
+@media (max-width: 660px){
+
+    /* reponsividade header*/
+    div.aboutHeader {
+        background-image: url(./imgs/about-bg.jpg);
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        width: 100%;
+        height: 40vh;
+    }
+
+    /* box com logo e botões */
+    section.header {
+        padding: 0;
+    }
+
+    /* box com a logo */
+    div.headerLogo {
+        display: flex;
+        align-items: left;
+        margin: 8vw;
+    }
+
+    /* botão sobre */
+    .header .headerContent .headerButtons .aboutBtn{    
+        margin-right: 13px;
+        font-size: 12px;
+        width: 20vw;
+        height: 30px;
+    }
+    
+    /* botão login */
+    .header .headerContent .headerButtons .aboutBtnLogin{
+        font-size: 12px;
+        width: 20vw;
+        height: 30px;
+    }
+
+    /* logo */
+    img.logoWhite {
+        width: 40vw;
+    }
+
+    /* título sobre o porjeto */
+    h1.aboutProject {
+        margin-top: 8vh;
+        padding: 0;
+        font-size: 50px;
+        display: flex;
+        justify-content: center;
+    }
+
     /* reponsividade descrição do projeto*/
-    .aboutText{
-        padding-top: 3.4375rem;
-        width: 82%;
+    div.aboutText {
+        padding: 0;
+        margin: 0;
+        width: 100%;
+        display: flex;
         flex-direction: column;
     }
 
-    .aboutAside{
+    div.aboutAside {
+        margin: 4vh 0;
+        padding: 0 4vw;
         width: 100%;
-        padding-right: 0;
-        margin-bottom: 2.875rem;
     }
 
-    .aboutAside h3{
+    /* .aboutAside h3{
         font-size: 1.6875em;
         margin-bottom: 0.9375rem;
+    } */
+
+    div.aboutAside h3 {
+        font-size: 24px;
     }
 
-    .aboutAside p{
-        font-size: 0.9375em;
-    }
-
-    .aboutSvg{
+    div.aboutAside p {
         width: 100%;
-    }
-    /*reponsividade seção quem somos nós*/
-    .aboutWe{
-        padding-top: 7.0625rem;
-        padding-bottom: 2.875rem;
-        font-size: 1.375em;
-        width: 82%;
+        font-size: 14px;
     }
 
-    .aboutTeam{
-        padding-bottom: 1.75rem;
-        width: 86%;
+    img.aboutSvg {
+        width: 80vw;
+        height: 50vh;
+        margin: 2vh 0 0 0;
+    }
+
+    /*reponsividade seção quem somos nós*/
+    h1.aboutWe {
+        width: 100%;
+        font-size: 24px;
+        padding: 6vh 5vw;
+    }
+
+    /*reponsividade cards equipe*/
+
+    /*EMBRULHO FOTOS*/
+    div.wrapperPhoto {
+        padding: 0;
+        width: 100%;
+        display: flex;
         flex-direction: column;
     }
-    /*reponsividade cards equipe*/
-   
-    .wrapperPhoto{/*EMBRULHO FOTOS*/
-        display: inline;
-    }  
+
+    div.aboutTeam{
+        margin: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
     .aboutCard{
         width: 100%;
         margin-right: 0px;
@@ -375,5 +433,55 @@ body{
       font-size: 17px;
           
     }
+}
+
+
+/* MEDIA MOBILE */
+@media (max-width: 414px) {
+
+    /* reponsividade header*/
+    div.aboutHeader {
+        height: 30vh;
+    }
+
+    /* box com logo e botões */
+    section.header {
+        padding: 0;
+    }
+
+    /* box com a logo */
+    div.headerLogo {
+        display: flex;
+        align-items: left;
+        margin: 8vw;
+    }
+
+    div.headerContent {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    /* botão sobre */
+    .header .headerContent .headerButtons .aboutBtn{    
+        margin-right: 13px;
+        font-size: 10px;
+        width: 22vw;
+        height: 30px;
+    }
+    
+    /* botão login */
+    .header .headerContent .headerButtons .aboutBtnLogin{
+        font-size: 10px;
+        width: 22vw;
+        height: 30px;
+    }
+
+    /* título sobre o porjeto */
+    h1.aboutProject {
+        font-size: 30px;
+    }
+
 }
 
