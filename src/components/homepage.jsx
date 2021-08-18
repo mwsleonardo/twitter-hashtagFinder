@@ -47,19 +47,21 @@ function Homepage() {
                         <img src={logoWhite} alt="Logo" class="logo"></img>
                         <div className="buttons">
                             {/* Alterações Giovanni */}
+                            <Link to="/About" className="linkRoute">
                             <button className="aboutButton">
                                 <img src={logoSobre} alt="logoSobre" class="logoSobre"></img>
-                                <Link to="/About"><span className="linkPags">Sobre</span></Link>  
-                            </button>
+                                <span>Sobre</span>
+                            </button></Link>  
                             
-
+                            <Link to="/login" className="linkRoute">
                             <button className="loginButton">
                                 <img src={logoLogin} alt="logoLogin" class="logoLogin"></img>
-                                <Link to="/login"><span className="linkPags">Login</span></Link>
+                                <span>Login</span>
                             </button>
-                            {/* Alterações Giovanni */}
+                            </Link>
                         </div>
                     </div>
+
                     <div className="textBox">
                         <h1 className="title"> Encontre hashtags de maneira fácil  </h1>
                         <p className="subtitle"> Digite o que deseja no campo de buscas e confira os resultados do Twitter abaixo </p>

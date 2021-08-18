@@ -9,6 +9,7 @@ function Search() {
     return (
         <>
         {/* navegador */}   
+        
         <div>
             <div class="header">
                 <p class="homeTitle">hashtag<strong>finder</strong></p>
@@ -23,10 +24,10 @@ function Search() {
                     <img src={exitIcon} alt="home-icon"/>
                     SAIR
                 </button>
-        </div>
+            </div>
 
         {/* listagem das hashtags */} 
-    <div class="container"> 
+     <div class="container"> 
         <h1>Buscas realizadas</h1>
         
         <table class= "hashtagList">

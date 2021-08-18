@@ -41,7 +41,7 @@ button.aboutButton {
     cursor: pointer;
 }
 /* Alterações Giovanni  */
-button span {
+.linkRoute {
     text-decoration: none;
 }
 /* Alterações Giovanni  */
@@ -193,14 +193,14 @@ div.container {
     width: 400px;
     position: absolute;
     margin-top: 8vh;
-    margin-left: 17vh;    
+    margin-left: 18vh;    
     word-break: break-all;
 }
 
 .postLink {
     width: 185px;
     position: absolute;
-    margin-left: 16vh;
+    margin-left: 18vh;
     margin-top: 20vh;
     letter-spacing: 0px;
     color: #3634F7;
@@ -360,16 +360,6 @@ div.container {
     }
 }
 
-.postText {
-    margin-left: 8rem;
-    width: 300px;
-    margin-top: 12vh;
-}
-
-.postLink {
-    margin-left: 8rem;
-    margin-top: 26vh;
-}
 
 
 @media (max-width: 900px) { 
