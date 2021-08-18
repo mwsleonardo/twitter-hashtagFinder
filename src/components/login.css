@@ -23,8 +23,10 @@ body {
     display: flex;
     position: relative;
     justify-content: space-between;
+    
 
 }
+
 
 .itensHeader {
     margin: 2vw;
