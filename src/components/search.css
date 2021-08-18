@@ -7,6 +7,17 @@ body {
 }
 /* Alterações Giovanni  */
 
+.backgroundImg {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
+
+.containerSearch {
+    display: flex;
+    flex-direction: column;
+}
 
 .homeTitle {
     color: white;
