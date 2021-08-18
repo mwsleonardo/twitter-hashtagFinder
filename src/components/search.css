@@ -5,6 +5,7 @@ body {
     font-family: 'Rubik';
     /* background-image: url(./images_v01/login-bg.jpg); */
 }
+
 /* Alterações Giovanni  */
 
 .backgroundImg {
@@ -174,6 +175,13 @@ tbody td:nth-child(1) {
     tbody {
         font-size: 14px;
     }
+
+
+    tbody td {
+        padding: 21px 16px 21px 58px;
+        border-bottom: 3px solid #F1F1F1;
+    }
+
 
     tbody td:nth-child(1) {
         width: 70%;
