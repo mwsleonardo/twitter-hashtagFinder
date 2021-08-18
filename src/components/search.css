@@ -45,6 +45,7 @@ body {
     border-style: hidden;
     margin-right: 35px;
     box-shadow: #5538ee29 0px 3px 6px 0px;
+    cursor: pointer;
 }
 
 .homeButton img {
@@ -61,6 +62,7 @@ body {
     border-radius: 30px;
     border-style: hidden;
     box-shadow: #5538ee29 0px 3px 6px 0px;
+    cursor: pointer;
 }
 
 .exitButton img {
