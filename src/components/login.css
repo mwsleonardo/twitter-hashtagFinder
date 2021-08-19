@@ -143,6 +143,7 @@ body {
         width: 17vw;
         height: 5vw;
         border-radius: 10vw;
+        
     }
 
     .butHome span {
@@ -154,9 +155,12 @@ body {
     }
 }
 
+button {
+    border-style: hidden;
+}
 
 /* ---------- VERSAO MOB----------  */
-@media screen and (max-width:800px) {
+@media screen and (max-width:850px) {
 
     .butHome {
         border-radius: 6vw;
