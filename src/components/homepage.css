@@ -81,12 +81,22 @@ p.subtitle{
 
 div.inputDiv {
     position: absolute;
-    bottom: 2vh;
+    bottom: 1vh;
     left: 4vw;
     width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;    
+}
+
+form.form {
+    position: absolute;
+    bottom: 1vh;
+    left: 4vw;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 img.logoSearch {
@@ -96,7 +106,6 @@ img.logoSearch {
     z-index: 2;
 }
     
-
 input.searchBar {
     width: 50%;
     height: 8vh;
@@ -106,7 +115,7 @@ input.searchBar {
     z-index: 1;
     color: #8D9DA2;
     font-size: 22px;
-    padding-left: 5%;
+    padding-left: 6%;
 }
 
 div.container {
@@ -303,6 +312,12 @@ div.container {
         left: 4vw;
     }
 
+    form.form {
+        position: relative;
+        bottom: 2vh;
+        left: 4vw;
+    }
+
     img.logoSearch {
         height: 15px;
         top: 2.8vh;
@@ -461,6 +476,10 @@ div.container {
 
     div.inputDiv {
         bottom: 1vh; 
+    }
+
+    form.form {
+        bottom: 1vh;
     }
 
     img.logoSearch {

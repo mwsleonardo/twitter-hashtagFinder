@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './homepage.css';
 
+// Import do hook form para validação
+// npm install react-hook-form
+import { useForm } from 'react-hook-form';
+
 // Import do router para transação entre páginas
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // Import do carousel e styled-components(css) das imagens 
 import Carousel from "react-elastic-carousel";
@@ -35,44 +39,78 @@ const breakPoints = [
 ];
 
 
+
+
 // Function retornando todo o conteúdo da homepage
 function Homepage() {
 
+    // Const do hook form
+    const { register, formState: { errors }, handleSubmit } = useForm();
+
+    // Const que resgata o valor preenchido no input
+    const onSubmit = data => console.log(data);
+
+
+
     return (
-        
+
         <div>
             <div className="homepage">
+
+                {/* HEADER */}
                 <header className="banner">
                     <div className="title">
+                        {/* LOGO */}
                         <img src={logoWhite} alt="Logo" class="logo"></img>
+
+                        {/* BOTÕES DO TOPO */}
                         <div className="buttons">
-                            {/* Alterações Giovanni */}
+                            {/* BOTÃO SOBRE */}
                             <Link to="/About" className="linkRoute">
-                            <button className="aboutButton">
-                                <img src={logoSobre} alt="logoSobre" class="logoSobre"></img>
-                                <span>Sobre</span>
-                            </button></Link>  
-                            
+                                <button className="aboutButton">
+                                    <img src={logoSobre} alt="logoSobre" class="logoSobre"></img>
+                                    <span>Sobre</span>
+                                </button></Link>
+
+                            {/* BOTÃO LOGIN */}
                             <Link to="/login" className="linkRoute">
-                            <button className="loginButton">
-                                <img src={logoLogin} alt="logoLogin" class="logoLogin"></img>
-                                <span>Login</span>
-                            </button>
+                                <button className="loginButton">
+                                    <img src={logoLogin} alt="logoLogin" class="logoLogin"></img>
+                                    <span>Login</span>
+                                </button>
                             </Link>
                         </div>
                     </div>
 
+                    {/* CAIXA DE TEXTO DO BANNER */}
                     <div className="textBox">
                         <h1 className="title"> Encontre hashtags de maneira fácil  </h1>
                         <p className="subtitle"> Digite o que deseja no campo de buscas e confira os resultados do Twitter abaixo </p>
                     </div>
+
+                    {/* FORM E CAMPO DE BUSCA */}
                     <div className="inputDiv">
-                        <img src={logoSearch} alt="logoSearch" class="logoSearch"></img>
-                        <input type="text" className="searchBar" placeholder="Buscar..."></input>
+                        <form className="form" onSubmit={handleSubmit(onSubmit)}>
+                            <img src={logoSearch} alt="logoSearch" class="logoSearch"></img>
+                            <input
+                                {...register("searchBar", { required: true, maxLength: 40 })}
+                                type="text"
+                                className="searchBar"
+                                placeholder="Buscar..."
+                                maxlength="40"
+                            >
+                            </input>
+
+                        </form>
                     </div>
+                    {/* VALIDAÇÃO------------ */}
+                    <div className="validation">
+                        {errors.searchBar?.type === 'required' && "Campo obrigatório"}
+                    </div>
+                    {/* {error.searchBar && <div className="validation">{error.searchBar}</div>} */}
                 </header>
 
-
+                {/* RESULTADOS DAS IMAGENS - CAROUSEL */}
                 <h1 className="searchTitle">Exibindo os 10 resultados mais recentes de #vikings</h1>
                 <div className="carouselImages">
                     <Carousel breakPoints={breakPoints}>
@@ -88,8 +126,28 @@ function Homepage() {
                         <Item><img className="resultImage" src={search10}></img></Item>
                     </Carousel>
                 </div>
+
+                {/* RESULTADOS DOS TWEETS EM TEXTO */}
                 <div className="resultPosts">
-                    <div className="postContainer">   
+                    <div className="postContainer">
+                        {/* CAIXA QUE CONTÉM O TWEET */}
+                        <div className="postBox">
+                            <img className="postImg" src={search1}></img>
+                            <div className="postUser">UserName</div>
+                            <div className="postUsername">@twitterusername</div>
+                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                            <div className="postLink">Ver mais no Twitter</div>
+                        </div>
+                        {/* CAIXA QUE CONTÉM O TWEET */}
+                        <div className="postBox">
+                            <img className="postImg" src={search1}></img>
+                            <div className="postUser">UserName</div>
+                            <div className="postUsername">@twitterusername</div>
+                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                            <div className="postLink">Ver mais no Twitter</div>
+                        </div>
+                    </div>
+                    <div className="postContainer">
                         <div className="postBox">
                             <img className="postImg" src={search1}></img>
                             <div className="postUser">UserName</div>
@@ -105,7 +163,7 @@ function Homepage() {
                             <div className="postLink">Ver mais no Twitter</div>
                         </div>
                     </div>
-                    <div className="postContainer">   
+                    <div className="postContainer">
                         <div className="postBox">
                             <img className="postImg" src={search1}></img>
                             <div className="postUser">UserName</div>
@@ -121,7 +179,7 @@ function Homepage() {
                             <div className="postLink">Ver mais no Twitter</div>
                         </div>
                     </div>
-                    <div className="postContainer">   
+                    <div className="postContainer">
                         <div className="postBox">
                             <img className="postImg" src={search1}></img>
                             <div className="postUser">UserName</div>
@@ -137,7 +195,7 @@ function Homepage() {
                             <div className="postLink">Ver mais no Twitter</div>
                         </div>
                     </div>
-                    <div className="postContainer">   
+                    <div className="postContainer">
                         <div className="postBox">
                             <img className="postImg" src={search1}></img>
                             <div className="postUser">UserName</div>
@@ -153,42 +211,15 @@ function Homepage() {
                             <div className="postLink">Ver mais no Twitter</div>
                         </div>
                     </div>
-                    <div className="postContainer">   
-                        <div className="postBox">
-                            <img className="postImg" src={search1}></img>
-                            <div className="postUser">UserName</div>
-                            <div className="postUsername">@twitterusername</div>
-                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                            <div className="postLink">Ver mais no Twitter</div>
-                        </div>
-                        <div className="postBox">
-                            <img className="postImg" src={search1}></img>
-                            <div className="postUser">UserName</div>
-                            <div className="postUsername">@twitterusername</div>
-                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                            <div className="postLink">Ver mais no Twitter</div>
-                        </div>
-                    </div>
-
-                    
-
                 </div>
 
-
-
+                {/* FOOTER */}
                 <footer className="footer">
                     @NewTab Academy 2021. Todos os direitos reservados
                 </footer>
             </div>
         </div>
-        
-
-
-        
-
     )
 }
-
-
 
 export default Homepage;
