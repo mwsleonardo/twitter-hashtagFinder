@@ -23,8 +23,6 @@ body {
     display: flex;
     position: relative;
     justify-content: space-between;
-    
-
 }
 
 
@@ -54,8 +52,8 @@ body {
     position: relative;
     align-items: center;
     border-radius: 1vw;
-    width: 25vw;
-    margin-left: 37vw;
+    width: 30vw;
+    margin-left: 35vw;
     margin-top: 7vw;
     padding: 4vw 3vw;
     margin-bottom: 10vw;
@@ -74,6 +72,7 @@ body {
 .titleLogin {
     margin: 2vw;
 }
+
 
 .itensLogin {
     width: 22vw;
@@ -143,7 +142,6 @@ body {
         width: 17vw;
         height: 5vw;
         border-radius: 10vw;
-        
     }
 
     .butHome span {
@@ -208,5 +206,4 @@ button {
     .headerLogin {
         padding: 2vw;
     }
-
 }
