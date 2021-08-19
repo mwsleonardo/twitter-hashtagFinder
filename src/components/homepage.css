@@ -226,11 +226,8 @@ div.container {
     
 }
 
-
-
 /* MEDIA TABLET */
 @media (max-width: 1050px) {
-
 
     .postContainer {
         flex-direction: column;
@@ -332,7 +329,7 @@ div.container {
     .postBox {
         display: flex;
         height: 253px;
-        width: 414px;
+        width: 100%;
         border: 2px solid red;
         margin: 0;
         margin-bottom: 4rem;
@@ -344,12 +341,29 @@ div.container {
         opacity: 1;
     }
 
+    .postUser {
+        font-size: 28px;
+    }
+
+    .postText {
+        margin-left: 18vw;
+        width: 50%;
+    }
+
     .postContainer {
         margin-left: 0;
-        align-items: center;
+        /* align-items: center; */
+        align-items: inherit;
+        margin-left: 50px;
     }
+
+    .postLink {
+        margin-left: 15vh;
+        margin-top: 26vh;
+    }
+
     .postUsername {
-        margin-left: 17vh;
+        margin-left: 18vh;
         margin-top: 7vh;
         position: absolute;
 
@@ -360,34 +374,42 @@ div.container {
     }
 }
 
-
-
-@media (max-width: 900px) { 
-    .postContainer {
-        align-items: inherit;
-        margin-left: 50px;
-    }
-    .postText {
-        width: 200px;
-    }
-    .postLink {
-        margin-top: 33vh;
-    }
-    .postUsername {
-        margin-top: 7vh;
-        margin-left: 21vh;
-    }
-
-}
-
 @media (max-width: 442px) {
     .postContainer {
         align-items: center;
-        margin-left: 0;
+        margin-left: 5vw;
+        margin-right: 5vw;
     
     }
+
+    img.postImg {
+        margin-top: 2vh;
+        margin-left: 4vw;
+    }
+
+    div.postUser {
+        margin-top: 2vh;
+    }
+
+    div.postUsername {
+        margin-top: 6vh;
+        margin-left: 26vw;
+
+    }
+
+    div.postText {
+        margin-top: 10vh;
+        margin-left: 26vw;
+        width: 60%;
+    }
+
+    div.postLink {
+        margin-top: 26vh;
+        margin-left: 26vw;
+    }
+
     .postBox {
-        align-items: center;
+        align-items: flex-start;
         margin-left: 0;
     
     }
@@ -397,11 +419,7 @@ div.container {
 @media (max-width: 414px) {
 
     .banner {
-        /* background-image: url(./imgs/hero-bg-mobile.jpg);
-        background-size: 100% 90%;
-        background-repeat: no-repeat; */
         height: 70vh;
-        /* width: 100%; */
     }
 
     div.title {
