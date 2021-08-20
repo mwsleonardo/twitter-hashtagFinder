@@ -99,6 +99,11 @@ body {
     font-size: 22px;
 }
 
+.invalidUser {
+    color: red;
+    margin-left: 2vw;
+    margin-bottom: 1vw;
+}
 
 @media screen and (max-width:1100px) {
     .itensLogin {
