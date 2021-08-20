@@ -51,37 +51,6 @@ function Search() {
                     <td>25/02</td>
                     <td>09:30</td>
                 </tr>
-                <tr>
-                    <td>#hashtagname</td>
-                    <td>25/02</td>
-                    <td>09:30</td>
-                </tr>
-                <tr>
-                    <td>#hashtagname</td>
-                    <td>25/02</td>
-                    <td>09:30</td>
-                </tr>
-                <tr>
-                    <td>#hashtagname</td>
-                    <td>25/02</td>
-                    <td>09:30</td>
-                </tr>
-                <tr>
-                    <td>#hashtagname</td>
-                    <td>25/02</td>
-                    <td>09:30</td>
-                </tr>
-                <tr>
-                    <td>#hashtagname</td>
-                    <td>25/02</td>
-                    <td>09:30</td>
-                </tr>
-                <tr>
-                    <td>#hashtagname</td>
-                    <td>25/02</td>
-                    <td>09:30</td>
-                </tr>
-            
             </tbody>
         </table>
     </div> 
