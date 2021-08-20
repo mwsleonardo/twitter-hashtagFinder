@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import './homepage.css';
 
-// Import do hook form para validação
+// Import do hook form para validação 
 // npm install react-hook-form
 import { useForm } from 'react-hook-form';
 
 // Import do router para transação entre páginas
 import { Link } from 'react-router-dom'
+// Import do redirecionamento depois de algum evento
+import { useHistory } from 'react-router-dom';
 
 // Import do carousel e styled-components(css) das imagens 
 import Carousel from "react-elastic-carousel";
@@ -14,6 +17,7 @@ import Item from './item.js';
 
 // Import das imagens e icones usados na homepage
 import logoWhite from "./imgs/logo-white.svg";
+import logoPink from "./imgs/logo-pink.svg";
 import logoSobre from "./imgs/icon-info-circle.svg";
 import logoLogin from "./imgs/icon-user-alt.svg";
 import logoSearch from "./imgs/icon-search.svg"
@@ -39,17 +43,72 @@ const breakPoints = [
 ];
 
 
-
-
 // Function retornando todo o conteúdo da homepage
 function Homepage() {
 
     // Const do hook form
     const { register, formState: { errors }, handleSubmit } = useForm();
 
+    // Const hook de redirecionamento de página
+    const history = useHistory();
+
+    // Const com conteúdo a ser enviado pra airtable
+    const values = {
+        "records": [
+            {
+                "fields": {
+                    "squad": "52",
+                    "Hashtag": "natureza",
+                    "Data": "26/05/2021",
+                    "Hora": "19:43",
+                }
+            }
+        ]
+    }
+
+    // AULA SOBRE AXIOS E CORS
+    // https://drive.google.com/file/d/17otxC8fNWxrDumqadGxe_aKyLjkuQEM7/view
+
+    let url = "https://cors.bridged.cc/https://api.airtable.com/v0app6wQWfM6eJngkD4/Buscas";
+
+    // Axios para POST da airtable
+    let axiosConfig = { 
+        headers: { 
+            Authorization: "Bearer key2CwkHb0CKumjuM" , 
+            'Content-Type': 'application/json' ,
+        } 
+    }
+    axios.post(
+        url,
+        values,
+        axiosConfig
+    )
+    .then(() => {
+        console.log("rolou")
+    })
+    .catch(() => {
+        console.log("não rolou")
+    })
+
+    // LINK API
+    // https://api.airtable.com/v0/app6wQWfM6eJngkD4/Buscas
+
     // Const que resgata o valor preenchido no input
     const onSubmit = data => console.log(data);
 
+    // ---------MENU DO TOPO---------
+    const [changeBackground, setChangeBackground] = useState(false);
+
+    useEffect(function() {
+        function scrollPosition(){ //função para verificar a posição do scroll
+            if(window.scrollY > 600){ //se o scroll descer mais que 600
+                setChangeBackground(true);
+            } else {
+                setChangeBackground(false);
+            }
+        }
+        window.addEventListener('scroll', scrollPosition);
+    }, []);
 
 
     return (
@@ -59,10 +118,10 @@ function Homepage() {
 
                 {/* HEADER */}
                 <header className="banner">
-                    <div className="title">
+                    {/* MENU TOPO */}
+                    <div className={ changeBackground ? 'topUnfixed' : 'topFixed' }>
                         {/* LOGO */}
-                        <img src={logoWhite} alt="Logo" class="logo"></img>
-
+                        <img src={ logoWhite } alt="LogoWhite" className="logo"></img>
                         {/* BOTÕES DO TOPO */}
                         <div className="buttons">
                             {/* BOTÃO SOBRE */}
@@ -93,6 +152,7 @@ function Homepage() {
                         <form className="form" onSubmit={handleSubmit(onSubmit)}>
                             <img src={logoSearch} alt="logoSearch" class="logoSearch"></img>
                             <input
+                                name="searchBar"
                                 {...register("searchBar", { required: true, maxLength: 40 })}
                                 type="text"
                                 className="searchBar"
@@ -100,14 +160,12 @@ function Homepage() {
                                 maxlength="40"
                             >
                             </input>
-
                         </form>
                     </div>
-                    {/* VALIDAÇÃO------------ */}
-                    <div className="validation">
-                        {errors.searchBar?.type === 'required' && "Campo obrigatório"}
-                    </div>
-                    {/* {error.searchBar && <div className="validation">{error.searchBar}</div>} */}
+                    {/* VALIDAÇÃO */}
+                        <div className="validation">
+                            {errors.searchBar?.type === 'required' && "Campo obrigatório"}
+                        </div>
                 </header>
 
                 {/* RESULTADOS DAS IMAGENS - CAROUSEL */}
