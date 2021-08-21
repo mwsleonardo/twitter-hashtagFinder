@@ -54,10 +54,6 @@ function Search() {
      <div class="container"> 
         <h1>Buscas realizadas</h1>
 
-        {hashtagList.map((hashtag, key) => {
-
-            return (
-                <table class= "hashtagList">
             <thead>
                 <tr>
                     <th>Hashtag</th>
@@ -65,14 +61,20 @@ function Search() {
                     <th>Hora</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>{hashtag.hashtag}</td>
-                    <td>{hashtag.data}</td>
-                    <td>{hashtag.hora}</td>
-                </tr>
-            </tbody>
-        </table>
+
+        {hashtagList.map((hashtag, key) => {
+
+            return (
+
+                <table class= "hashtagList">
+                    <tbody>
+                        <tr>
+                            <td>{hashtag.hashtag}</td>
+                            <td>{hashtag.data}</td>
+                            <td>{hashtag.hora}</td>
+                        </tr>
+                    </tbody>
+                </table>
             )
         })}
          

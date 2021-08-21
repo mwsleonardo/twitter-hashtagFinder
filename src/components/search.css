@@ -87,8 +87,9 @@ body {
 table {
     border-collapse: collapse;
     width: 100%;
-    border-radius: 1em;
+    /* border-radius: 1em;
     overflow: hidden;
+    */
 }
 
 
@@ -96,8 +97,7 @@ thead th {
     background-color: #F1F1F1;
     color: #3633F7;
     text-align: center;
-    padding: 56px 0px 22px 0px;
-    ;
+    padding: 56px 34px 22px 17px;
     font-size: 28px;
 }
 
@@ -167,6 +167,10 @@ tbody td:nth-child(1) {
 
     .container h1 {
         font-size: 33px;
+    }
+
+    thead {
+        width: 100%;
     }
 
     thead th {
