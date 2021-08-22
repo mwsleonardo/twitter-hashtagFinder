@@ -28,6 +28,7 @@ div.topFixed {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
 }
 
 
@@ -324,6 +325,7 @@ div.container {
         width: 100%;
     }
     div.topFixed {
+        width: 100%;
         padding: 36px 16px 0 16px;
     }
     div.topUnfixed {
@@ -358,7 +360,7 @@ div.container {
     }
     div.inputDiv {
         position: relative;
-        bottom: 2vh;
+        bottom: 7vh;
         left: 4vw;
     }
     form.form {
@@ -473,6 +475,7 @@ div.container {
         height: 70vh;
     }
     div.topFixed {
+        width: 100%;
         padding: 36px 16px 0 16px;
     }
     div.topUnfixed {

@@ -50,21 +50,7 @@ function Homepage() {
     const { register, formState: { errors }, handleSubmit } = useForm();
 
     // Const hook de redirecionamento de página
-    const history = useHistory();
-
-    // Const com conteúdo a ser enviado pra airtable
-    const values = {
-        "records": [
-            {
-                "fields": {
-                    "squad": "52",
-                    "Hashtag": "natureza",
-                    "Data": "26/05/2021",
-                    "Hora": "19:43",
-                }
-            }
-        ]
-    }
+    // const history = useHistory();
 
     // AULA SOBRE AXIOS E CORS
     // https://drive.google.com/file/d/17otxC8fNWxrDumqadGxe_aKyLjkuQEM7/view
@@ -72,39 +58,34 @@ function Homepage() {
     //LINK CORS
     // https://cors.bridged.cc
 
-    let url = "https://api.airtable.com/v0app6wQWfM6eJngkD4/Buscas";
-
-    // Axios para POST da airtable
-    let axiosConfig = { 
-        headers: { 
-            Authorization: "Bearer key2CwkHb0CKumjuM" , 
-            'Content-Type': 'application/json' ,
-        } 
-    }
-    axios.post(
-        url,
-        values,
-        axiosConfig
-    )
-    .then(() => {
-        console.log("rolou")
-    })
-    .catch(() => {
-        console.log("não rolou")
-    })
-
-    // LINK API
-    // https://api.airtable.com/v0/app6wQWfM6eJngkD4/Buscas
+    // let url = "https://api.airtable.com/v0app6wQWfM6eJngkD4/Buscas";
+  
 
     // Const que resgata o valor preenchido no input
-    const onSubmit = data => console.log(data);
+    const onSubmit = data => axios({
+        method: 'post',
+        url: 'https://api.airtable.com/v0app6wQWfM6eJngkD4/Buscas',
+        headers: {
+            Authorization: "Bearer key2CwkHb0CKumjuM",
+            'Content-Type': 'application/json',
+        },
+        dataType: 'json',
+
+        data: JSON.stringify({
+            squad: "52",
+            Hashtag: data,
+            Data: "26/05/2021",
+            Hora: "19:43"
+        })
+    }
+    );;
 
     // ---------MENU DO TOPO---------
     const [changeBackground, setChangeBackground] = useState(false);
 
-    useEffect(function() {
-        function scrollPosition(){ //função para verificar a posição do scroll
-            if(window.scrollY > 600){ //se o scroll descer mais que 620
+    useEffect(function () {
+        function scrollPosition() { //função para verificar a posição do scroll
+            if (window.scrollY > 600) { //se o scroll descer mais que 620
                 setChangeBackground(true);
             } else {
                 setChangeBackground(false);
@@ -115,13 +96,13 @@ function Homepage() {
 
     // Função para mudar a logo do topo
     function pickLogo() {
-        
+
         if (changeBackground == 0) { // se não tiver scroll, mostar logo branca
             return logoWhite;
         } if (changeBackground > 0) { // se tiver scroll, mostrar logo rosa
             return logoPink;
-        } 
-    } 
+        }
+    }
 
 
 
@@ -133,22 +114,22 @@ function Homepage() {
                 {/* HEADER */}
                 <header className="banner">
                     {/* MENU TOPO */}
-                    <div className={ changeBackground ? 'topUnfixed' : 'topFixed' }>
+                    <div className={changeBackground ? 'topUnfixed' : 'topFixed'}>
                         {/* LOGO */}
-                        <img src={ pickLogo() } alt="LogoWhite" className="logo"></img>
+                        <img src={pickLogo()} alt="Logo" className="logo"></img>
                         {/* BOTÕES DO TOPO */}
                         <div className="buttons">
                             {/* BOTÃO SOBRE */}
                             <Link to="/About" className="linkRoute">
                                 <button className="aboutButton">
-                                    <img src={logoSobre} alt="logoSobre" class="logoSobre"></img>
+                                    <img src={logoSobre} alt="logoSobre" className="logoSobre"></img>
                                     <span>Sobre</span>
                                 </button></Link>
 
                             {/* BOTÃO LOGIN */}
                             <Link to="/login" className="linkRoute">
                                 <button className="loginButton">
-                                    <img src={logoLogin} alt="logoLogin" class="logoLogin"></img>
+                                    <img src={logoLogin} alt="logoLogin" className="logoLogin"></img>
                                     <span>Login</span>
                                 </button>
                             </Link>
@@ -164,7 +145,7 @@ function Homepage() {
                     {/* FORM E CAMPO DE BUSCA */}
                     <div className="inputDiv">
                         <form className="form" onSubmit={handleSubmit(onSubmit)}>
-                            <img src={logoSearch} alt="logoSearch" class="logoSearch"></img>
+                            <img src={logoSearch} alt="logoSearch" className="logoSearch"></img>
                             <input
                                 name="searchBar"
                                 {...register("searchBar", { required: true, maxLength: 40 })}
@@ -177,25 +158,25 @@ function Homepage() {
                         </form>
                     </div>
                     {/* VALIDAÇÃO */}
-                        <div className="validation">
-                            {errors.searchBar?.type === 'required' && "Campo obrigatório"}
-                        </div>
+                    <div className="validation">
+                        {errors.searchBar?.type === 'required' && "Campo obrigatório"}
+                    </div>
                 </header>
 
                 {/* RESULTADOS DAS IMAGENS - CAROUSEL */}
                 <h1 className="searchTitle">Exibindo os 10 resultados mais recentes de #vikings</h1>
                 <div className="carouselImages">
                     <Carousel breakPoints={breakPoints}>
-                        <Item><img className="resultImage" src={search1}></img></Item>
-                        <Item><img className="resultImage" src={search2}></img></Item>
-                        <Item><img className="resultImage" src={search3}></img></Item>
-                        <Item><img className="resultImage" src={search4}></img></Item>
-                        <Item><img className="resultImage" src={search5}></img></Item>
-                        <Item><img className="resultImage" src={search6}></img></Item>
-                        <Item><img className="resultImage" src={search7}></img></Item>
-                        <Item><img className="resultImage" src={search8}></img></Item>
-                        <Item><img className="resultImage" src={search9}></img></Item>
-                        <Item><img className="resultImage" src={search10}></img></Item>
+                        <Item><img className="resultImage" src={search1} alt="img"></img></Item>
+                        <Item><img className="resultImage" src={search2} alt="img"></img></Item>
+                        <Item><img className="resultImage" src={search3} alt="img"></img></Item>
+                        <Item><img className="resultImage" src={search4} alt="img"></img></Item>
+                        <Item><img className="resultImage" src={search5} alt="img"></img></Item>
+                        <Item><img className="resultImage" src={search6} alt="img"></img></Item>
+                        <Item><img className="resultImage" src={search7} alt="img"></img></Item>
+                        <Item><img className="resultImage" src={search8} alt="img"></img></Item>
+                        <Item><img className="resultImage" src={search9} alt="img"></img></Item>
+                        <Item><img className="resultImage" src={search10} alt="img"></img></Item>
                     </Carousel>
                 </div>
 
@@ -204,7 +185,7 @@ function Homepage() {
                     <div className="postContainer">
                         {/* CAIXA QUE CONTÉM O TWEET */}
                         <div className="postBox">
-                            <img className="postImg" src={search1}></img>
+                            <img className="postImg" src={search1} alt="img"></img>
                             <div className="postUser">UserName</div>
                             <div className="postUsername">@twitterusername</div>
                             <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
@@ -212,7 +193,7 @@ function Homepage() {
                         </div>
                         {/* CAIXA QUE CONTÉM O TWEET */}
                         <div className="postBox">
-                            <img className="postImg" src={search1}></img>
+                            <img className="postImg" src={search1} alt="img"></img>
                             <div className="postUser">UserName</div>
                             <div className="postUsername">@twitterusername</div>
                             <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
@@ -221,30 +202,14 @@ function Homepage() {
                     </div>
                     <div className="postContainer">
                         <div className="postBox">
-                            <img className="postImg" src={search1}></img>
+                            <img className="postImg" src={search1} alt="img"></img>
                             <div className="postUser">UserName</div>
                             <div className="postUsername">@twitterusername</div>
                             <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
                             <div className="postLink">Ver mais no Twitter</div>
                         </div>
                         <div className="postBox">
-                            <img className="postImg" src={search1}></img>
-                            <div className="postUser">UserName</div>
-                            <div className="postUsername">@twitterusername</div>
-                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                            <div className="postLink">Ver mais no Twitter</div>
-                        </div>
-                    </div>
-                    <div className="postContainer">
-                        <div className="postBox">
-                            <img className="postImg" src={search1}></img>
-                            <div className="postUser">UserName</div>
-                            <div className="postUsername">@twitterusername</div>
-                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                            <div className="postLink">Ver mais no Twitter</div>
-                        </div>
-                        <div className="postBox">
-                            <img className="postImg" src={search1}></img>
+                            <img className="postImg" src={search1} alt="img"></img>
                             <div className="postUser">UserName</div>
                             <div className="postUsername">@twitterusername</div>
                             <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
@@ -253,14 +218,14 @@ function Homepage() {
                     </div>
                     <div className="postContainer">
                         <div className="postBox">
-                            <img className="postImg" src={search1}></img>
+                            <img className="postImg" src={search1} alt="img"></img>
                             <div className="postUser">UserName</div>
                             <div className="postUsername">@twitterusername</div>
                             <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
                             <div className="postLink">Ver mais no Twitter</div>
                         </div>
                         <div className="postBox">
-                            <img className="postImg" src={search1}></img>
+                            <img className="postImg" src={search1} alt="img"></img>
                             <div className="postUser">UserName</div>
                             <div className="postUsername">@twitterusername</div>
                             <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
@@ -269,14 +234,30 @@ function Homepage() {
                     </div>
                     <div className="postContainer">
                         <div className="postBox">
-                            <img className="postImg" src={search1}></img>
+                            <img className="postImg" src={search1} alt="img"></img>
                             <div className="postUser">UserName</div>
                             <div className="postUsername">@twitterusername</div>
                             <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
                             <div className="postLink">Ver mais no Twitter</div>
                         </div>
                         <div className="postBox">
-                            <img className="postImg" src={search1}></img>
+                            <img className="postImg" src={search1} alt="img"></img>
+                            <div className="postUser">UserName</div>
+                            <div className="postUsername">@twitterusername</div>
+                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                            <div className="postLink">Ver mais no Twitter</div>
+                        </div>
+                    </div>
+                    <div className="postContainer">
+                        <div className="postBox">
+                            <img className="postImg" src={search1} alt="img"></img>
+                            <div className="postUser">UserName</div>
+                            <div className="postUsername">@twitterusername</div>
+                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                            <div className="postLink">Ver mais no Twitter</div>
+                        </div>
+                        <div className="postBox">
+                            <img className="postImg" src={search1} alt="img"></img>
                             <div className="postUser">UserName</div>
                             <div className="postUsername">@twitterusername</div>
                             <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
