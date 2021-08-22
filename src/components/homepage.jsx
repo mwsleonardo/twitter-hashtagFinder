@@ -69,7 +69,10 @@ function Homepage() {
     // AULA SOBRE AXIOS E CORS
     // https://drive.google.com/file/d/17otxC8fNWxrDumqadGxe_aKyLjkuQEM7/view
 
-    let url = "https://cors.bridged.cc/https://api.airtable.com/v0app6wQWfM6eJngkD4/Buscas";
+    //LINK CORS
+    // https://cors.bridged.cc
+
+    let url = "https://api.airtable.com/v0app6wQWfM6eJngkD4/Buscas";
 
     // Axios para POST da airtable
     let axiosConfig = { 
@@ -101,7 +104,7 @@ function Homepage() {
 
     useEffect(function() {
         function scrollPosition(){ //função para verificar a posição do scroll
-            if(window.scrollY > 600){ //se o scroll descer mais que 600
+            if(window.scrollY > 600){ //se o scroll descer mais que 620
                 setChangeBackground(true);
             } else {
                 setChangeBackground(false);
@@ -109,6 +112,17 @@ function Homepage() {
         }
         window.addEventListener('scroll', scrollPosition);
     }, []);
+
+    // Função para mudar a logo do topo
+    function pickLogo() {
+        
+        if (changeBackground == 0) { // se não tiver scroll, mostar logo branca
+            return logoWhite;
+        } if (changeBackground > 0) { // se tiver scroll, mostrar logo rosa
+            return logoPink;
+        } 
+    } 
+
 
 
     return (
@@ -121,7 +135,7 @@ function Homepage() {
                     {/* MENU TOPO */}
                     <div className={ changeBackground ? 'topUnfixed' : 'topFixed' }>
                         {/* LOGO */}
-                        <img src={ logoWhite } alt="LogoWhite" className="logo"></img>
+                        <img src={ pickLogo() } alt="LogoWhite" className="logo"></img>
                         {/* BOTÕES DO TOPO */}
                         <div className="buttons">
                             {/* BOTÃO SOBRE */}

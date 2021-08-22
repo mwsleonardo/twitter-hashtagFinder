@@ -316,11 +316,11 @@ div.container {
         margin-left: 24vh;
         margin-top: 26vh;
     }
-    .banner {
+    header.banner {
         background-image: url(./imgs/hero-bg-mobile.jpg);
         background-size: cover;
         background-repeat: no-repeat;
-        height: 90vh;
+        height: 70vh;
         width: 100%;
     }
     div.topFixed {
@@ -469,7 +469,7 @@ div.container {
 /* MEDIA MOBILE */
 
 @media (max-width: 414px) {
-    .banner {
+    header.banner {
         height: 70vh;
     }
     div.topFixed {
