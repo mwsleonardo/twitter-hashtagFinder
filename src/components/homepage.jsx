@@ -47,38 +47,83 @@ const breakPoints = [
 function Homepage() {
 
     // Const do hook form
-    const { register, formState: { errors }, handleSubmit } = useForm();
+    // const { register, formState: { errors }, handleSubmit } = useForm();
+
+    // Const do conteúdo digitado no input para pesquisa da hashtag
+    const [contentInput, setContentInput] = useState('');
 
     // Const hook de redirecionamento de página
     // const history = useHistory();
-
-    // AULA SOBRE AXIOS E CORS
-    // https://drive.google.com/file/d/17otxC8fNWxrDumqadGxe_aKyLjkuQEM7/view
-
-    //LINK CORS
-    // https://cors.bridged.cc
-
-    // let url = "https://api.airtable.com/v0app6wQWfM6eJngkD4/Buscas";
   
+    // ---------ENVIO PARA API DO AIRTABLE---------
+
+    // Função que guarda a URL da Airtable
+    function urlAirtable() {
+        return `https://api.airtable.com/v0/app6wQWfM6eJngkD4/Buscas`;
+    }
+
+    // Função que identifica a data em que foi realizada a pesquisa
+    function dateInput() {
+        const date = new Date();
+        const day = String(date.getDate()).padStart(2, '0'); // dia com duas casas
+        const month = String(date.getMonth() + 1).padStart(2, '0'); // mês com duas casas
+        const year = date.getFullYear();
+        return `${day}/${month}/${year}`;
+    }
+
+    function hourInput() {
+        const date = new Date();
+        const hour = String(date.getHours()).padStart(2, '0'); // horas com duas casas
+        const minute = String(date.getMinutes()).padStart(2, '0'); // minutos com duas casas
+        return `${hour}:${minute}`;
+    }
 
     // Const que resgata o valor preenchido no input
-    const onSubmit = data => axios({
-        method: 'post',
-        url: 'https://api.airtable.com/v0app6wQWfM6eJngkD4/Buscas',
-        headers: {
-            Authorization: "Bearer key2CwkHb0CKumjuM",
-            'Content-Type': 'application/json',
-        },
-        dataType: 'json',
-
-        data: JSON.stringify({
-            squad: "52",
-            Hashtag: data,
-            Data: "26/05/2021",
-            Hora: "19:43"
-        })
+    function handleTextChange(event) {
+        setContentInput(event.target.value); // guarda o valor preenchido no content Input
     }
-    );;
+
+    // Const que resgata do DOM a div de mensagem de validação
+    const messageValidation = document.getElementsByClassName('validation');
+
+    // Função de submit do formulário que chama a função para registro na airtable
+    function submitForm(event) {
+        event.preventDefault(); // evita recarregamento da página
+        console.log(contentInput);
+
+    
+        if (contentInput == '') { // se o campo estiver vazio, impede que seja registrado
+            messageValidation.innerHTML = "Campo Obrigatório!";
+        } else {
+            messageValidation.innerHTML = "";
+            console.log("chama função post")
+            console.log(dateInput());
+            console.log(hourInput());
+            postSearch();
+        }
+    }
+
+    // Função que registra o que foi pesquisado na searchBar na airtable
+    function postSearch() {
+        axios.post(urlAirtable(), {
+            "records": [
+                {
+                    "fields": {
+                        "Squad": "52",
+                        "Hashtag": contentInput,
+                        "Data": dateInput(),
+                        "Hora": hourInput()
+                    }
+                }
+            ]
+        }, {
+            headers: {
+                "Authorization": "Bearer key2CwkHb0CKumjuM",
+                "Content-Type": "application/json"
+            }
+        });
+    }
+
 
     // ---------MENU DO TOPO---------
     const [changeBackground, setChangeBackground] = useState(false);
@@ -144,22 +189,23 @@ function Homepage() {
 
                     {/* FORM E CAMPO DE BUSCA */}
                     <div className="inputDiv">
-                        <form className="form" onSubmit={handleSubmit(onSubmit)}>
+                        <form className="form" onSubmit={submitForm}>
                             <img src={logoSearch} alt="logoSearch" className="logoSearch"></img>
                             <input
                                 name="searchBar"
-                                {...register("searchBar", { required: true, maxLength: 40 })}
                                 type="text"
                                 className="searchBar"
+                                value={contentInput}
+                                onChange={handleTextChange}
                                 placeholder="Buscar..."
-                                maxlength="40"
+                                maxlength="10"
                             >
                             </input>
                         </form>
                     </div>
                     {/* VALIDAÇÃO */}
                     <div className="validation">
-                        {errors.searchBar?.type === 'required' && "Campo obrigatório"}
+                        
                     </div>
                 </header>
 
