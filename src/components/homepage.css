@@ -162,6 +162,20 @@ input.searchBar {
 }
 
 
+/* LIMITE DE CARACTERES */
+
+span.limitCaracteres {
+    position: relative;
+    right: 4vw;
+    z-index: 2;
+    color: #D842BD;
+    font-size: 16px;
+    padding: 0.5%;
+    border: 1px solid #D842BD;
+    border-radius: 50%;
+}
+
+
 /* MENSAGEM DE VALIDAÇÃO */
 
 div.validation {
@@ -381,6 +395,10 @@ div.container {
         font-size: 16px;
         padding-left: 8%;
     }
+    span.limitCaracteres {
+        right: 7vw;
+        top: 2.8vh;
+    }
     /* MENSAGEM DE VALIDAÇÃO */
     div.validation {
         padding-top: 0;
@@ -525,6 +543,11 @@ div.container {
         margin-top: 5vh;
         font-size: 16px;
         padding-left: 10%;
+    }
+    span.limitCaracteres {
+        font-size: 12px;
+        right: 10vw;
+        top: 2.5vh;
     }
     /* MENSAGEM DE VALIDAÇÃO */
     div.validation {

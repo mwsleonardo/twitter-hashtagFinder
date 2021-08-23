@@ -2,10 +2,6 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './homepage.css';
 
-// Import do hook form para validação 
-// npm install react-hook-form
-import { useForm } from 'react-hook-form';
-
 // Import do router para transação entre páginas
 import { Link } from 'react-router-dom'
 // Import do redirecionamento depois de algum evento
@@ -46,16 +42,20 @@ const breakPoints = [
 // Function retornando todo o conteúdo da homepage
 function Homepage() {
 
-    // Const do hook form
-    // const { register, formState: { errors }, handleSubmit } = useForm();
-
     // Const do conteúdo digitado no input para pesquisa da hashtag
     const [contentInput, setContentInput] = useState('');
+    // Const menssagem validação
+    const [error, setError] = useState(null);
 
     // Const hook de redirecionamento de página
     // const history = useHistory();
+
+    // ----------LIMITE DE CARACTERES DA SEARCH BAR----------
+    
+    const lengthInput = contentInput.length; // tamanho do que foi escrito na search bar
+    const limitCaracteres = 20 - lengthInput; // limite inicial menos o que for inserido no input
   
-    // ---------ENVIO PARA API DO AIRTABLE---------
+    // ----------ENVIO PARA API DO AIRTABLE----------
 
     // Função que guarda a URL da Airtable
     function urlAirtable() {
@@ -81,6 +81,8 @@ function Homepage() {
     // Const que resgata o valor preenchido no input
     function handleTextChange(event) {
         setContentInput(event.target.value); // guarda o valor preenchido no content Input
+
+
     }
 
     // Const que resgata do DOM a div de mensagem de validação
@@ -89,43 +91,45 @@ function Homepage() {
     // Função de submit do formulário que chama a função para registro na airtable
     function submitForm(event) {
         event.preventDefault(); // evita recarregamento da página
-        console.log(contentInput);
 
     
-        if (contentInput == '') { // se o campo estiver vazio, impede que seja registrado
-            messageValidation.innerHTML = "Campo Obrigatório!";
+        if (contentInput.length == 0) { // se o campo estiver vazio, impede que seja registrado
+            setError('Campo obrigatório!'); // faz aparecer a div com a mensagem de campo obrigatório
         } else {
-            messageValidation.innerHTML = "";
+            setError(null); // div não aparece - não tem conteúdo
             console.log("chama função post")
-            console.log(dateInput());
-            console.log(hourInput());
-            postSearch();
+            console.log(contentInput);
+            
+            // postSearch();
+            
         }
     }
 
     // Função que registra o que foi pesquisado na searchBar na airtable
-    function postSearch() {
-        axios.post(urlAirtable(), {
-            "records": [
-                {
-                    "fields": {
-                        "Squad": "52",
-                        "Hashtag": contentInput,
-                        "Data": dateInput(),
-                        "Hora": hourInput()
-                    }
-                }
-            ]
-        }, {
-            headers: {
-                "Authorization": "Bearer key2CwkHb0CKumjuM",
-                "Content-Type": "application/json"
-            }
-        });
-    }
+    // function postSearch() {
+    //     axios.post(urlAirtable(), {
+    //         "records": [
+    //             {
+    //                 "fields": {
+    //                     "Squad": "52",
+    //                     "Hashtag": contentInput, 
+    //                     "Data": dateInput(),
+    //                     "Hora": hourInput()
+    //                 }
+    //             }
+    //         ]
+    //     }, {
+    //         headers: {
+    //             "Authorization": "Bearer key2CwkHb0CKumjuM",
+    //             "Content-Type": "application/json"
+    //         }
+    //     });
+    // }
+
+    
 
 
-    // ---------MENU DO TOPO---------
+    // ----------MENU DO TOPO----------
     const [changeBackground, setChangeBackground] = useState(false);
 
     useEffect(function () {
@@ -192,20 +196,23 @@ function Homepage() {
                         <form className="form" onSubmit={submitForm}>
                             <img src={logoSearch} alt="logoSearch" className="logoSearch"></img>
                             <input
+                                id="searchBar"
                                 name="searchBar"
                                 type="text"
                                 className="searchBar"
                                 value={contentInput}
                                 onChange={handleTextChange}
                                 placeholder="Buscar..."
-                                maxlength="10"
+                                maxlength="20"
+                                data-ls-module="charCounter"
                             >
                             </input>
+                            <span className="limitCaracteres">{limitCaracteres}</span>
                         </form>
                     </div>
                     {/* VALIDAÇÃO */}
                     <div className="validation">
-                        
+                        {error && <p className="errorMessage">{error}</p>}
                     </div>
                 </header>
 
