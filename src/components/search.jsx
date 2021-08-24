@@ -9,20 +9,46 @@ import { useEffect, useState } from 'react';
 
 function Search() {
 
-    const [hashtagList, setHashtagList] = useState([]); //armazena todos as hashtags buscadas e armazenadas na API
+    //const [hashtagList, setHashtagList] = useState([]); //armazena todos as hashtags buscadas e armazenadas na API
 
-    //requisiçao para API - metodo GET | o useEffect evita que a funçao seja feita infinitamente
-    useEffect(() => {
+    //requisiçao para API - metodo GET
+    //useEffect(() => {
 
-        //funçao será realizada após o componente for renderizado
-        axios.get("https://airtable.com/app6wQWfM6eJngkD4/api/docs#curl/table:buscas:list")
+    //    //funçao será realizada após o componente for renderizado
+    //    axios.get("https://airtable.com/app6wQWfM6eJngkD4/api/docs#curl/table:buscas:list")
 
-        //se a requisiçao der certo, executa o .then
-        .then((response) => {
-            setHashtagList(response.data)
-        })
+    //    //se a requisiçao der certo, executa o .then
+    //    .then((response) => {
+    //        setHashtagList(response.data)
+    //    })
 
-    }, [])
+    //}, [])
+
+    // Função que guarda a URL da Airtable
+    function urlAirtable() {
+        return `https://api.airtable.com/v0/app6wQWfM6eJngkD4/Buscas`;
+    }
+
+    //requisiçao na API - metodo GET
+   useEffect(() => {
+       axios.get(urlAirtable(), {
+           "records": [
+                   {
+                       "fields": {
+                           "Squad": "52",
+                           "Hashtag": contentInput, 
+                           "Data": dateInput(),
+                           "Hora": hourInput()
+                       }
+                   }
+                ]
+            }, {
+                headers: {
+                    "Authorization": "Bearer key2CwkHb0CKumjuM",
+                    "Content-Type": "application/json"
+                }
+       }); 
+   }
  
     return (
         <>
@@ -62,7 +88,7 @@ function Search() {
                 </tr>
             </thead>
 
-        {hashtagList.map((hashtag, key) => {
+        {urlAirtable.map((hashtag, key) => {
 
             return (
 
