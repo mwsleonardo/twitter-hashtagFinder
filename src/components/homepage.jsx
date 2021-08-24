@@ -93,7 +93,7 @@ function Homepage() {
         } else {
             setError(null); // div não aparece - não tem conteúdo
             console.log("chama função post")
-            console.log(contentInput);
+            console.log('CONTEÚDO DIGITADO', contentInput);
     
             postSearch(); // chamda da função que registra na airtable
 
@@ -137,7 +137,7 @@ function Homepage() {
     // USAR A FUNÇÃO ABAIXO PRA FAZER O AXIOS COM A API DO TWITTER
     // função para acessar a api 
     function searchTweets(searchContent) {
-        console.log(searchContent);
+        console.log('SEM TAG', searchContent);
     }
 
     // ----------MENU DO TOPO----------
@@ -164,6 +164,16 @@ function Homepage() {
         }
     }
 
+    // ----------LISTAGEM DE TWEETS USANDO API DO PICPAY----------
+    const [usuario, setUsuario] = useState([]);
+    // Consumo da API para listar usuários
+    useEffect(() => { /*Evita loop, carrega apenas uma vez*/
+        axios.get(`https://www.mocky.io/v2/5d531c4f2e0000620081ddce`)
+            .then(res => {
+                const user = res.data;
+                setUsuario(user);
+            })
+    }, [])
 
 
     return (
@@ -248,15 +258,22 @@ function Homepage() {
                 <div className="resultPosts">
                     <div className="postContainer">
                         {/* CAIXA QUE CONTÉM O TWEET */}
+                        {usuario.map((item) => 
                         <div className="postBox">
-                            <img className="postImg" src={search1} alt="img"></img>
-                            <div className="postUser">UserName</div>
-                            <div className="postUsername">@twitterusername</div>
-                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                            <div className="postLink">Ver mais no Twitter</div>
+                            <img className="postImg" src={item.img} alt="img"></img>
+                            <div className="textBoxTweet">
+                                <div className="userBoxTweet">
+                                    <p className="postUser">{item.name}</p>
+                                    <span className="postUsername">{item.username}</span>
+                                </div>
+                                <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                                <div className="postLink">Ver mais no Twitter</div>
+                            </div>
                         </div>
+                        )};
+
                         {/* CAIXA QUE CONTÉM O TWEET */}
-                        <div className="postBox">
+                        {/* <div className="postBox">
                             <img className="postImg" src={search1} alt="img"></img>
                             <div className="postUser">UserName</div>
                             <div className="postUsername">@twitterusername</div>
@@ -326,8 +343,8 @@ function Homepage() {
                             <div className="postUsername">@twitterusername</div>
                             <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
                             <div className="postLink">Ver mais no Twitter</div>
-                        </div>
-                    </div>
+                        </div> */}
+                    </div> 
                 </div>
 
                 {/* FOOTER */}

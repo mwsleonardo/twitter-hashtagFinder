@@ -225,86 +225,125 @@ div.container {
     box-shadow: 0px 9px 27px #5538EE29;
 }
 
-.postBox {
+
+/* DIV QUE CONTÉM TODOS OS BOXES DOS TWEETS */
+
+div.postContainer {
     display: flex;
-    height: 253px;
-    width: 735px;
-    border: 2px solid red;
-    margin: 3rem;
+    justify-content: space-evenly;
     flex-wrap: wrap;
+    margin: 3rem 1rem;
+}
+
+
+/* BOX QUE CONTÉM O TWEET */
+
+div.postBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 22vh;
+    width: 42%;
+    margin: 2rem 0;
     border: 1px solid #5538ee24;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 5px 10px #5538EE14;
     border-radius: 15px;
-    opacity: 1;
 }
 
-.postImg {
+
+/* ÍCONE DO USUÁRIO */
+
+img.postImg {
     height: 82px;
     width: 82px;
     border-radius: 50px;
-    margin-left: 5vh;
-    margin-top: 2vh;
+    margin: 2vh 2vw;
 }
 
-.postContainer {
+
+/* CAIXA DE TEXTO COM USER, TWEET E LINIK */
+
+div.textBoxTweet {
     display: flex;
-    justify-content: space-between;
-    margin: 6rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
-.postUser {
-    margin-left: 2vh;
-    margin-top: 2vh;
-    font-size: 32px;
+
+/* CAIXA COM USERNAME E NOME */
+
+div.userBoxTweet {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+
+/* NOME DO USUÁRIO */
+
+p.postUser {
+    font-size: 24px;
     letter-spacing: 0px;
     color: #292929;
+    align-content: flex-start;
 }
 
-.postUsername {
+
+/* USERNAME */
+
+span.postUsername {
     margin-left: 1vh;
-    margin-top: 3vh;
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 0px;
     color: #292929;
     opacity: 0.43;
 }
 
-.postText {
-    width: 400px;
-    position: absolute;
-    margin-top: 8vh;
-    margin-left: 18vh;
+
+/* TEXTO DO TWEET */
+
+div.postText {
+    width: 95%;
+    margin-top: 1vh;
     word-break: break-all;
 }
 
-.postLink {
-    width: 185px;
-    position: absolute;
-    margin-left: 18vh;
-    margin-top: 20vh;
+
+/* LINK DO TWEET */
+
+div.postLink {
+    width: fit-content;
+    margin-top: 2vh;
     letter-spacing: 0px;
+    font-weight: bold;
     color: #3634F7;
+    cursor: pointer;
 }
 
 
 /* AJUSTES POST BOX - RESPONSIVE */
 
-@media (max-width: 1500px) {
-    .postText {
-        width: 300px;
-    }
-}
-
 @media (max-width: 1350px) {
-    .postContainer {
-        flex-direction: column;
+    div.postBox {
+        height: 22vh;
+        width: 40%;
     }
-    .postBox {
-        margin-left: 20vh;
+    p.postUser {
+        font-size: 1.9rem;
     }
-    .postText {
-        width: 400px;
+    span.postUsername {
+        font-size: 1.8rem;
+    }
+    div.postText {
+        font-size: 1.2rem;
+    }
+    div.postLink {
+        font-size: 1rem;
     }
 }
 
@@ -312,23 +351,25 @@ div.container {
 /* MEDIA TABLET */
 
 @media (max-width: 1050px) {
-    .postContainer {
+    div.postContainer {
         flex-direction: column;
+        margin: 3rem 3rem;
     }
-    .postBox {
+    div.postBox {
         margin-left: 0;
+        width: 100%;
     }
-    .postUsername {
-        margin-left: 2vh;
-        margin-top: 4vh;
+    p.postUser {
+        font-size: 1.1rem;
     }
-    .postText {
-        margin-left: 24vh;
-        margin-top: 11vh;
+    span.postUsername {
+        font-size: 1rem;
     }
-    .postLink {
-        margin-left: 24vh;
-        margin-top: 26vh;
+    div.postText {
+        font-size: 0.8rem;
+    }
+    div.postLink {
+        font-size: 0.8rem;
     }
     header.banner {
         background-image: url(./imgs/hero-bg-mobile.jpg);
@@ -410,77 +451,31 @@ div.container {
     }
 }
 
-@media (max-width: 900px) {
-    .postBox {
-        display: flex;
-        height: 253px;
-        width: 100%;
-        border: 2px solid red;
-        margin: 0;
-        margin-bottom: 4rem;
-        flex-wrap: wrap;
-        border: 1px solid #5538ee24;
-        background: #FFFFFF 0% 0% no-repeat padding-box;
-        box-shadow: 0px 5px 10px #5538EE14;
-        border-radius: 15px;
-        opacity: 1;
-    }
-    .postUser {
-        font-size: 28px;
-    }
-    .postText {
-        margin-left: 18vw;
-        width: 50%;
-    }
-    .postContainer {
-        margin-left: 0;
-        align-items: inherit;
-        margin-left: 50px;
-    }
-    .postLink {
-        margin-left: 15vh;
-        margin-top: 26vh;
-    }
-    .postUsername {
-        margin-left: 18vh;
-        margin-top: 7vh;
-        position: absolute;
-        font-size: 16px;
-        letter-spacing: 0px;
-        color: #292929;
-        opacity: 0.43;
-    }
-}
-
 @media (max-width: 442px) {
-    .postContainer {
-        align-items: center;
-        margin-left: 5vw;
-        margin-right: 5vw;
+    div.postContainer {
+        flex-direction: column;
+        margin: 3rem 3rem;
+    }
+    div.postBox {
+        margin-left: 0;
+        width: 100%;
     }
     img.postImg {
-        margin-top: 2vh;
-        margin-left: 4vw;
+        height: 70px;
+        width: 70px;
+        margin: 2vh 2vw;
     }
-    div.postUser {
-        margin-top: 2vh;
+    p.postUser {
+        font-size: 0.9rem;
     }
-    div.postUsername {
-        margin-top: 6vh;
-        margin-left: 26vw;
+    span.postUsername {
+        font-size: 0.6rem;
     }
     div.postText {
-        margin-top: 10vh;
-        margin-left: 26vw;
-        width: 60%;
+        font-size: 0.7rem;
     }
     div.postLink {
-        margin-top: 26vh;
-        margin-left: 26vw;
-    }
-    .postBox {
-        align-items: flex-start;
-        margin-left: 0;
+        font-size: 0.7rem;
     }
 }
 
