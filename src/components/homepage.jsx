@@ -4,8 +4,6 @@ import './homepage.css';
 
 // Import do router para transação entre páginas
 import { Link } from 'react-router-dom'
-// Import do redirecionamento depois de algum evento
-import { useHistory } from 'react-router-dom';
 
 // Import do carousel e styled-components(css) das imagens 
 import Carousel from "react-elastic-carousel";
@@ -46,9 +44,8 @@ function Homepage() {
     const [contentInput, setContentInput] = useState('');
     // Const menssagem validação
     const [error, setError] = useState(null);
-
-    // Const hook de redirecionamento de página
-    // const history = useHistory();
+    // Const para retirar hashtag
+    const [noHashtag, setNoHashtag] = useState('');
 
     // ----------LIMITE DE CARACTERES DA SEARCH BAR----------
     
@@ -81,8 +78,6 @@ function Homepage() {
     // Const que resgata o valor preenchido no input
     function handleTextChange(event) {
         setContentInput(event.target.value); // guarda o valor preenchido no content Input
-
-
     }
 
     // Const que resgata do DOM a div de mensagem de validação
@@ -99,35 +94,51 @@ function Homepage() {
             setError(null); // div não aparece - não tem conteúdo
             console.log("chama função post")
             console.log(contentInput);
-            
-            // postSearch();
+    
+            postSearch(); // chamda da função que registra na airtable
+
+            // retirada da hashtag para requisição da api do twitter
+            let takeOutHash = contentInput;
+            searchTweets(takeOutHash.replace(/#/g, ''));
+            setNoHashtag(takeOutHash.replace(/#/g, ''));
+            setContentInput('');
             
         }
     }
 
     // Função que registra o que foi pesquisado na searchBar na airtable
-    // function postSearch() {
-    //     axios.post(urlAirtable(), {
-    //         "records": [
-    //             {
-    //                 "fields": {
-    //                     "Squad": "52",
-    //                     "Hashtag": contentInput, 
-    //                     "Data": dateInput(),
-    //                     "Hora": hourInput()
-    //                 }
-    //             }
-    //         ]
-    //     }, {
-    //         headers: {
-    //             "Authorization": "Bearer key2CwkHb0CKumjuM",
-    //             "Content-Type": "application/json"
-    //         }
-    //     });
-    // }
+    function postSearch() {
+        axios.post(urlAirtable(), {
+            "records": [
+                {
+                    "fields": {
+                        "Squad": "52",
+                        "Hashtag": contentInput, 
+                        "Data": dateInput(),
+                        "Hora": hourInput()
+                    }
+                }
+            ]
+        }, {
+            headers: {
+                "Authorization": "Bearer key2CwkHb0CKumjuM",
+                "Content-Type": "application/json"
+            }
+        });
+    }
 
-    
+    // ----------GET DA API DO TWITTER----------
 
+    // tirar a hashtag da pesquisa
+    useEffect(() => {
+        searchTweets('');
+    }, []);
+
+    // USAR A FUNÇÃO ABAIXO PRA FAZER O AXIOS COM A API DO TWITTER
+    // função para acessar a api 
+    function searchTweets(searchContent) {
+        console.log(searchContent);
+    }
 
     // ----------MENU DO TOPO----------
     const [changeBackground, setChangeBackground] = useState(false);

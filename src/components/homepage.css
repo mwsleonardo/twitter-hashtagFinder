@@ -184,7 +184,6 @@ div.validation {
     padding-top: 2vh;
     padding-left: 32vw;
     font-size: 16px;
-    font-weight: bold;
     color: black;
 }
 
@@ -551,6 +550,7 @@ div.container {
     }
     /* MENSAGEM DE VALIDAÇÃO */
     div.validation {
+        color: red;
         padding-top: 0.5vh;
         font-size: 14px;
         bottom: 1vh;
