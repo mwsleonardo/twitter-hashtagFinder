@@ -6,44 +6,36 @@ import iconHome from './imgs/icon-home.svg'
 import { Link } from 'react-router-dom'
 
 function Login() {
-
-    const [campos, setCampos] = useState('');
-    const [campos2, setCampos2] = useState('');
+    // Const menssagem validação
     const [error, setError] = useState(null);
+    const [error2, setError2] = useState(null);
+    // Inputs no form 
+    const [userInput, setUserInput] = useState('');
+    const [passwordInput, setPasswordInput] = useState('');
 
-    function validateCampos (value) {
-        if (value.length === 0) {
-            setError('Preencha este campo.');
+    function submitForm(event) {
+        event.preventDefault(); // evita recarregamento da página
+        if (userInput.length == 0) { // se o campo estiver vazio, impede que seja registrado
+            // Campo não preechido 
+            setError('Campo obrigatório!'); // Aparece mensagem de erro 
             return false;
+        } else if (passwordInput.length == 0){
+            // Campo não preechido 
+             setError('') 
+             setError2('Senha por favor!') // Aparece mensagem de erro 
         } else {
-            setError(null);
-            return true;
-        }
-
+            // Mensagem de erro é apagada 
+            setError(null); 
+            setError2(null); 
+        } 
     }
 
-    function validateCampos2 (value) {
-        if (value.length === 0) {
-            setError('Preencha este campo.');
-            return false;
-        } else {
-            setError(null);
-            return true;
-        }
-
+    function handleTextChange(event) {
+        setUserInput(event.target.value); // guarda o valor preenchido no content Input
     }
 
-
-    function handleBlur({ target }) {
-        validateCampos(target.value);
-        validateCampos2(target.value);
-    }
-
-    function handleChange({ target }) {
-        if (error) validateCampos(target.value);
-
-        setCampos(target.value);
-        setCampos2(target.value);
+    function handleTextChange2(event) {
+        setPasswordInput(event.target.value); // guarda o valor preenchido no content Input
     }
 
     return (
@@ -56,12 +48,24 @@ function Login() {
             <div className="loginBox" >
                 <h1 className="titleBox">Login</h1>
                 <form className="formLogin">
-                    <input className="itensLogin" placeholder="Usuário" value={campos} onChange={handleChange} onBlur={handleBlur} />
-                    {error && <p className="invalidUser">{error}</p>}
-                    <input className="itensLogin" type="password" value={campos2} onChange={handleChange} onBlur={handleBlur} placeholder="Senha" />
-                    {error && <p className="invalidUser">{error}</p>}
+                    <input
+                        className="itensLogin"
+                        placeholder="Usuário"
+                        value={userInput} // valor do input 
+                        onChange={handleTextChange}  // guarda o valor preenchido 
+                        />
+                        {error && <p className="invalidUser">{error}</p>}
+                    <input
+                        className="itensLogin"
+                        type="password"
+                        value=""
+                        placeholder="Senha"
+                        value={passwordInput} // valor do input 
+                        onChange={handleTextChange2} // guarda o valor preenchido
+                        />
+                        {error2 && <p className="invalidUser">{error2}</p>}
                 </form>
-                <button className="buttonLogin" onClick={ handleChange}> Acessar</button>
+                <button className="buttonLogin"onClick={submitForm}> Acessar </button>
             </div>
         </div>
     )

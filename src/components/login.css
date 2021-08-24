@@ -98,13 +98,13 @@ body {
     height: 3vw;
     font-size: 22px;
 }
-
+/* ----------ERRO----------  */
 .invalidUser {
     color: red;
     margin-left: 2vw;
     margin-bottom: 1vw;
 }
-
+/* ----------VERSÃO TAB----------  */
 @media screen and (max-width:1100px) {
     .itensLogin {
         font-size: 20px;
