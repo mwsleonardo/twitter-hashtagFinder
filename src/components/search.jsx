@@ -8,48 +8,33 @@ import loginBg from './imgs/login-bg.jpg'
 import { useEffect, useState } from 'react';
 
 function Search() {
+    
+    const [hashtagList, setHashtagList] = useState([]);  //armazena as hashtags registradas na API
 
-    //const [hashtagList, setHashtagList] = useState([]); //armazena todos as hashtags buscadas e armazenadas na API
 
-    //requisiçao para API - metodo GET
-    //useEffect(() => {
-
-    //    //funçao será realizada após o componente for renderizado
-    //    axios.get("https://airtable.com/app6wQWfM6eJngkD4/api/docs#curl/table:buscas:list")
-
-    //    //se a requisiçao der certo, executa o .then
-    //    .then((response) => {
-    //        setHashtagList(response.data)
-    //    })
-
-    //}, [])
-
-    // Função que guarda a URL da Airtable
-    function urlAirtable() {
-        return `https://api.airtable.com/v0/app6wQWfM6eJngkD4/Buscas`;
-    }
-
-    //requisiçao na API - metodo GET
-   useEffect(() => {
-       axios.get(urlAirtable(), {
-           "records": [
-                   {
-                       "fields": {
-                           "Squad": "52",
-                           "Hashtag": contentInput, 
-                           "Data": dateInput(),
-                           "Hora": hourInput()
-                       }
-                   }
-                ]
-            }, {
-                headers: {
-                    "Authorization": "Bearer key2CwkHb0CKumjuM",
-                    "Content-Type": "application/json"
+useEffect(() => {
+    axios.get("https://airtable.com/app6wQWfM6eJngkD4/api/docs#curl/table:buscas:list", {
+        headers: {
+            "Authorization": "Bearer key2CwkHb0CKumjuM"
+        }
+    }).then (
+        response => {
+            const infos = response.data.records.map(
+                info => {
+                    return {
+                        "squad": '52',
+                        "hashtag": info.fields.Hashtag,
+                        "data": info.fields.Data,
+                        "hora": info.fields.Hora
+                    }
                 }
-       }); 
-   }
- 
+            )
+                setHashtagList(infos);
+        }
+    )
+}, []);
+
+
     return (
         <>
         {/* navegador */}   
@@ -88,22 +73,22 @@ function Search() {
                 </tr>
             </thead>
 
-        {urlAirtable.map((hashtag, key) => {
-
-            return (
-
-                <table class= "hashtagList">
+            {infos.map ((item, i) => {
+                return (
+                    <table>
                     <tbody>
                         <tr>
-                            <td>{hashtag.hashtag}</td>
-                            <td>{hashtag.data}</td>
-                            <td>{hashtag.hora}</td>
+                            <td>{infos.Hashtag}</td>
+                            <td>{infos.Data}</td>
+                            <td>{infos.Hora}</td>
                         </tr>
                     </tbody>
                 </table>
-            )
-        })}
-         
+
+                )
+            })}
+
+               
     </div> 
     
 </div>

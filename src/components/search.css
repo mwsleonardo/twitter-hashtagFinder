@@ -94,6 +94,7 @@ table {
 
 
 thead th {
+    width: 100%;
     background-color: #F1F1F1;
     color: #3633F7;
     text-align: center;
