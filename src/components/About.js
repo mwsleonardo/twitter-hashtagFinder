@@ -1,8 +1,6 @@
 import React from 'react';
 import './About.css';
 import {Link} from 'react-router-dom'
-//import NavMenu from './NavManu.jsx';
-//import Footer from './Footer.jsx';
 
 //Icons
 import svg from './imgs/about-illustration.svg';
@@ -20,7 +18,42 @@ import fotoFla from './imgs/giovani.jpeg';
 import fotoMar from './imgs/eu.jpg';
 import fotoLeo from './imgs/leo.jpg';
 
-function About() {
+export default class About extends React.Component{
+
+state = {
+    aboutText:"",
+    list:[]
+  }
+
+  /* =================  PUXANDO TEXTO SOBRE API  --------------*/
+  componentDidMount(){
+    this.getSobre()
+    this.getEquipe()
+  }
+
+   getSobre(){
+    fetch("https://api.airtable.com/v0/app6wQWfM6eJngkD4/Projeto?api_key=key2CwkHb0CKumjuM&filterByFormula=({Squad}='1')", {
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+        this.setState({aboutText:responseJson.records[0].fields.Sobre})
+    })
+  }
+
+  /*------  PUXANDO INFOS EQUIPE API  --------------------*/
+
+  getEquipe(){
+    fetch("https://api.airtable.com/v0/app6wQWfM6eJngkD4/Equipe?api_key=key2CwkHb0CKumjuM&filterByFormula=({Squad}='1')", {
+    })
+    .then(response => response.json())
+    .then(responseJson => {
+        this.setState({list:responseJson.records})
+        console.log(responseJson)
+    })
+  }
+
+  render() {
+    
 
     return (
         <div className="aboutWrapper">
@@ -45,10 +78,7 @@ function About() {
             <div className="aboutText">
                 <div className="aboutAside">
                     <h3>O que é</h3>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                        culpa qui officia deserunt mollit anim id est laborum</p>
+                    <p>{this.state.aboutText}</p>
                 </div>
                 <img src={svg} alt="Logo" className="aboutSvg" />
             </div>
@@ -145,6 +175,4 @@ function About() {
     )
 }
 
-
-export default About;
-
+};
