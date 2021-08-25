@@ -95,11 +95,12 @@ function Homepage() {
             console.log("chama função post")
             console.log('CONTEÚDO DIGITADO', contentInput);
     
-            postSearch(); // chamda da função que registra na airtable
+            // postSearch(); // chamda da função que registra na airtable
 
             // retirada da hashtag para requisição da api do twitter
             let takeOutHash = contentInput;
             searchTweets(takeOutHash.replace(/#/g, ''));
+            searchImages(takeOutHash.replace(/#/g, ''));
             setNoHashtag(takeOutHash.replace(/#/g, ''));
             setContentInput('');
             
@@ -107,37 +108,85 @@ function Homepage() {
     }
 
     // Função que registra o que foi pesquisado na searchBar na airtable
-    function postSearch() {
-        axios.post(urlAirtable(), {
-            "records": [
-                {
-                    "fields": {
-                        "Squad": "52",
-                        "Hashtag": contentInput, 
-                        "Data": dateInput(),
-                        "Hora": hourInput()
-                    }
-                }
-            ]
-        }, {
-            headers: {
-                "Authorization": "Bearer key2CwkHb0CKumjuM",
-                "Content-Type": "application/json"
-            }
-        });
-    }
+    // function postSearch() {
+    //     axios.post(urlAirtable(), {
+    //         "records": [
+    //             {
+    //                 "fields": {
+    //                     "Squad": "52",
+    //                     "Hashtag": contentInput, 
+    //                     "Data": dateInput(),
+    //                     "Hora": hourInput()
+    //                 }
+    //             }
+    //         ]
+    //     }, {
+    //         headers: {
+    //             "Authorization": "Bearer key2CwkHb0CKumjuM",
+    //             "Content-Type": "application/json"
+    //         }
+    //     });
+    // }
 
-    // ----------GET DA API DO TWITTER----------
+    // ---------- SEARCH ENGINE - API TWITTER ----------
 
     // tirar a hashtag da pesquisa
     useEffect(() => {
         searchTweets('');
+        searchImages('');
     }, []);
 
-    // USAR A FUNÇÃO ABAIXO PRA FAZER O AXIOS COM A API DO TWITTER
-    // função para acessar a api 
-    function searchTweets(searchContent) {
-        console.log('SEM TAG', searchContent);
+
+    let [tweets, setTweets] = useState([])
+    let [images, setImages] = useState([])
+
+    // função com a URL da searchTweets
+    function urlSearchTweets() {
+        return `https://cors.bridged.cc/https://api.twitter.com/1.1/search/tweets.json?q=%27+hashtag+`;
+    }
+
+    // função com a URL da searchImages
+    function urlSearchImages() {
+        return `https://cors.bridged.cc/https://api.twitter.com/2/tweets/search/recent?query=%27+hashtag+%27%20has:images&max_results=30&expansions=author_id,attachments.media_keys&media.fields=type,url,width,height`;
+    }
+
+
+
+    function searchTweets(searchContent){
+        console.log('SEARCH TWEET:', searchContent)
+        // let hashtag = document.getElementById('enter').value.replace(/#/g, "")
+
+        axios.get(urlSearchTweets, {
+            headers: {
+                Authorization: 'Bearer AAAAAAAAAAAAAAAAAAAAAFlKHgEAAAAApBW4nRyRkiogluzAbXlS4KuHlMU%3DFcR7r8N19LRnMHLVmYlFsod6Be6zUvZD2rxATotl6mLPAh2UEX'
+            },
+        }).then((resp) => { 
+            {setTweets(resp.data.statuses)};
+
+            const users = {};
+                resp.data.includes.users.forEach(
+                    user => {
+                        users[String(user.id)] = user.username || '';
+                    }
+                );
+                
+                console.log('@USUSARIO :', users)
+
+        });
+        console.log('FUNCTION SEARCH TWEETS:', tweets)
+    }
+
+    function searchImages(searchContent){
+        console.log('SEARCH IMAGES:', searchContent)
+        // let hashtag = document.getElementById('enter').value.replace(/#/g, "")
+        axios.get(urlSearchImages, {
+            headers: {
+                Authorization: 'Bearer AAAAAAAAAAAAAAAAAAAAAFlKHgEAAAAApBW4nRyRkiogluzAbXlS4KuHlMU%3DFcR7r8N19LRnMHLVmYlFsod6Be6zUvZD2rxATotl6mLPAh2UEX'
+            },
+        }).then((resp) => {
+            {setImages(resp.data.includes.media)};
+        });
+        console.log('FUNCTION SEARCH IMAGES:', images)
     }
 
     // ----------MENU DO TOPO----------
