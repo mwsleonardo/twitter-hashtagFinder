@@ -48,10 +48,11 @@ function Homepage() {
     const [noHashtag, setNoHashtag] = useState('');
 
     // ----------LIMITE DE CARACTERES DA SEARCH BAR----------
-    
+
     const lengthInput = contentInput.length; // tamanho do que foi escrito na search bar
     const limitCaracteres = 20 - lengthInput; // limite inicial menos o que for inserido no input
-  
+
+
     // ----------ENVIO PARA API DO AIRTABLE----------
 
     // Função que guarda a URL da Airtable
@@ -87,14 +88,14 @@ function Homepage() {
     function submitForm(event) {
         event.preventDefault(); // evita recarregamento da página
 
-    
         if (contentInput.length == 0) { // se o campo estiver vazio, impede que seja registrado
             setError('Campo obrigatório!'); // faz aparecer a div com a mensagem de campo obrigatório
         } else {
             setError(null); // div não aparece - não tem conteúdo
             console.log("chama função post")
             console.log('CONTEÚDO DIGITADO', contentInput);
-    
+
+
             // postSearch(); // chamda da função que registra na airtable
 
             // retirada da hashtag para requisição da api do twitter
@@ -103,7 +104,7 @@ function Homepage() {
             searchImages(takeOutHash.replace(/#/g, ''));
             setNoHashtag(takeOutHash.replace(/#/g, ''));
             setContentInput('');
-            
+
         }
     }
 
@@ -152,7 +153,7 @@ function Homepage() {
 
 
 
-    function searchTweets(searchContent){
+    function searchTweets(searchContent) {
         console.log('SEARCH TWEET:', searchContent)
         // let hashtag = document.getElementById('enter').value.replace(/#/g, "")
 
@@ -160,23 +161,23 @@ function Homepage() {
             headers: {
                 Authorization: 'Bearer AAAAAAAAAAAAAAAAAAAAAFlKHgEAAAAApBW4nRyRkiogluzAbXlS4KuHlMU%3DFcR7r8N19LRnMHLVmYlFsod6Be6zUvZD2rxATotl6mLPAh2UEX'
             },
-        }).then((resp) => { 
-            {setTweets(resp.data.statuses)};
+        }).then((resp) => {
+            { setTweets(resp.data.statuses) };
 
             const users = {};
-                resp.data.includes.users.forEach(
-                    user => {
-                        users[String(user.id)] = user.username || '';
-                    }
-                );
-                
-                console.log('@USUSARIO :', users)
+            resp.data.includes.users.forEach(
+                user => {
+                    users[String(user.id)] = user.username || '';
+                }
+            );
+
+            console.log('@USUSARIO :', users)
 
         });
         console.log('FUNCTION SEARCH TWEETS:', tweets)
     }
 
-    function searchImages(searchContent){
+    function searchImages(searchContent) {
         console.log('SEARCH IMAGES:', searchContent)
         // let hashtag = document.getElementById('enter').value.replace(/#/g, "")
         axios.get(urlSearchImages, {
@@ -184,7 +185,7 @@ function Homepage() {
                 Authorization: 'Bearer AAAAAAAAAAAAAAAAAAAAAFlKHgEAAAAApBW4nRyRkiogluzAbXlS4KuHlMU%3DFcR7r8N19LRnMHLVmYlFsod6Be6zUvZD2rxATotl6mLPAh2UEX'
             },
         }).then((resp) => {
-            {setImages(resp.data.includes.media)};
+            { setImages(resp.data.includes.media) };
         });
         console.log('FUNCTION SEARCH IMAGES:', images)
     }
@@ -224,7 +225,7 @@ function Homepage() {
             })
     }, [])
 
-    
+
 
     return (
 
@@ -279,9 +280,13 @@ function Homepage() {
                             >
                             </input>
                             <span className="limitCaracteres">{limitCaracteres}</span>
+                        
                         </form>
                     </div>
                     {/* VALIDAÇÃO */}
+                    <div className="validation">
+                        {/* {<p className="errorMessage">{limitCaracteres}</p>} */}
+                    </div>
                     <div className="validation">
                         {error && <p className="errorMessage">{error}</p>}
                     </div>
@@ -308,18 +313,18 @@ function Homepage() {
                 <div className="resultPosts">
                     <div className="postContainer">
                         {/* CAIXA QUE CONTÉM O TWEET */}
-                        {usuario.map((item) => 
-                        <div className="postBox">
-                            <img className="postImg" src={item.img} alt="img"></img>
-                            <div className="textBoxTweet">
-                                <div className="userBoxTweet">
-                                    <p className="postUser">{item.name}</p>
-                                    <span className="postUsername">{item.username}</span>
+                        {usuario.map((item) =>
+                            <div className="postBox">
+                                <img className="postImg" src={item.img} alt="img"></img>
+                                <div className="textBoxTweet">
+                                    <div className="userBoxTweet">
+                                        <p className="postUser">{item.name}</p>
+                                        <span className="postUsername">{item.username}</span>
+                                    </div>
+                                    <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                                    <div className="postLink">Ver mais no Twitter</div>
                                 </div>
-                                <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                                <div className="postLink">Ver mais no Twitter</div>
                             </div>
-                        </div>
                         )};
 
                         {/* CAIXA QUE CONTÉM O TWEET */}
@@ -394,7 +399,7 @@ function Homepage() {
                             <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
                             <div className="postLink">Ver mais no Twitter</div>
                         </div> */}
-                    </div> 
+                    </div>
                 </div>
 
                 {/* FOOTER */}

@@ -16,7 +16,7 @@ header.banner {
     background-image: url(./imgs/hero-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    height: 95vh;
+    height: 90vh;
     width: 100%;
 }
 
@@ -118,7 +118,7 @@ p.subtitle {
 
 div.inputDiv {
     position: absolute;
-    bottom: 1vh;
+    bottom: 5vh;
     left: 4vw;
     width: 90%;
     display: flex;
@@ -179,12 +179,24 @@ span.limitCaracteres {
 /* MENSAGEM DE VALIDAÇÃO */
 
 div.validation {
-    position: relative;
-    bottom: 1vh;
-    padding-top: 2vh;
-    padding-left: 32vw;
-    font-size: 16px;
-    color: black;
+    position: absolute;
+    bottom: 1.5vh;
+    left: 28vw;
+    width: 40%;
+    margin-top: 1vh;
+    padding: 0;
+    color: red;
+    padding-top: 0.5vh;
+    font-size: 2rem;
+}
+
+p.errorMessage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5rem;
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px);
 }
 
 div.container {
@@ -413,8 +425,8 @@ div.postLink {
         font-size: 20px;
     }
     div.inputDiv {
-        position: relative;
-        bottom: 7vh;
+        position: absolute;
+        bottom: 40vh;
         left: 4vw;
     }
     form.form {
@@ -441,9 +453,24 @@ div.postLink {
     }
     /* MENSAGEM DE VALIDAÇÃO */
     div.validation {
-        padding-top: 0;
-        padding-left: 28vw;
-        bottom: 2vh;
+        position: absolute;
+        bottom: 38vh;
+        left: 28vw;
+        width: 40%;
+        margin: 0;
+        padding: 0;
+        color: red;
+        padding-top: 0.5vh;
+        font-size: 14px;
+    }
+    p.errorMessage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1%;
+        border-radius: 5rem;
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(5px);
     }
     .footer {
         height: 12vh;
@@ -521,7 +548,7 @@ div.postLink {
         font-size: 16px;
     }
     div.inputDiv {
-        bottom: 1vh;
+        bottom: 42vh;
     }
     form.form {
         bottom: 1vh;
@@ -545,10 +572,24 @@ div.postLink {
     }
     /* MENSAGEM DE VALIDAÇÃO  */
     div.validation {
+        position: absolute;
+        bottom: 39vh;
+        left: 28vw;
+        width: 50%;
+        margin: 0;
+        padding: 0;
         color: red;
         padding-top: 0.5vh;
         font-size: 14px;
-        bottom: 1vh;
+    }
+    p.errorMessage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1%;
+        border-radius: 5rem;
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(5px);
     }
     .footer {
         height: 10vh;
