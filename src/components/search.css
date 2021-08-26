@@ -77,19 +77,19 @@ body {
 
 .container {
     margin: 40px 183px 85px 184px;
+    border-radius: 1em;
+    overflow: hidden;
 }
 
-.container h1 {
+.containerTitle h1 {
     color: white;
     font-size: 40px;
+    margin-left: 183px;
 }
 
 table {
     border-collapse: collapse;
     width: 100%;
-    /* border-radius: 1em;
-    overflow: hidden;
-    */
 }
 
 
@@ -98,7 +98,7 @@ thead th {
     background-color: #F1F1F1;
     color: #3633F7;
     text-align: center;
-    padding: 56px 34px 22px 17px;
+    padding: 54px 59px 22px 74px;
     font-size: 28px;
 }
 

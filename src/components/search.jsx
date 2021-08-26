@@ -9,16 +9,14 @@ import { useEffect, useState } from 'react';
 
 function Search() {
     
-    const [hashtagList, setHashtagList] = useState([]);  //armazena as hashtags registradas na API
-
+    const [hashtagList, setHashtagList] = useState([]); // guarda as hashtags registradas na API 
 
 useEffect(() => {
-    axios.get("https://airtable.com/app6wQWfM6eJngkD4/api/docs#curl/table:buscas:list", {
+    axios.get("https://api.airtable.com/v0/app6wQWfM6eJngkD4/tbl4mrtX1Owvos7eB?filterByFormula=%7BSquad%7D+%3D+'52'", {
         headers: {
             "Authorization": "Bearer key2CwkHb0CKumjuM"
         }
-    }).then (
-        response => {
+    }).then (response => {
             const infos = response.data.records.map(
                 info => {
                     return {
@@ -29,7 +27,8 @@ useEffect(() => {
                     }
                 }
             )
-                setHashtagList(infos);
+            setHashtagList(infos);
+                console.log(infos);
         }
     )
 }, []);
@@ -62,8 +61,12 @@ useEffect(() => {
             </div>
 
         {/* listagem das hashtags */} 
+        <div class="containerTitle">
+            <h1>Buscas realizadas</h1>
+        </div>
+
+
      <div class="container"> 
-        <h1>Buscas realizadas</h1>
 
             <thead>
                 <tr>
@@ -73,22 +76,21 @@ useEffect(() => {
                 </tr>
             </thead>
 
-            {infos.map ((item, i) => {
+            {hashtagList.map ((item, i) => {
                 return (
                     <table>
                     <tbody>
                         <tr>
-                            <td>{infos.Hashtag}</td>
-                            <td>{infos.Data}</td>
-                            <td>{infos.Hora}</td>
+                            <td>{item.hashtag}</td>
+                            <td>{item.data}</td>
+                            <td>{item.hora}</td>
                         </tr>
                     </tbody>
                 </table>
 
                 )
             })}
-
-               
+              
     </div> 
     
 </div>
