@@ -1,11 +1,22 @@
-import { useState } from 'react';
+import { Component, useState } from 'react';
 import "./login.css"
 import loginBg from './imgs/login-bg.jpg'
 import logoWhite from './imgs/logo-white.svg'
 import iconHome from './imgs/icon-home.svg'
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react';
+import api from './apiLogin';
+
+
+    
 
 function Login() {
+
+    useEffect(()=>{
+        api.get('').then(({data})=>{
+    }) 
+    },[])
+
     // Const menssagem validação
     const [error, setError] = useState(null);
     const [error2, setError2] = useState(null);
@@ -14,21 +25,27 @@ function Login() {
     const [passwordInput, setPasswordInput] = useState('');
 
     function submitForm(event) {
-        event.preventDefault(); // evita recarregamento da página
-        if (userInput.length == 0) { // se o campo estiver vazio, impede que seja registrado
+        // event.preventDefault(); // evita recarregamento da página
+        if (userInput.length == 0){ // se o campo estiver vazio, impede que seja registrado
             // Campo não preechido 
-            setError('Campo obrigatório!'); // Aparece mensagem de erro 
+            setError('Campo obrigatório!'); // Aparece mensagem de erro
+            event.preventDefault();
             return false;
         } else if (passwordInput.length == 0){
             // Campo não preechido 
              setError('') 
-             setError2('Senha por favor!') // Aparece mensagem de erro 
+             setError2('Campo obrigatório!') // Aparece mensagem de erro 
+             event.preventDefault();
         } else {
             // Mensagem de erro é apagada 
             setError(null); 
-            setError2(null); 
+            setError2(null);
+            console.log(onchange)
+            return true;
         } 
     }
+
+    
 
     function handleTextChange(event) {
         setUserInput(event.target.value); // guarda o valor preenchido no content Input
@@ -36,7 +53,9 @@ function Login() {
 
     function handleTextChange2(event) {
         setPasswordInput(event.target.value); // guarda o valor preenchido no content Input
-    }
+    }   
+
+    
 
     return (
         <div className="containerLogin">
@@ -65,7 +84,7 @@ function Login() {
                         />
                         {error2 && <p className="invalidUser">{error2}</p>}
                 </form>
-                <button className="buttonLogin"onClick={submitForm}> Acessar </button>
+                <Link to="/search"><button className="buttonLogin"onClick={submitForm}> Acessar</button></Link>
             </div>
         </div>
     )
