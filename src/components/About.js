@@ -32,7 +32,7 @@ state = {
   }
 
    getSobre(){
-    fetch("https://api.airtable.com/v0/app6wQWfM6eJngkD4/Projeto?api_key=key2CwkHb0CKumjuM&filterByFormula=({Squad}='1')", {
+    fetch("https://api.airtable.com/v0/app6wQWfM6eJngkD4/Projeto?api_key=key2CwkHb0CKumjuM&filterByFormula=({Squad}='52')", {
     })
     .then(response => response.json())
     .then(responseJson => {
@@ -43,7 +43,7 @@ state = {
   /*------  PUXANDO INFOS EQUIPE API  --------------------*/
 
   getEquipe(){
-    fetch("https://api.airtable.com/v0/app6wQWfM6eJngkD4/Equipe?api_key=key2CwkHb0CKumjuM&filterByFormula=({Squad}='1')", {
+    fetch("https://api.airtable.com/v0/app6wQWfM6eJngkD4/Equipe?api_key=key2CwkHb0CKumjuM&filterByFormula=({Squad}='52')", {
     })
     .then(response => response.json())
     .then(responseJson => {
