@@ -149,7 +149,7 @@ h1.aboutWe{
 }
 
 div.wrapperPhoto{ /*CONTAINER DOS CARTOES*/  
-     
+    
     padding-bottom: 10.3125rem;
     width: 108rem;
     margin: 0 auto;
@@ -160,6 +160,13 @@ div.wrapperPhoto{ /*CONTAINER DOS CARTOES*/
 
 div.aboutTeam{
     margin-right: 1rem;
+
+    padding-bottom: 10.3125rem;
+    width: 108rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*cards da equipe*/

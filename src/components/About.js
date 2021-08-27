@@ -28,7 +28,7 @@ state = {
   /* =================  PUXANDO TEXTO SOBRE API  --------------*/
   componentDidMount(){
     this.getSobre()
-    this.getEquipe()
+    this.getSquad()
   }
 
    getSobre(){
@@ -42,7 +42,7 @@ state = {
 
   /*------  PUXANDO INFOS EQUIPE API  --------------------*/
 
-  getEquipe(){
+  getSquad(){
     fetch("https://api.airtable.com/v0/app6wQWfM6eJngkD4/Equipe?api_key=key2CwkHb0CKumjuM&filterByFormula=({Squad}='52')", {
     })
     .then(response => response.json())
@@ -85,13 +85,16 @@ state = {
             <h1 className="aboutWe">Quem somos nós</h1>
             <div className="wrapperPhoto">
                 <div className="aboutTeam">
-                    <div className="aboutCard">
+                    {this.state.list.map((person, index) => {
+                    if(person.fields.Nome != "Leonardo"){
+                    return(
+                    <div className="aboutCard" key={'person-card' + index}>
                         <div className="about-team-content">
                             <div className="aboutPhoto">
-                                <img src={fotoLeo} alt="fotoLeo" />
+                            <img src={person.fields['Imagem'][0].url}></img>
                             </div>
-                            <h2>Leonardo Galvez</h2>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore er dolore</p>
+                            <h2>{person.fields.Nome}</h2>
+                            <p>{person.fields.Descrição}</p>
                             <div className="aboutSocials">
                                 <img src={iconGit} alt="GitHub" className="iconGit" />
                                 <img src={iconEnvelope} alt="e-mail" className="iconEnvelope" />
@@ -99,73 +102,11 @@ state = {
                             </div>
                         </div>
                     </div>
+                    )
+                }
+              })}
                 </div>
-                <div className="aboutTeam">
-                    <div className="aboutCard">
-                        <div className="about-team-content">
-                            <div className="aboutPhoto">
-                                <img src={fotoMar} alt="fotoMarcelo" />
-                            </div>
-                            <h2>Marcelo Correa</h2>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore er dolore</p>
-                            <div className="aboutSocials">
-                                <img src={iconGit} alt="GitHub" className="iconGit" />
-                                <img src={iconEnvelope} alt="e-mail" className="iconEnvelope" />
-                                <img src={iconLinkedin} alt="Linkedin" className="iconLinkedin" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="aboutTeam">
-                    <div className="aboutCard">
-                        <div className="about-team-content">
-                            <div className="aboutPhoto">
-                                <img src={fotoJu} alt="fotoJuliana" />
-                            </div>
-                            <h2>Juliana Goia</h2>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore er dolore</p>
-                            <div className="aboutSocials">
-                                <img src={iconGit} alt="GitHub" className="iconGit" />
-                                <img src={iconEnvelope} alt="e-mail" className="iconEnvelope" />
-                                <img src={iconLinkedin} alt="Linkedin" className="iconLinkedin" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="aboutTeam">
-                    <div className="aboutCard">
-                        <div className="about-team-content">
-                            <div className="aboutPhoto">
-                                <img src={fotoFla} alt="fotoFlavio" />
-
-                            </div>
-                            <h2>Giovanni Shiroma</h2>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore er dolore</p>
-                            <div className="aboutSocials">
-                                <img src={iconGit} alt="GitHub" className="iconGit" />
-                                <img src={iconEnvelope} alt="e-mail" className="iconEnvelope" />
-                                <img src={iconLinkedin} alt="Linkedin" className="iconLinkedin" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="aboutTeam">
-                    <div className="aboutCard">
-                        <div className="about-team-content">
-                            <div className="aboutPhoto">
-                                <img src={fotoGio} alt="fotoGiovani" />
-
-                            </div>
-                            <h2>Flávio Silva</h2>
-                            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore er dolore</p>
-                            <div className="aboutSocials">
-                                <img src={iconGit} alt="GitHub" className="iconGit" />
-                                <img src={iconEnvelope} alt="e-mail" className="iconEnvelope" />
-                                <img src={iconLinkedin} alt="Linkedin" className="iconLinkedin" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                
             </div>
             <footer className="footer">
                 @NewTab Academy 2021. Todos os direitos reservados
