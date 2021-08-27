@@ -1,28 +1,63 @@
-import { Component, useState } from 'react';
+import { useState } from 'react';
 import "./login.css"
 import loginBg from './imgs/login-bg.jpg'
 import logoWhite from './imgs/logo-white.svg'
 import iconHome from './imgs/icon-home.svg'
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react';
-import api from './apiLogin';
+import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 
 
     
 
 function Login() {
+    
+        // Const menssagem validação
+        const [error, setError] = useState(null);
+        const [error2, setError2] = useState(null);
+        // Inputs no form 
+        const [userInput, setUserInput] = useState('');
+        const [passwordInput, setPasswordInput] = useState('');
+    
+    function getInputs() {
+            axios.get("https://airtable.com/shrTHWqQB8tBDdE3i/tblVomDZ8sk5GVbKY"(), {
+                "records": [
+                    {
+                        "fields": {
+                            "Squad": "2",
+                            "Email": userInput,
+                            "Senha": passwordInput
+                        }
+                    }
+                ]
+            }, {
+                headers: {
+                    "Authorization": "Bearer key2CwkHb0CKumjuM",
+                    "Content-Type": "application/json"
+                }
+            });
+        }
 
-    useEffect(()=>{
-        api.get('').then(({data})=>{
-    }) 
-    },[])
+        function validateDados(){
+        const [email] = "contato.newtab@gmail.com"
+            
+        if (userInput.length === email){ // se o campo estiver vazio, impede que seja registrado
+            // Campo não preechido 
+            setError('email errado!'); // Aparece mensagem de erro
+            event.preventDefault();
+        } else if (passwordInput.length == 0){
+            // Campo não preechido 
+             setError('') 
+             setError2('Campo obrigatório!') // Aparece mensagem de erro 
+             event.preventDefault();
+        } else {
+            // Mensagem de erro é apagada 
+            setError(null); 
+            setError2(null);
+            console.log('CREDENCIAIS DE USUARIO =>','USER:' , userInput ,"SENHA:", passwordInput);
+            return true;
+        } 
+    }
 
-    // Const menssagem validação
-    const [error, setError] = useState(null);
-    const [error2, setError2] = useState(null);
-    // Inputs no form 
-    const [userInput, setUserInput] = useState('');
-    const [passwordInput, setPasswordInput] = useState('');
 
     function submitForm(event) {
         // event.preventDefault(); // evita recarregamento da página
@@ -40,7 +75,7 @@ function Login() {
             // Mensagem de erro é apagada 
             setError(null); 
             setError2(null);
-            console.log(onchange)
+            console.log('CREDENCIAIS DE USUARIO =>','USER:' , userInput ,"SENHA:", passwordInput);
             return true;
         } 
     }
@@ -84,7 +119,7 @@ function Login() {
                         />
                         {error2 && <p className="invalidUser">{error2}</p>}
                 </form>
-                <Link to="/search"><button className="buttonLogin"onClick={submitForm}> Acessar</button></Link>
+                <Link to="/search"><button className="buttonLogin" onClick={submitForm ,  getInputs ,  validateDados}> Acessar</button></Link>
             </div>
         </div>
     )

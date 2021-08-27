@@ -6,7 +6,12 @@ import {Link} from 'react-router-dom'
 import loginBg from './imgs/login-bg.jpg'
 
 function Search() {
- 
+    
+
+    function logout(){
+        localStorage.clear();
+    }
+
     return (
         <>
         {/* navegador */}   
@@ -25,8 +30,8 @@ function Search() {
                 </button>
                 </Link>
                 {/* botão SAIR */} 
-                <Link to="/" className="linkRoute">
-                <button class="exitButton">
+                <Link to="/login" onClick={logout} className="linkRoute">
+                <button onClick={logout} class="exitButton">
                     <img src={exitIcon} alt="home-icon"/>
                     SAIR
                 </button>
