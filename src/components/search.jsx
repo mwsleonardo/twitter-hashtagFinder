@@ -6,10 +6,12 @@ import exitIcon from './images_v01/icon-power-off.svg'
 import {Link} from 'react-router-dom'
 import loginBg from './imgs/login-bg.jpg'
 import { useEffect, useState } from 'react';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 function Search() {
     
-    const [hashtagList, setHashtagList] = useState([]); // guarda as hashtags registradas na API 
+    const [hashtagList, setHashtagList] = useState([]); // guarda as hashtags registradas na API
+    const [items, setItems] = useState([]);
 
 useEffect(() => {
     axios.get("https://api.airtable.com/v0/app6wQWfM6eJngkD4/tbl4mrtX1Owvos7eB?filterByFormula=%7BSquad%7D+%3D+'52'", {
@@ -36,6 +38,7 @@ useEffect(() => {
 
     return (
         <>
+       
         {/* navegador */}   
         <div className="containerSearch">
         <img src={loginBg} className="backgroundImg"></img>
@@ -66,8 +69,7 @@ useEffect(() => {
         </div>
 
 
-     <div class="container"> 
-
+        <div class="container"> 
             <thead>
                 <tr>
                     <th>Hashtag</th>
@@ -76,24 +78,30 @@ useEffect(() => {
                 </tr>
             </thead>
 
-            {hashtagList.map ((item, i) => {
+            <InfiniteScroll 
+            dataLength = {hashtagList.length} 
+            next = {() => setHashtagList(hashtagList +1)}
+            hasMore={true}
+            >
+                
+            {/* mapeamento dos elementos da array, armazenados no state hashtagList */} 
+            {hashtagList.map ((obj, i) => {
                 return (
                     <table>
-                    <tbody>
-                        <tr>
-                            <td>{item.hashtag}</td>
-                            <td>{item.data}</td>
-                            <td>{item.hora}</td>
-                        </tr>
-                    </tbody>
-                </table>
-
+                        <tbody>
+                            <tr>
+                                <td>{obj.hashtag}</td>
+                                <td>{obj.data}</td>
+                                <td>{obj.hora}</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 )
             })}
+            </InfiniteScroll>
               
-    </div> 
-    
-</div>
+        </div> 
+    </div>
 </div>
 </>
 
