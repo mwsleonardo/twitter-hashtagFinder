@@ -18,12 +18,16 @@ header.banner {
     background-repeat: no-repeat;
     height: 90vh;
     width: 100%;
+    position: absolute;
+    top: 0;
 }
 
 
 /* MENU TOPO FIXO NO BANNER */
 
 div.topFixed {
+    position: absolute;
+    top: 0;
     padding: 36px 50px 0 50px;
     display: flex;
     justify-content: space-between;
@@ -43,6 +47,7 @@ div.topUnfixed {
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    height: 10vh;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(5px);
 }
@@ -99,7 +104,7 @@ img.logoLogin {
 /* CAIXA DE TEXTO DO BANNER */
 
 div.textBox {
-    margin: 10% 45% 15% 10%;
+    margin: 15% 45% 15% 10%;
 }
 
 h1 {
@@ -113,12 +118,17 @@ p.subtitle {
     font-size: 22px;
 }
 
+div.containerInput {
+    margin-top: 69vh;
+}
+
 
 /* CAIXA DO SEARCH BAR */
 
 div.inputDiv {
-    position: absolute;
-    bottom: 5vh;
+    position: relative;
+    top: 26vh;
+    bottom: 0vh;
     left: 4vw;
     width: 90%;
     display: flex;
@@ -178,37 +188,50 @@ span.limitCaracteres {
 
 /* MENSAGEM DE VALIDAÇÃO */
 
-div.validation {
+div.validationError {
     position: absolute;
-    bottom: 1.5vh;
-    left: 28vw;
+    bottom: 2.8vh;
+    left: 32vw;
     width: 40%;
     margin-top: 1vh;
     padding: 0;
     color: red;
     padding-top: 0.5vh;
-    font-size: 2rem;
+    font-size: 1.7rem;
+}
+
+div.validationLimit {
+    position: absolute;
+    bottom: 0;
+    left: 32vw;
+    width: 40%;
+    margin-top: 1vh;
+    padding-top: 1vh;
+    color: red;
+    padding-top: 0.5vh;
+    font-size: 1.7rem;
 }
 
 p.errorMessage {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     border-radius: 5rem;
-    background: rgba(255, 255, 255, 0.4);
-    backdrop-filter: blur(5px);
+    /* background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px); */
 }
 
-div.container {
-    height: 600px;
+div.containerBody {
+    position: relative;
+    top: 24vh;
 }
 
 
 /* FOOTER */
 
-.footer {
-    position: relative;
-    bottom: 0;
+footer.footer {
+    position: absolute;
+    top: 25vh;
     background-color: #D842BD;
     color: white;
     width: 100%;
@@ -220,8 +243,7 @@ div.container {
 
 .searchTitle {
     color: #3633F7;
-    opacity: 1;
-    font: normal normal bold 32px/35px Rubik;
+    font: normal normal bold 32px/35px 'Rubik';
     margin-top: 10vh;
     margin-bottom: 8vh;
     text-align: center;
@@ -398,16 +420,16 @@ div.postLink {
         padding: 2% 3% 2% 3%;
     }
     img.logo {
-        width: 40vw;
+        width: 195px;
     }
     button.aboutButton {
-        width: 22vw;
+        width: 21vw;
         height: 5vh;
         margin-right: 13px;
         font-size: 16px;
     }
     button.loginButton {
-        width: 22vw;
+        width: 21vw;
         height: 5vh;
         font-size: 16px;
     }
@@ -416,7 +438,7 @@ div.postLink {
         height: 0.6rem;
     }
     div.textBox {
-        margin: 10% 10% 15% 10%;
+        margin: 22% 10% 15% 10%;
     }
     h1 {
         font-size: 40px;
@@ -424,10 +446,14 @@ div.postLink {
     p.subtitle {
         font-size: 20px;
     }
+    div.containerInput {
+        margin-top: 50vh;
+    }
     div.inputDiv {
-        position: absolute;
-        bottom: 40vh;
-        left: 4vw;
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
     }
     form.form {
         position: relative;
@@ -452,14 +478,27 @@ div.postLink {
         top: 2.8vh;
     }
     /* MENSAGEM DE VALIDAÇÃO */
-    div.validation {
+    div.validationError {
         position: absolute;
-        bottom: 38vh;
-        left: 28vw;
-        width: 40%;
+        bottom: 35vh;
+        left: 14vw;
+        width: 35%;
         margin: 0;
         padding: 0;
         color: red;
+        font-weight: bold;
+        padding-top: 0.5vh;
+        font-size: 14px;
+    }
+    div.validationLimit {
+        position: absolute;
+        bottom: 32vh;
+        left: 19vw;
+        width: 35%;
+        margin: 0;
+        padding: 0;
+        color: red;
+        font-weight: bold;
         padding-top: 0.5vh;
         font-size: 14px;
     }
@@ -469,8 +508,12 @@ div.postLink {
         align-items: center;
         margin: 1%;
         border-radius: 5rem;
-        background: rgba(255, 255, 255, 0.4);
-        backdrop-filter: blur(5px);
+        /* background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(5px); */
+    }
+    h1.searchTitle {
+        margin: 0;
+        padding-bottom: 8vh;
     }
     .footer {
         height: 12vh;
@@ -478,10 +521,22 @@ div.postLink {
     }
 }
 
+
+/* AJUSTE DA VALIDAÇÃO  */
+
+@media (max-width: 700px) {
+    div.validationError {
+        width: 55%;
+    }
+    div.validationLimit {
+        width: 55%;
+    }
+}
+
 @media (max-width: 442px) {
     div.postContainer {
         flex-direction: column;
-        margin: 3rem 3rem;
+        margin: 3rem 1rem;
     }
     div.postBox {
         margin-left: 0;
@@ -539,7 +594,7 @@ div.postLink {
         height: 0.5rem;
     }
     div.textBox {
-        margin: 10% 10% 15% 10%;
+        margin: 30% 10% 15% 10%;
     }
     h1 {
         font-size: 34px;
@@ -547,8 +602,11 @@ div.postLink {
     p.subtitle {
         font-size: 16px;
     }
+    div.containerInput {
+        margin-top: 46vh;
+    }
     div.inputDiv {
-        bottom: 42vh;
+        bottom: 0;
     }
     form.form {
         bottom: 1vh;
@@ -570,19 +628,37 @@ div.postLink {
         right: 10vw;
         top: 2.5vh;
     }
+    h1.searchTitle {
+        margin: 0;
+        padding-bottom: 8vh;
+    }
     /* MENSAGEM DE VALIDAÇÃO  */
-    div.validation {
+    div.validationError {
         position: absolute;
-        bottom: 39vh;
-        left: 28vw;
-        width: 50%;
+        bottom: 40vh;
+        left: 22vw;
+        width: 55%;
         margin: 0;
         padding: 0;
         color: red;
+        font-weight: normal;
+        padding-top: 0.5vh;
+        font-size: 14px;
+    }
+    div.validationLimit {
+        position: absolute;
+        bottom: 36vh;
+        left: 22vw;
+        width: 55%;
+        margin: 0;
+        padding: 0;
+        color: red;
+        font-weight: normal;
         padding-top: 0.5vh;
         font-size: 14px;
     }
     p.errorMessage {
+        font-size: 0.7rem;
         display: flex;
         justify-content: center;
         align-items: center;

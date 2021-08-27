@@ -9,6 +9,11 @@ import { Link } from 'react-router-dom'
 import Carousel from "react-elastic-carousel";
 import Item from './item.js';
 
+// Import do Zoom
+// npm i react-medium-image-zoom
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
+
 // Import das imagens e icones usados na homepage
 import logoWhite from "./imgs/logo-white.svg";
 import logoPink from "./imgs/logo-pink.svg";
@@ -44,6 +49,8 @@ function Homepage() {
     const [contentInput, setContentInput] = useState('');
     // Const menssagem validação
     const [error, setError] = useState(null);
+    // Const menssagem limite caracteres
+    const [limit, setLimite] = useState(null);
     // Const para retirar hashtag
     const [noHashtag, setNoHashtag] = useState('');
 
@@ -51,7 +58,6 @@ function Homepage() {
 
     const lengthInput = contentInput.length; // tamanho do que foi escrito na search bar
     const limitCaracteres = 20 - lengthInput; // limite inicial menos o que for inserido no input
-
 
     // ----------ENVIO PARA API DO AIRTABLE----------
 
@@ -79,6 +85,15 @@ function Homepage() {
     // Const que resgata o valor preenchido no input
     function handleTextChange(event) {
         setContentInput(event.target.value); // guarda o valor preenchido no content Input
+
+        //Condicional para aparecer mensagem de limite de caracteres
+        if (lengthInput < 20) { // em quanto não tiver 20 caracteres, não mostrar aviso
+            setLimite(null); // variável sem valor - não aparece nada
+            console.log(limit)
+        } if (lengthInput >= 19) { // a partir de 19 caracteres
+            setLimite("Limite de caracteres atingido!"); // aparecer aviso
+            console.log(limit)
+        }
     }
 
     // Const que resgata do DOM a div de mensagem de validação
@@ -263,7 +278,10 @@ function Homepage() {
                         <p className="subtitle"> Digite o que deseja no campo de buscas e confira os resultados do Twitter abaixo </p>
                     </div>
 
-                    {/* FORM E CAMPO DE BUSCA */}
+                </header>
+
+                {/* FORM E CAMPO DE BUSCA */}
+                <div className="containerInput">
                     <div className="inputDiv">
                         <form className="form" onSubmit={submitForm}>
                             <img src={logoSearch} alt="logoSearch" className="logoSearch"></img>
@@ -279,53 +297,58 @@ function Homepage() {
                                 data-ls-module="charCounter"
                             >
                             </input>
-                            <span className="limitCaracteres">{limitCaracteres}</span>
-                        
+                            {/* span com contador de caracteres */}
+                            {/* <span className="limitCaracteres">{limitCaracteres}</span> */}
+
                         </form>
                     </div>
-                    {/* VALIDAÇÃO */}
-                    <div className="validation">
-                        {/* {<p className="errorMessage">{limitCaracteres}</p>} */}
-                    </div>
-                    <div className="validation">
-                        {error && <p className="errorMessage">{error}</p>}
-                    </div>
-                </header>
-
-                {/* RESULTADOS DAS IMAGENS - CAROUSEL */}
-                <h1 className="searchTitle">Exibindo os 10 resultados mais recentes de #vikings</h1>
-                <div className="carouselImages">
-                    <Carousel breakPoints={breakPoints}>
-                        <Item><img className="resultImage" src={search1} alt="img"></img></Item>
-                        <Item><img className="resultImage" src={search2} alt="img"></img></Item>
-                        <Item><img className="resultImage" src={search3} alt="img"></img></Item>
-                        <Item><img className="resultImage" src={search4} alt="img"></img></Item>
-                        <Item><img className="resultImage" src={search5} alt="img"></img></Item>
-                        <Item><img className="resultImage" src={search6} alt="img"></img></Item>
-                        <Item><img className="resultImage" src={search7} alt="img"></img></Item>
-                        <Item><img className="resultImage" src={search8} alt="img"></img></Item>
-                        <Item><img className="resultImage" src={search9} alt="img"></img></Item>
-                        <Item><img className="resultImage" src={search10} alt="img"></img></Item>
-                    </Carousel>
                 </div>
 
-                {/* RESULTADOS DOS TWEETS EM TEXTO */}
-                <div className="resultPosts">
-                    <div className="postContainer">
-                        {/* CAIXA QUE CONTÉM O TWEET */}
-                        {usuario.map((item) =>
-                            <div className="postBox">
-                                <img className="postImg" src={item.img} alt="img"></img>
-                                <div className="textBoxTweet">
-                                    <div className="userBoxTweet">
-                                        <p className="postUser">{item.name}</p>
-                                        <span className="postUsername">{item.username}</span>
+                {/* VALIDAÇÃO */}
+                <div className="validationLimit">
+                    {limit && <p className="errorMessage">{limit}</p>}
+                </div>
+                <div className="validationError">
+                    {error && <p className="errorMessage">{error}</p>}
+                </div>
+
+                <div className="containerBody">
+                    {/* RESULTADOS DAS IMAGENS - CAROUSEL */}
+                    <h1 className="searchTitle">Exibindo os 10 resultados mais recentes de #vikings</h1>
+                    <div className="carouselImages">
+                        <Carousel breakPoints={breakPoints}>
+                            <Item><Zoom><img className="resultImage" src={search1} alt="img"></img></Zoom></Item>
+                            <Item><img className="resultImage" src={search2} alt="img"></img></Item>
+                            <Item><img className="resultImage" src={search3} alt="img"></img></Item>
+                            <Item><img className="resultImage" src={search4} alt="img"></img></Item>
+                            <Item><img className="resultImage" src={search5} alt="img"></img></Item>
+                            <Item><img className="resultImage" src={search6} alt="img"></img></Item>
+                            <Item><img className="resultImage" src={search7} alt="img"></img></Item>
+                            <Item><img className="resultImage" src={search8} alt="img"></img></Item>
+                            <Item><img className="resultImage" src={search9} alt="img"></img></Item>
+                            <Item><img className="resultImage" src={search10} alt="img"></img></Item>
+                        </Carousel>
+                    </div>
+
+                    {/* RESULTADOS DOS TWEETS EM TEXTO */}
+                    <div className="resultPosts">
+                        <div className="postContainer">
+                            {/* CAIXA QUE CONTÉM O TWEET */}
+                            {usuario.map((item) =>
+                                <div className="postBox">
+                                    <img className="postImg" src={item.img} alt="img"></img>
+                                    <div className="textBoxTweet">
+                                        <div className="userBoxTweet">
+                                            <p className="postUser">{item.name}</p>
+                                            <span className="postUsername">{item.username}</span>
+                                        </div>
+                                        <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
+                                        <div className="postLink">Ver mais no Twitter</div>
                                     </div>
-                                    <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                                    <div className="postLink">Ver mais no Twitter</div>
                                 </div>
-                            </div>
-                        )};
+                            )}
+                        </div>
+
 
                         {/* CAIXA QUE CONTÉM O TWEET */}
                         {/* <div className="postBox">
@@ -402,11 +425,11 @@ function Homepage() {
                     </div>
                 </div>
 
-                {/* FOOTER */}
-                <footer className="footer">
-                    @NewTab Academy 2021. Todos os direitos reservados
-                </footer>
             </div>
+            {/* FOOTER */}
+            <footer className="footer">
+                @NewTab Academy 2021. Todos os direitos reservados
+            </footer>
         </div>
     )
 }
