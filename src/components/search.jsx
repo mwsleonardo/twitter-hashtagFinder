@@ -6,12 +6,25 @@ import exitIcon from './images_v01/icon-power-off.svg'
 import {Link} from 'react-router-dom'
 import loginBg from './imgs/login-bg.jpg'
 import { useEffect, useState } from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteLoading from "react-simple-infinite-loading";
+
 
 function Search() {
     
-    const [hashtagList, setHashtagList] = useState([]); // guarda as hashtags registradas na API
-    const [items, setItems] = useState([]);
+    //const [hashtagList, setHashtagList] = useState([]); // guarda as hashtags registradas na API
+    const [hashtagList, setHashtagList] = useState([...Array(100)].map((_, index) => index));
+
+    const loadMoreItems = () => {
+        const newList = [...Array(10)].map((_, index) => hashtagList.length + index);
+    
+        return new Promise(resolve => {
+          setTimeout(() => {
+            setHashtagList([...hashtagList, ...newList]);
+            resolve();
+          }, 30);
+        });
+      };
+
 
 useEffect(() => {
     axios.get("https://api.airtable.com/v0/app6wQWfM6eJngkD4/tbl4mrtX1Owvos7eB?filterByFormula=%7BSquad%7D+%3D+'52'", {
@@ -78,13 +91,13 @@ useEffect(() => {
                 </tr>
             </thead>
 
-            <InfiniteScroll 
-            dataLength = {hashtagList.length} 
-            next = {() => setHashtagList(hashtagList +1)}
-            hasMore={true}
+            <InfiniteLoading
+                hasMoreItems
+                itemHeight = {40}
+                loadMoreItems = {loadMoreItems}
             >
-                
-            {/* mapeamento dos elementos da array, armazenados no state hashtagList */} 
+
+                {/* mapeamento dos elementos da array, armazenados no state hashtagList */} 
             {hashtagList.map ((obj, i) => {
                 return (
                     <table>
@@ -98,8 +111,8 @@ useEffect(() => {
                     </table>
                 )
             })}
-            </InfiniteScroll>
-              
+            </InfiniteLoading>
+ 
         </div> 
     </div>
 </div>
