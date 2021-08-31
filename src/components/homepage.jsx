@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './homepage.css';
+import Topo from './topo'
+import Footer from './footer'
 
 // Import do router para transação entre páginas
 import { Link } from 'react-router-dom'
@@ -15,10 +17,6 @@ import Zoom from 'react-medium-image-zoom'
 import 'react-medium-image-zoom/dist/styles.css'
 
 // Import das imagens e icones usados na homepage
-import logoWhite from "./imgs/logo-white.svg";
-import logoPink from "./imgs/logo-pink.svg";
-import logoSobre from "./imgs/icon-info-circle.svg";
-import logoLogin from "./imgs/icon-user-alt.svg";
 import logoSearch from "./imgs/icon-search.svg"
 
 // Import das imagens teste para o resultado da busca
@@ -205,29 +203,7 @@ function Homepage() {
         console.log('FUNCTION SEARCH IMAGES:', images)
     }
 
-    // ----------MENU DO TOPO----------
-    const [changeBackground, setChangeBackground] = useState(false);
-
-    useEffect(function () {
-        function scrollPosition() { //função para verificar a posição do scroll
-            if (window.scrollY > 600) { //se o scroll descer mais que 620
-                setChangeBackground(true);
-            } else {
-                setChangeBackground(false);
-            }
-        }
-        window.addEventListener('scroll', scrollPosition);
-    }, []);
-
-    // Função para mudar a logo do topo
-    function pickLogo() {
-
-        if (changeBackground == 0) { // se não tiver scroll, mostar logo branca
-            return logoWhite;
-        } if (changeBackground > 0) { // se tiver scroll, mostrar logo rosa
-            return logoPink;
-        }
-    }
+    
 
     // ----------LISTAGEM DE TWEETS USANDO API DO PICPAY----------
     const [usuario, setUsuario] = useState([]);
@@ -250,28 +226,8 @@ function Homepage() {
                 {/* HEADER */}
                 <header className="banner">
                     {/* MENU TOPO */}
-                    <div className={changeBackground ? 'topUnfixed' : 'topFixed'}>
-                        {/* LOGO */}
-                        <img src={pickLogo()} alt="Logo" className="logo"></img>
-                        {/* BOTÕES DO TOPO */}
-                        <div className="buttons">
-                            {/* BOTÃO SOBRE */}
-                            <Link to="/About" className="linkRoute">
-                                <button className="aboutButton">
-                                    <img src={logoSobre} alt="logoSobre" className="logoSobre"></img>
-                                    <span>Sobre</span>
-                                </button></Link>
-
-                            {/* BOTÃO LOGIN */}
-                            <Link to="/login" className="linkRoute">
-                                <button className="loginButton">
-                                    <img src={logoLogin} alt="logoLogin" className="logoLogin"></img>
-                                    <span>Login</span>
-                                </button>
-                            </Link>
-                        </div>
-                    </div>
-
+                    <Topo/>
+                   
                     {/* CAIXA DE TEXTO DO BANNER */}
                     <div className="textBox">
                         <h1 className="title"> Encontre hashtags de maneira fácil  </h1>
@@ -427,9 +383,7 @@ function Homepage() {
 
             </div>
             {/* FOOTER */}
-            <footer className="footer">
-                @NewTab Academy 2021. Todos os direitos reservados
-            </footer>
+            <Footer/>
         </div>
     )
 }
