@@ -28,68 +28,7 @@ section.header{
     height: 80px;
     opacity: 1;
     padding: 0 16px;
-   /* position: fixed; /*PARA DEIXAR O TOPO FIXO NA TELA*/
     margin: 0;    
-}
-
-div.headerContent{    
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
- }
-
- div.headerLogo{
-    margin-left: 64px;
-    width: 239px;
-    height: 42px;
-}
-
-/*TAMANHO DO LOGO HASHTAG FINDER*/
-img.logoWhite{ 
-    width: 100%;
-    height: 100%;
-}
-
-/*alinhamento botoes */
-div.headerButtons{ 
-    height: 100%;
-    display: flex;
-    align-items: center;
-}
-
-/* BOTOES */
-div.headerButtons button{ 
-    border-radius: 25px;
-    border: none;
-    font-size: 17px;
-    font-weight: bold;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-}
-
-/* IMAGEM DO BOTAO */
-div.headerButtons button img{ 
-    width: 13px;
-    height: 13px;
-    margin-right: 8px;
-}
-
-button.aboutBtn{
-    background: #D842BD;
-    color: #fff;
-    margin-right: 13px;
-    cursor: pointer;
-}
-
-button.aboutBtnLogin{
-    background: #3633f7;
-    color: #fff;
-    cursor: pointer;
 }
 
  /*ESCRITA NO TOPO SOBRE PROJETO*/
@@ -124,7 +63,6 @@ div.aboutAside p{
 div.aboutText{
     padding-top: 12.0625rem;
     text-align: left;
-    /* width: 96.625rem; */
     align-items: flex-start;
     margin: 0 2vw;
     display: flex;
@@ -148,15 +86,6 @@ h1.aboutWe{
     margin: 0 auto;
 }
 
-/*div.wrapperPhoto{ /*CONTAINER DOS CARTOES*/  
-    
-  /*  padding-bottom: 10.3125rem;
-    width: 108rem;
-    margin: 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}*/
 /*CONTAINER DOS CARTOES*/  
 div.aboutTeam{
     margin-right: 1.5rem;
@@ -170,18 +99,17 @@ div.aboutTeam{
 
 /*cards da equipe*/
 div.aboutCard{
-    
-    width: 19rem;
+    margin-right: 2rem;
+    /*width: 19rem;*/
     box-shadow: 0 5px 10px rgb(85 56 238 / 8%);
     border-radius: 10px;
     border: 1px solid rgba(85,56,238,.1411764705882353);
     height: 32.8125rem;
 }
 
-div.about-team-content{
+div.about-team-wrapper{
     margin-right: 10px;
-    
-    width: 19.25rem;
+    width: 20rem;
     display: flex;
     align-items: center;
     margin: 0 auto;
@@ -291,22 +219,7 @@ footer.footer {
         align-items: left;
         margin: 8vw;
     }
-
-    /* botão sobre */
-    .header .headerContent .headerButtons .aboutBtn{    
-        margin-right: 13px;
-        font-size: 12px;
-        width: 20vw;
-        height: 30px;
-    }
     
-    /* botão login */
-    .header .headerContent .headerButtons .aboutBtnLogin{
-        font-size: 12px;
-        width: 20vw;
-        height: 30px;
-    }
-
     /* logo */
     img.logoWhite {
         width: 40vw;
@@ -406,7 +319,7 @@ footer.footer {
         margin-right: 30px;
     }
     
-    
+
     
 
 }
@@ -433,22 +346,7 @@ footer.footer {
         align-items: left;
         margin: 8vw;
     }
-
-    /* botão sobre */
-    .header .headerContent .headerButtons .aboutBtn{    
-        margin-right: 13px;
-        font-size: 12px;
-        width: 20vw;
-        height: 30px;
-    }
-    
-    /* botão login */
-    .header .headerContent .headerButtons .aboutBtnLogin{
-        font-size: 12px;
-        width: 20vw;
-        height: 30px;
-    }
-
+  
     /* logo */
     img.logoWhite {
         width: 35vw;
@@ -501,18 +399,8 @@ footer.footer {
         padding: 2vh 5vw;
     }
 
-    /*reponsividade cards equipe*/
-
-    /*EMBRULHO FOTOS*/
-    /*div.wrapperPhoto {
-        padding: 0;
-        width: 100%;
-        /*display: flex;*/
-        /*flex-direction: column;
-    }*/
-
+    
     div.aboutTeam{
-        border: 1px solid red;
         margin: 5px 5px ;
        /* width: 100%;*/
         display: inline-block;
@@ -575,22 +463,7 @@ footer.footer {
         flex-direction: row;
         justify-content: space-evenly;
     }
-
-    /* botão sobre */
-    .header .headerContent .headerButtons .aboutBtn{    
-        margin-right: 13px;
-        font-size: 10px;
-        width: 22vw;
-        height: 30px;
-    }
     
-    /* botão login */
-    .header .headerContent .headerButtons .aboutBtnLogin{
-        font-size: 10px;
-        width: 22vw;
-        height: 30px;
-    }
-
     /* título sobre o porjeto */
     h1.aboutProject {
         font-size: 30px;

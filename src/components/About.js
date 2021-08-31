@@ -16,7 +16,7 @@ state = {
     list:[]
   }
 
-  /* =================  PUXANDO TEXTO SOBRE API  --------------*/
+  /* =================  PUXANDO API TEXTO DO PROJETO  --------------*/
   componentDidMount(){
     this.getSobre()
     this.getSquad()
@@ -73,16 +73,16 @@ state = {
                     if(person.fields.Nome != "Leonardo"){
                     return(
                     <div className="aboutCard" key={'person-card' + index}>
-                        <div className="about-team-content">
+                        <div className="about-team-wrapper">
                             <div className="aboutPhoto">
                             <img src={person.fields['Imagem'][0].url}></img>
                             </div>
                             <h2>{person.fields.Nome}</h2>
                             <p>{person.fields.Descrição}</p>
                             <div className="aboutSocials">
-                                <img src={iconGit} alt="GitHub" className="iconGit" />
-                                <img src={iconEnvelope} alt="e-mail" className="iconEnvelope" />
-                                <img src={iconLinkedin} alt="Linkedin" className="iconLinkedin" />
+                            <a href={person.fields.Github}><img src={iconGit} alt="GitHub" className="iconGit" /></a>
+                            <a href={person.fields.Email}><img src={iconEnvelope} alt="e-mail" className="iconEnvelope" /></a>
+                            <a href={person.fields.LinkedIn}><img src={iconLinkedin} alt="Linkedin" className="iconLinkedin" /></a>
                             </div>
                         </div>
                     </div>
