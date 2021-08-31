@@ -148,19 +148,18 @@ h1.aboutWe{
     margin: 0 auto;
 }
 
-div.wrapperPhoto{ /*CONTAINER DOS CARTOES*/  
+/*div.wrapperPhoto{ /*CONTAINER DOS CARTOES*/  
     
-    padding-bottom: 10.3125rem;
+  /*  padding-bottom: 10.3125rem;
     width: 108rem;
     margin: 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
+}*/
+/*CONTAINER DOS CARTOES*/  
 div.aboutTeam{
-    margin-right: 1rem;
-
+    margin-right: 1.5rem;
     padding-bottom: 10.3125rem;
     width: 108rem;
     margin: 0 auto;
@@ -171,6 +170,7 @@ div.aboutTeam{
 
 /*cards da equipe*/
 div.aboutCard{
+    
     width: 19rem;
     box-shadow: 0 5px 10px rgb(85 56 238 / 8%);
     border-radius: 10px;
@@ -179,6 +179,8 @@ div.aboutCard{
 }
 
 div.about-team-content{
+    margin-right: 10px;
+    
     width: 19.25rem;
     display: flex;
     align-items: center;
@@ -214,7 +216,7 @@ div.aboutCard h2{
 div.aboutCard p{
     color: #292929;
     margin-top: 0;
-    font-size: 1.1875rem;
+    font-size: 1rem;
     height: 5.625em;
     text-align: center;
     margin-bottom: 1.75rem;
@@ -502,17 +504,18 @@ footer.footer {
     /*reponsividade cards equipe*/
 
     /*EMBRULHO FOTOS*/
-    div.wrapperPhoto {
+    /*div.wrapperPhoto {
         padding: 0;
         width: 100%;
-        display: flex;
-        flex-direction: column;
-    }
+        /*display: flex;*/
+        /*flex-direction: column;
+    }*/
 
     div.aboutTeam{
-        margin: 0;
-        width: 100%;
-        display: flex;
+        border: 1px solid red;
+        margin: 5px 5px ;
+       /* width: 100%;*/
+        display: inline-block;
         justify-content: center;
     }
 

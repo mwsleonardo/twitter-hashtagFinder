@@ -1,22 +1,13 @@
 import React from 'react';
 import './About.css';
-import {Link} from 'react-router-dom'
+import Topo from './topo.jsx'
 
 //Icons
 import svg from './imgs/about-illustration.svg';
 import iconGit from './imgs/icon-github.svg';
 import iconEnvelope from './imgs/icon-envelope.svg';
 import iconLinkedin from './imgs/icon-linkedin.svg';
-import logoWhite from './imgs/logo-white.svg';
-import iconHome from './imgs/icon-home.svg';
-import iconUser from './imgs/icon-user-alt.svg';
 
-// Memebers photos
-import fotoJu from './imgs/juliana.jpeg';
-import fotoGio from './imgs/flavio.jpg';
-import fotoFla from './imgs/giovani.jpeg';
-import fotoMar from './imgs/eu.jpg';
-import fotoLeo from './imgs/leo.jpg';
 
 export default class About extends React.Component{
 
@@ -52,6 +43,7 @@ state = {
     })
   }
 
+ 
   render() {
     
 
@@ -61,15 +53,7 @@ state = {
                 <section className="header">
                     <div className="headerContent">
                         <div className="headerLogo">
-                            <img src={logoWhite} className="logoWhite" alt="Logo hashtagfinder" />
-                        </div>
-                        <div className="headerButtons">
-                            <Link to="/" className="linkRoute">    
-                            <button className="aboutBtn"><img src={iconHome} alt="icone de busca" />home</button>
-                            </Link>
-                            <Link to="/login" className="linkRoute">
-                            <button className="aboutBtnLogin"><img src={iconUser} alt="icone de usuário" />login</button>
-                            </Link>
+                        <Topo/>
                         </div>
                     </div>
                 </section>
