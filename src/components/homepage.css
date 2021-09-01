@@ -1,4 +1,9 @@
+/* IMPORT DA FONTE RUBIK (GOOGLE) */
+
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap');
+
+/* CONFIGURAÇÕES GLOBAIS */
+
 * {
     margin: 0;
     padding: 0;
@@ -7,6 +12,101 @@
 body {
     font-family: 'Rubik', sans-serif;
     height: 100vh;
+}
+
+
+/* TESTE MANUAL */
+
+div.itemContainer {
+    width: 100%;
+}
+
+div.itemOrganizer {
+    display: flex;
+    overflow-x: auto;
+}
+
+div.item {
+    flex: none;
+    background-image: url(./imgs/giovani.jpeg);
+}
+
+
+/* AJUSTES CAROUSEL */
+
+.carousel {
+    display: flex;
+    flex-direction: row;
+    margin-top: 200px;
+}
+
+.postResultsImages {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    align-items: flex-start;
+    /* padding-bottom: 120px;
+    margin-top: 100px; */
+    margin: 0;
+    padding: 0;
+}
+
+.imageContainer {
+    width: 100%;
+    height: 100%;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.imageContent {
+    border-radius: 21px;
+    box-shadow: 0px 9px 27px #5538EE29;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* MODAL IMAGES */
+
+.backdrop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+}
+
+.modalContainer {
+    width: 80vw;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
+    position: fixed;
+    left: 10vw;
+    top: 120px;
+    border-radius: 30px;
+    z-index: 5;
+}
+
+.modalContainer .modalContent {
+    width: 100%;
+    padding-bottom: 90%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 30px;
+    position: relative;
+}
+
+.modalContainer .modalContent .close {
+    position: absolute;
+    font-size: 25px;
+    font-weight: bold;
+    color: #72EFDB;
+    top: 15px;
+    right: 20px;
+    text-shadow: 0px 0px 10px black;
 }
 
 
@@ -42,6 +142,11 @@ p.subtitle {
 
 div.containerInput {
     margin-top: 69vh;
+}
+
+.backdrop,
+.postResultSelect {
+    display: none;
 }
 
 
@@ -93,6 +198,9 @@ input.searchBar {
     padding-left: 6%;
 }
 
+input.searchBar:focus {
+    outline: none;
+}
 
 /* LIMITE DE CARACTERES */
 
@@ -148,22 +256,15 @@ div.containerBody {
     top: 24vh;
 }
 
-.searchTitle {
+
+/* TÍTULO DA PESQUISA */
+
+h1.searchTitle {
     color: #3633F7;
     font: normal normal bold 32px/35px 'Rubik';
-    margin-top: 10vh;
-    margin-bottom: 8vh;
+    margin-top: 35vh;
+    margin-bottom: 1vh;
     text-align: center;
-}
-
-.carouselImages {
-    margin-left: 3rem;
-    margin-right: 3rem;
-}
-
-.resultImage {
-    border-radius: 21px;
-    box-shadow: 0px 9px 27px #5538EE29;
 }
 
 
@@ -196,9 +297,19 @@ div.postBox {
 
 /* ÍCONE DO USUÁRIO */
 
+div.divImgTweet {
+    width: 20vh;
+    height: 20vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 img.postImg {
-    height: 82px;
-    width: 82px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 75px;
+    width: 75px;
     border-radius: 50px;
     margin: 2vh 2vw;
 }
@@ -227,7 +338,7 @@ div.userBoxTweet {
 
 /* NOME DO USUÁRIO */
 
-p.postUser {
+div.postUser {
     font-size: 24px;
     letter-spacing: 0px;
     color: #292929;
@@ -237,8 +348,9 @@ p.postUser {
 
 /* USERNAME */
 
-span.postUsername {
+div.postUsername {
     margin-left: 1vh;
+    padding-right: 2vw;
     font-size: 18px;
     letter-spacing: 0px;
     color: #292929;
@@ -257,7 +369,7 @@ div.postText {
 
 /* LINK DO TWEET */
 
-div.postLink {
+a.postLink {
     width: fit-content;
     margin-top: 2vh;
     letter-spacing: 0px;
@@ -274,16 +386,16 @@ div.postLink {
         height: 22vh;
         width: 40%;
     }
-    p.postUser {
+    div.postUser {
         font-size: 1.9rem;
     }
-    span.postUsername {
+    div.postUsername {
         font-size: 1.8rem;
     }
     div.postText {
         font-size: 1.2rem;
     }
-    div.postLink {
+    a.postLink {
         font-size: 1rem;
     }
 }
@@ -300,16 +412,16 @@ div.postLink {
         margin-left: 0;
         width: 100%;
     }
-    p.postUser {
+    div.postUser {
         font-size: 1.1rem;
     }
-    span.postUsername {
+    div.postUsername {
         font-size: 1rem;
     }
     div.postText {
         font-size: 0.8rem;
     }
-    div.postLink {
+    a.postLink {
         font-size: 0.8rem;
     }
     header.banner {
@@ -397,6 +509,22 @@ div.postLink {
         margin: 0;
         padding-bottom: 8vh;
     }
+    /* ÍCONE DO USUÁRIO */
+    div.divImgTweet {
+        width: 20vh;
+        height: 20vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    img.postImg {
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 70px;
+        width: 70px;
+        border-radius: 50px;
+        margin: 2vh 2vw;
+    }
 }
 
 
@@ -421,20 +549,20 @@ div.postLink {
         width: 100%;
     }
     img.postImg {
-        height: 70px;
-        width: 70px;
-        margin: 2vh 2vw;
+        height: 60px;
+        width: 60px;
+        margin: 1vh 1vw;
     }
-    p.postUser {
+    div.postUser {
         font-size: 0.9rem;
     }
-    span.postUsername {
+    div.postUsername {
         font-size: 0.6rem;
     }
     div.postText {
         font-size: 0.7rem;
     }
-    div.postLink {
+    a.postLink {
         font-size: 0.7rem;
     }
 }
