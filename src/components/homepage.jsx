@@ -12,10 +12,6 @@ import { Link } from 'react-router-dom'
 import Carousel from "react-elastic-carousel";
 import Item from './item.js';
 
-// Import do Zoom
-
-
-
 // Import das imagens e icones usados na homepage
 import logoSearch from "./imgs/icon-search.svg"
 
@@ -43,19 +39,24 @@ function Homepage() {
     // Const para retirar hashtag
     const [noHashtag, setNoHashtag] = useState('');
     // Const para habilitar as funcionalidades
-    let [modalShow, setShowModal] = useState(false)
+    let [modalShow, setShowModal] = useState(false);
     // Const para setar imagens da busca
-    let [urlImage, setUrlImage] = useState('')
+    let [urlImage, setUrlImage] = useState('');
+    // Const dos tweets (resultado da busca)
+    let [tweets, setTweets] = useState([]);
+    // Const das das imagens (resultado da busca)
+    let [images, setImages] = useState([]);
     // Tamanho do que foi escrito no input
     const lengthInput = contentInput.length;
-    // limite inicial do que for inserido no input
-    const limitCaracteres = 20 - lengthInput;
+    // Contador do limite de caracteres do  input
+    // const limitCaracteres = 20 - lengthInput;
 
-    // Const que resgata o valor preenchido no input
+    // Função que resgata o valor preenchido no input
     function handleTextChange(event) {
         setContentInput(event.target.value); // guarda o valor preenchido no content Input
         setTitulo(event.target.value); // guardo o valor pra exibir no h1 dos resultados
 
+        
         //Condicional para aparecer mensagem de limite de caracteres
         if (lengthInput < 20) { // em quanto não tiver 20 caracteres, não mostrar aviso
             setLimite(null); // variável sem valor - não aparece nada
@@ -64,22 +65,17 @@ function Homepage() {
             setLimite("Limite de caracteres atingido!"); // aparecer aviso
             console.log(limit)
         }
+        
     }
 
-
-    function handleChange(event) {
-        let id = event.target.id
-        setUrlImage(document.getElementById(id).style.backgroundImage.replace('url("', "").replace('")', ""))
-        setShowModal(true)
-
-        setContentInput(event.target.value);
-
+    // Função de submit do formulário que chama a função para registro na airtable
+    function submitForm(event) {
+        event.preventDefault(); // evita recarregamento da página
 
 
         if (contentInput.length == 0) { // se o campo estiver vazio, impede que seja registrado
-            setError('Campo obrigatório!');
-        } // faz aparecer a div com a mensagem de campo obrigatório
-        else {
+            setError('Campo obrigatório!'); // faz aparecer a div com a mensagem de campo obrigatório
+        } else {
             setError(null); // div não aparece - não tem conteúdo
             console.log("chama função post")
             console.log('CONTEÚDO DIGITADO', contentInput);
@@ -95,11 +91,26 @@ function Homepage() {
             setContentInput('');
 
         }
+
+        // Condicional que chama as funções de pesquisa ao apertar a tecla Enter
+        if (event.key === 'Enter') {
+            getTweets()
+            getImages()
+            postAirtable()
+        }
     }
 
+    // Função onClick para dar zoom na imagem do resultado
+    function handleChange(event) {
+        let id = event.target.id
+        setUrlImage(document.getElementById(id).style.backgroundImage.replace('url("', "").replace('")', ""))
+        setShowModal(true)
 
+        setContentInput(event.target.value);
 
+    }
 
+    // Função para mostrar os resultados das imagens
     function showImages() {
         document.getElementById("postResultsImages").style.display = 'flex'
         document.getElementById("postResultsText").style.display = 'none'
@@ -107,6 +118,7 @@ function Homepage() {
         document.getElementById("selectTweets").classList.remove("active")
     }
 
+    // Função para mostrar os resultados em texto
     function showText() {
         document.getElementById("postResultsText").style.display = 'block'
         document.getElementById("postResultsImages").style.display = 'none'
@@ -114,10 +126,7 @@ function Homepage() {
         document.getElementById("selectImages").classList.remove("active")
     }
 
-    let [tweets, setTweets] = useState([])
-    let [images, setImages] = useState([])
-
-
+    // Função com axios que faz a requisição dos tweets em texto na API do Twitter
     function getTweets() {
         let hashtag = document.getElementById('enter').value.replace(/#/g, "")
         axios.get('https://cors.bridged.cc/https://api.twitter.com/1.1/search/tweets.json?q=' + hashtag + '&lang=pt&result_type=recent', {
@@ -128,6 +137,7 @@ function Homepage() {
         }).then((resp) => { setTweets(resp.data.statuses) })
     }
 
+    // Função com axios que faz a requisição dos tweets em imagem na API do Twitter
     function getImages() {
         let hashtag = document.getElementById('enter').value.replace(/#/g, "")
         axios.get('https://cors.bridged.cc/https://api.twitter.com/2/tweets/search/recent?query=' + hashtag + '%20has:images&max_results=50&expansions=author_id,attachments.media_keys&media.fields=type,url,width,height', {
@@ -138,17 +148,18 @@ function Homepage() {
         }).then((resp) => { setImages(resp.data.includes.media) })
     }
 
-
+    // Função que registra o que foi pesquisado na searchBar na airtable
     function postAirtable() {
         let hashtag = document.getElementById('enter').value.replace(/#/g, "")
 
-
+        // Variável para identificar a data em que foi realizada a pesquisa
         var data = new Date()
         var day = String(data.getDate()).padStart(2, '0')
         var month = String(data.getMonth() + 1).padStart(2, '0')
         var year = data.getFullYear()
         var today = day + '/' + month + '/' + year
 
+        // Variável para identificar a hora em que foi realizada a pesquisa
         var hour = String(data.getHours()).padStart(2, '0')
         var minutes = String(data.getMinutes()).padStart(2, '0')
         var currentTime = hour + ':' + minutes
@@ -167,6 +178,7 @@ function Homepage() {
             ]
         });
 
+        // Parâmetros necessário para o post através da API da airtable 
         var config = {
             method: 'post',
             url: 'https://api.airtable.com/v0/app6wQWfM6eJngkD4/Buscas',
@@ -184,13 +196,13 @@ function Homepage() {
             });
     }
 
-    const handler = (event) => {
-        if (event.key === 'Enter') {
-            getTweets()
-            getImages()
-            postAirtable()
-        }
-    }
+    // const handler = (event) => {
+    //     if (event.key === 'Enter') {
+    //         getTweets()
+    //         getImages()
+    //         postAirtable()
+    //     }
+    // }
 
     return (
 
@@ -200,6 +212,7 @@ function Homepage() {
                 {/* HEADER */}
                 <header className="banner">
                     <Topo />
+
                     {/* CAIXA DE TEXTO DO BANNER */}
                     <div className="textBox">
                         <h1 className="title"> Encontre hashtags de maneira fácil  </h1>
@@ -210,7 +223,7 @@ function Homepage() {
                 {/* INPUT DA PESQUISA */}
                 <div className="containerInput">
                     <div className="inputDiv">
-                        <form className="form">
+                        <form className="form" onSubmit={submitForm}>
                             <img src={logoSearch} alt="logoSearch" class="logoSearch"></img>
                             <input
                                 id="enter"
@@ -222,21 +235,29 @@ function Homepage() {
                                 data-ls-module="charCounter"
                                 value={contentInput}
                                 onChange={handleTextChange}
-                                onKeyPress={(e) => handler(e)}>
+                            >
+                                {/* onKeyPress={(e) => handler(e)} */}
                             </input>
                         </form>
                     </div>
                 </div>
 
                 {/* VALIDAÇÃO */}
+                {/* limite de caracteres */}
                 <div className="validationLimit">
                     {limit && <p className="errorMessage">{limit}</p>}
                 </div>
+                {/* campo obrigatório */}
                 <div className="validationError">
                     {error && <p className="errorMessage">{error}</p>}
                 </div>
 
-                <h1 className="searchTitle">Exibindo os 10 resultados mais recentes de #{titulo}</h1>
+                {/* CORPO DO SITE COM OS RESULTADOS DA PESQUISA */}
+
+                {/* TÍTULO DOS RESULTADOS */}
+                <h1 className="searchTitle">
+                    Exibindo os 10 resultados mais recentes de #{titulo}
+                </h1>
 
                 <div className="postResultSelect">
                     <div id="selectTweets" className="active" onClick={showText}>
@@ -247,8 +268,8 @@ function Homepage() {
                     </div>
                 </div>
 
-                {/* CAROUSEL DAS IMAGENS */}
-                <div id="postResultsImages" className="postResultsImages">
+                 {/* CAROUSEL DAS IMAGENS */}
+                 <div id="postResultsImages" className="postResultsImages">
                     <Carousel className="carousel" breakPoints={breakPoints}>
                         {images.slice(0, 10).map((i, index) => {
                             return (
@@ -283,18 +304,22 @@ function Homepage() {
                 <div id="postResultsText" className="postResultsText">
                     <div className="resultPosts">
                         <div className="postContainer" >
+                            {/* MAP PARA EXIBIR OS RESULTADOS DE TEXTO */}
                             {tweets.slice(0, 10).map((t, index) => {
                                 return (
                                     <div className="postBox" key={index}>
+                                        {/* DIV QUE CONTÉM O ICON DO USUARIO */}
                                         <div className="divImgTweet">
                                             <img className="postImg" style={{ backgroundImage: `url(${t.user.profile_image_url})` }}></img>
                                         </div>
+                                        {/* DIV COM DEMAIS INFORMAÇÕES E TWEET */}
                                         <div className="textBoxTweet">
                                             <div className="userBoxTweet">
                                                 <div className="postUser">{t.user.name}</div>
                                                 <div className="postUsername">@{t.user.screen_name}</div>
                                             </div>
                                             <div className="postText">{t.text}</div>
+                                            {/* LINK PARA O TWEET ORIGINAL */}
                                             <a className="postLink" href={'https://twitter.com/' + t.user.screen_name + '/status/' + t.id_str} target="_blank" rel="noreferrer">Ver mais no Twitter</a>
                                         </div>
                                     </div>
@@ -305,7 +330,9 @@ function Homepage() {
                 </div>
             </div>
 
+            {/* MODAIS DO ZOOM DAS IMAGENS BUSCADAS */}
             <div className="backdrop" style={{ display: (modalShow ? 'block' : 'none') }} onClick={() => setShowModal(false)}></div>
+
             <div className="modalContainer" style={{ display: (modalShow ? 'block' : 'none') }}>
                 <div className="modalContent" style={{ backgroundImage: `url(${urlImage})` }}>
                     <div className="close" style={{ display: (modalShow ? 'block' : 'none') }} onClick={() => setShowModal(false)}>
@@ -314,6 +341,7 @@ function Homepage() {
                 </div>
             </div>
 
+            {/* ROTA DO FOOTER */}
             <Footer />
         </div>
     )
