@@ -261,13 +261,13 @@ function Homepage() {
                         </div>
                     </div>
 
-                    <div className="containerBody">
+                    
                     <div id="postResultsImages" className="postResultsImages">
-                        <Carousel breakPoints={breakPoints}>
+                        <Carousel className="carousel" breakPoints={breakPoints}>
                         {images.slice(0, 10).map((i, index) => {
                             return (
                                 <Item><div className="imageContainer" key={index} >
-                                <Zoom><div id={"imageContent"+index} className="imageContent" onClick={(event) => handleChange(event)} style={{backgroundImage: `url(${i.url})`}}></div></Zoom>
+                                <div id={"imageContent"+index} className="imageContent" onClick={(event) => handleChange(event)} style={{backgroundImage: `url(${i.url})`}}></div>
                                 
                                 <div className="textContent">
                                     <p>Postado por: @</p>
@@ -279,7 +279,7 @@ function Homepage() {
              })}
              </Carousel>  
             </div>
-            </div>
+            
             
                 {/* RESULTADOS DOS TWEETS EM TEXTO */}
                 <div id="postResultsText" className="postResultsText">
