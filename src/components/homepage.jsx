@@ -13,8 +13,8 @@ import Carousel from "react-elastic-carousel";
 import Item from './item.js';
 
 // Import do Zoom
-import Zoom from 'react-medium-image-zoom'
-import 'react-medium-image-zoom/dist/styles.css'
+
+
 
 // Import das imagens e icones usados na homepage
 import logoSearch from "./imgs/icon-search.svg"
