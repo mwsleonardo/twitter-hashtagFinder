@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 import './topo.css';
 
 // Import das imagens e icones usados na homepage
-import logoWhite from "./imgs/logo-white.svg";
-import logoPink from "./imgs/logo-pink.svg";
-import logoSobre from "./imgs/icon-info-circle.svg";
-import logoLogin from "./imgs/icon-user-alt.svg";
+import logoWhite from "./logo-white.svg";
+import logoPink from "./logo-pink.svg";
+import logoSobre from "./icon-info-circle.svg";
+import logoLogin from "./icon-user-alt.svg";
+import logoHome from "./icon-home.svg"
 
 // Import do router para transação entre páginas
 import { Link } from 'react-router-dom'
@@ -45,10 +46,10 @@ function Topo() {
                 {/* BOTÕES DO TOPO */}
                 <div className="buttons">
                     {/* BOTÃO SOBRE */}
-                    <Link to="/About" className="linkRoute">
+                    <Link to="/" className="linkRoute">
                         <button className="aboutButton">
-                            <img src={logoSobre} alt="logoSobre" className="logoSobre"></img>
-                            <span>Sobre</span>
+                            <img src={logoHome} alt="logoSobre" className="logoSobre"></img>
+                            <span>Home</span>
                         </button></Link>
 
                     {/* BOTÃO LOGIN */}
