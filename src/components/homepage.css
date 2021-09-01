@@ -198,6 +198,9 @@ input.searchBar {
     padding-left: 6%;
 }
 
+input.searchBar:focus {
+    outline: none;
+}
 
 /* LIMITE DE CARACTERES */
 
