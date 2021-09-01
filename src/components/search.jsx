@@ -6,36 +6,45 @@ import exitIcon from './images_v01/icon-power-off.svg'
 import {Link} from 'react-router-dom'
 import loginBg from './imgs/login-bg.jpg'
 import { useEffect, useState } from 'react';
-// import InfiniteLoading from "react-simple-infinite-loading";
-import InfiniteScroll from "react-infinite-scroll-component";
+import InfiniteLoading from "react-simple-infinite-loading";
 
 
 
 function Search() {
-    
-    const [hashtagList, setHashtagList] = useState([]); // guarda as hashtags registradas na API
-    const [hasMore, setHasMore] = useState(true);
 
-    const fetchData = () => {
-        const newList = [...Array(100)].map((_, index) => hashtagList.length + index);
+    
+    const [hashtagList, setHashtagList] = useState([...Array(10)].map((_, index) => index)); // guarda as hashtags registradas na API
+    //const [hasMoreItems, setHasMoreItems] = useState(true); //determina se há hashtags para carregar
+
+     
+    const loadMoreItems = () => {
+        const newList = [...Array(10)].map((_, index) => hashtagList.length + index);
+
+     //  const newList = () => {
+     //      axios.get("https://api.airtable.com/v0/app6wQWfM6eJngkD4/tbl4mrtX1Owvos7eB?filterByFormula=%7BSquad%7D+%3D+'52'&//maxRecords=100&pageSize=100&sort%5B0%5D%5Bfield%5D=Data&sort%5B0%5D%5Bdirection%5D=asc&sort%5B1%5D%5Bfield%5D=Hora&//sort%5B1%5D%5Bdirection%5D=asc&timeZone=America/Sao_Paulo&api_key=key2CwkHb0CKumjuM", {
+     //     headers: {
+     //          "Authorization": "Bearer key2CwkHb0CKumjuM"
+     //      }
+     //  })
+     //  }
     
         return new Promise(resolve => {
           setTimeout(() => {
             setHashtagList([...hashtagList, ...newList]);
-            setHasMore(false);
             resolve();
-          }, 100);
+          }, 10);
+          
         });
       };
-
+        
 
     useEffect(() => {
-        axios.get("https://api.airtable.com/v0/app6wQWfM6eJngkD4/tbl4mrtX1Owvos7eB?filterByFormula=%7BSquad%7D+%3D+'52'", {
+        axios.get("https://api.airtable.com/v0/app6wQWfM6eJngkD4/tbl4mrtX1Owvos7eB?filterByFormula=%7BSquad%7D+%3D+'52'&maxRecords=100&pageSize=100&sort%5B0%5D%5Bfield%5D=Data&sort%5B0%5D%5Bdirection%5D=asc&sort%5B1%5D%5Bfield%5D=Hora&sort%5B1%5D%5Bdirection%5D=asc&timeZone=America/Sao_Paulo&api_key=key2CwkHb0CKumjuM", {
             headers: {
                 "Authorization": "Bearer key2CwkHb0CKumjuM"
             }
         }).then (response => {
-                const infos = response.data.records.map(
+                const infos = response.data.records.map (
                     info => {
                         return {
                             "squad": '52',
@@ -45,10 +54,9 @@ function Search() {
                         }
                     }
                 )
-
                 setHashtagList(infos);
                     console.log(infos);
-            }
+                }
         )
     }, []);
 
@@ -93,21 +101,15 @@ function Search() {
                     <th>Hora</th>
                 </tr>
             </thead>
-            
-            {/* Componente de InfiniteScroll */} 
-            <InfiniteScroll
-              dataLength={hashtagList.length} //render the next data
-              next={fetchData}
-              hasMore={hasMore}
-              loader={<h4>Loading...</h4>}
-              endMessage={
-                <p style={{ textAlign: 'center' }}>
-                  <b>Yay! You have seen it all</b>
-                </p>
-              }
-            >
-                {/* mapeamento dos elementos da array, armazenados no state hashtagList */} 
-                {hashtagList.map ((obj, i) => {
+
+
+        {/* INFINITE LOADING */}
+            <InfiniteLoading
+                //hasMoreItems={hasMoreItems}
+                itemHeight={60} //altura das células da tabela
+                loadMoreItems={loadMoreItems} //função que carrega mais resultados depois que o scroll chega no fim da pagina
+                >
+            {hashtagList.map ((obj, i) => {
                 return (
                     <table>
                         <tbody>
@@ -120,9 +122,9 @@ function Search() {
                     </table>
                 )
             })}
-              
-            </InfiniteScroll>
-
+            
+          </InfiniteLoading>
+          
         </div> 
     
     </div>
