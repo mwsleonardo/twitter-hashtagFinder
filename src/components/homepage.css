@@ -1,5 +1,5 @@
-
 /* IMPORT DA FONTE RUBIK (GOOGLE) */
+
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap');
 
 /* CONFIGURAÇÕES GLOBAIS */
@@ -14,6 +14,7 @@ body {
     height: 100vh;
 }
 
+
 /* AJUSTES CAROUSEL */
 
 .carousel {
@@ -27,8 +28,10 @@ body {
     height: max-content;
     display: flex;
     align-items: flex-start;
-    padding-bottom: 120px;
-    margin-top: 100px;
+    /* padding-bottom: 120px;
+    margin-top: 100px; */
+    margin: 0;
+    padding: 0;
 }
 
 .imageContainer {
@@ -45,6 +48,7 @@ body {
     height: 100%;
 }
 
+
 /* HEADER DO BANNER */
 
 header.banner {
@@ -56,6 +60,7 @@ header.banner {
     position: absolute;
     top: 0;
 }
+
 
 /* CAIXA DE TEXTO DO BANNER */
 
@@ -78,9 +83,11 @@ div.containerInput {
     margin-top: 69vh;
 }
 
-.backdrop, .postResultSelect {
+.backdrop,
+.postResultSelect {
     display: none;
 }
+
 
 /* CAIXA DO SEARCH BAR */
 
@@ -105,6 +112,7 @@ form.form {
     align-items: center;
 }
 
+
 /* ÍCONE DA LUPA DA SEARCH BAR */
 
 img.logoSearch {
@@ -113,6 +121,7 @@ img.logoSearch {
     left: 4vw;
     z-index: 2;
 }
+
 
 /* SEARCH BAR */
 
@@ -128,6 +137,7 @@ input.searchBar {
     padding-left: 6%;
 }
 
+
 /* LIMITE DE CARACTERES */
 
 span.limitCaracteres {
@@ -140,6 +150,7 @@ span.limitCaracteres {
     border: 1px solid #D842BD;
     border-radius: 50%;
 }
+
 
 /* MENSAGEM DE VALIDAÇÃO */
 
@@ -181,15 +192,17 @@ div.containerBody {
     top: 24vh;
 }
 
+
 /* TÍTULO DA PESQUISA */
 
-.searchTitle {
+h1.searchTitle {
     color: #3633F7;
     font: normal normal bold 32px/35px 'Rubik';
-    margin-top: 10vh;
-    margin-bottom: 8vh;
+    margin-top: 35vh;
+    margin-bottom: 1vh;
     text-align: center;
 }
+
 
 /* DIV QUE CONTÉM TODOS OS BOXES DOS TWEETS */
 
@@ -220,9 +233,19 @@ div.postBox {
 
 /* ÍCONE DO USUÁRIO */
 
+div.divImgTweet {
+    width: 20vh;
+    height: 20vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 img.postImg {
-    height: 82px;
-    width: 82px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 75px;
+    width: 75px;
     border-radius: 50px;
     margin: 2vh 2vw;
 }
@@ -251,7 +274,7 @@ div.userBoxTweet {
 
 /* NOME DO USUÁRIO */
 
-p.postUser {
+div.postUser {
     font-size: 24px;
     letter-spacing: 0px;
     color: #292929;
@@ -261,8 +284,9 @@ p.postUser {
 
 /* USERNAME */
 
-span.postUsername {
+div.postUsername {
     margin-left: 1vh;
+    padding-right: 2vw;
     font-size: 18px;
     letter-spacing: 0px;
     color: #292929;
@@ -281,7 +305,7 @@ div.postText {
 
 /* LINK DO TWEET */
 
-div.postLink {
+a.postLink {
     width: fit-content;
     margin-top: 2vh;
     letter-spacing: 0px;
@@ -298,16 +322,16 @@ div.postLink {
         height: 22vh;
         width: 40%;
     }
-    p.postUser {
+    div.postUser {
         font-size: 1.9rem;
     }
-    span.postUsername {
+    div.postUsername {
         font-size: 1.8rem;
     }
     div.postText {
         font-size: 1.2rem;
     }
-    div.postLink {
+    a.postLink {
         font-size: 1rem;
     }
 }
@@ -324,16 +348,16 @@ div.postLink {
         margin-left: 0;
         width: 100%;
     }
-    p.postUser {
+    div.postUser {
         font-size: 1.1rem;
     }
-    span.postUsername {
+    div.postUsername {
         font-size: 1rem;
     }
     div.postText {
         font-size: 0.8rem;
     }
-    div.postLink {
+    a.postLink {
         font-size: 0.8rem;
     }
     header.banner {
@@ -421,6 +445,22 @@ div.postLink {
         margin: 0;
         padding-bottom: 8vh;
     }
+    /* ÍCONE DO USUÁRIO */
+    div.divImgTweet {
+        width: 20vh;
+        height: 20vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    img.postImg {
+        background-size: cover;
+        background-repeat: no-repeat;
+        height: 70px;
+        width: 70px;
+        border-radius: 50px;
+        margin: 2vh 2vw;
+    }
 }
 
 
@@ -445,20 +485,20 @@ div.postLink {
         width: 100%;
     }
     img.postImg {
-        height: 70px;
-        width: 70px;
-        margin: 2vh 2vw;
+        height: 60px;
+        width: 60px;
+        margin: 1vh 1vw;
     }
-    p.postUser {
+    div.postUser {
         font-size: 0.9rem;
     }
-    span.postUsername {
+    div.postUsername {
         font-size: 0.6rem;
     }
     div.postText {
         font-size: 0.7rem;
     }
-    div.postLink {
+    a.postLink {
         font-size: 0.7rem;
     }
 }
