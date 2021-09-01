@@ -6,11 +6,12 @@ export default styled.div`
   align-items: center;
   height: 287px;
   width: 287px;
-  background-color: #00008B;
+  background-color: none;
   color: #fff;
   margin: 0 15px; 
   font-size: 4em;
   border: 0px solid black;
   border-radius: 21px;
   box-shadow: 0px 9px 27px #5538EE29;
+  flex-direction: row;
 `;  

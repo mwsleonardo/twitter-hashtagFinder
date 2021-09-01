@@ -1,5 +1,8 @@
+
+/* IMPORT DA FONTE RUBIK (GOOGLE) */
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap');
 
+/* CONFIGURAÇÕES GLOBAIS */
 
 * {
     margin: 0;
@@ -11,61 +14,49 @@ body {
     height: 100vh;
 }
 
-.banner {
+/* AJUSTES CAROUSEL */
+
+.carousel {
+    display: flex;
+    flex-direction: row;
+}
+
+.postResultsImages {
+    width: 38%;
+    height: max-content;
+    display: flex;
+    align-items: flex-start;
+    padding-bottom: 120px;
+}
+
+.imageContainer {
+    width: 100%;
+    height: 100%;
+    margin-left: 3rem;
+    margin-right: 3rem;
+}
+
+.imageContent {
+    border-radius: 21px;
+    box-shadow: 0px 9px 27px #5538EE29;
+}
+
+/* HEADER DO BANNER */
+
+header.banner {
     background-image: url(./imgs/hero-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    height: 95vh;
+    height: 90vh;
     width: 100%;
+    position: absolute;
+    top: 0;
 }
 
-div.title {
-    padding: 36px 50px 0  50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-button.aboutButton {
-    width: 13vw;
-    height: 7vh;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2.55px;
-    background-color: #D842BD;
-    border: 1px solid #D842BD;
-    border-radius: 50px;
-    margin-right: 3vw;
-    cursor: pointer;
-}
-/* Alterações Giovanni  */
-.linkRoute {
-    text-decoration: none;
-}
-/* Alterações Giovanni  */
-button.loginButton {
-    width: 13vw;
-    height: 7vh;
-    color: white;
-    font-size: 14px;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2.55px;
-    background-color: #3633F7;
-    border: 1px solid #3633F7;
-    border-radius: 50px;
-    cursor: pointer;
-}
-
-img.logoSobre, img.logoLogin {
-    padding-right: 4px;
-    height: 0.7rem;
-}
+/* CAIXA DE TEXTO DO BANNER */
 
 div.textBox {
-    margin: 10% 45% 15% 10%;
+    margin: 15% 45% 15% 10%;
 }
 
 h1 {
@@ -74,20 +65,43 @@ h1 {
     font-size: 60px;
 }
 
-p.subtitle{
+p.subtitle {
     color: white;
     font-size: 22px;
 }
 
+div.containerInput {
+    margin-top: 69vh;
+}
+
+.backdrop, .postResultSelect {
+    display: none;
+}
+
+/* CAIXA DO SEARCH BAR */
+
 div.inputDiv {
-    position: absolute;
-    bottom: 2vh;
+    position: relative;
+    top: 26vh;
+    bottom: 0vh;
     left: 4vw;
     width: 90%;
     display: flex;
     justify-content: center;
-    align-items: center;    
+    align-items: center;
 }
+
+form.form {
+    position: absolute;
+    bottom: 1vh;
+    left: 4vw;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ÍCONE DA LUPA DA SEARCH BAR */
 
 img.logoSearch {
     height: 20px;
@@ -95,7 +109,8 @@ img.logoSearch {
     left: 4vw;
     z-index: 2;
 }
-    
+
+/* SEARCH BAR */
 
 input.searchBar {
     width: 50%;
@@ -106,209 +121,252 @@ input.searchBar {
     z-index: 1;
     color: #8D9DA2;
     font-size: 22px;
-    padding-left: 5%;
+    padding-left: 6%;
 }
 
-div.container {
-    height: 600px;
-}
+/* LIMITE DE CARACTERES */
 
-.footer {
+span.limitCaracteres {
     position: relative;
-    bottom: 0;
-    background-color: #D842BD;
-    color: white;
-    width: 100%;
-    height: 13vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    right: 4vw;
+    z-index: 2;
+    color: #D842BD;
+    font-size: 16px;
+    padding: 0.5%;
+    border: 1px solid #D842BD;
+    border-radius: 50%;
 }
+
+/* MENSAGEM DE VALIDAÇÃO */
+
+div.validationError {
+    position: absolute;
+    bottom: 2.8vh;
+    left: 32vw;
+    width: 40%;
+    margin-top: 1vh;
+    padding: 0;
+    color: red;
+    padding-top: 0.5vh;
+    font-size: 1.7rem;
+}
+
+div.validationLimit {
+    position: absolute;
+    bottom: 0;
+    left: 32vw;
+    width: 40%;
+    margin-top: 1vh;
+    padding-top: 1vh;
+    color: red;
+    padding-top: 0.5vh;
+    font-size: 1.7rem;
+}
+
+p.errorMessage {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    border-radius: 5rem;
+    /* background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(5px); */
+}
+
+div.containerBody {
+    position: relative;
+    top: 24vh;
+}
+
+/* TÍTULO DA PESQUISA */
 
 .searchTitle {
     color: #3633F7;
-    opacity: 1;
-    font: normal normal bold 32px/35px Rubik;
+    font: normal normal bold 32px/35px 'Rubik';
     margin-top: 10vh;
     margin-bottom: 8vh;
     text-align: center;
 }
 
-.carouselImages {
-    margin-left: 3rem;
-    margin-right: 3rem;
-}
+/* DIV QUE CONTÉM TODOS OS BOXES DOS TWEETS */
 
-.resultImage {
-    border-radius: 21px;
-    box-shadow: 0px 9px 27px #5538EE29;
-}
-
-.postBox {
+div.postContainer {
     display: flex;
-    height: 253px;
-    width: 735px;
-    border: 2px solid red;
-    margin: 3rem;
+    justify-content: space-evenly;
     flex-wrap: wrap;
+    margin: 3rem 1rem;
+}
+
+
+/* BOX QUE CONTÉM O TWEET */
+
+div.postBox {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    height: 22vh;
+    width: 42%;
+    margin: 2rem 0;
     border: 1px solid #5538ee24;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 5px 10px #5538EE14;
     border-radius: 15px;
-    opacity: 1;
 }
 
-.postImg {
+
+/* ÍCONE DO USUÁRIO */
+
+img.postImg {
     height: 82px;
     width: 82px;
     border-radius: 50px;
-    margin-left: 5vh;
-    margin-top: 2vh;
+    margin: 2vh 2vw;
 }
 
-.postContainer {
+
+/* CAIXA DE TEXTO COM USER, TWEET E LINIK */
+
+div.textBoxTweet {
     display: flex;
-    justify-content: space-between;
-    margin: 6rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
-.postUser {
-    margin-left: 2vh;
-    margin-top: 2vh;
-    font-size: 32px;
+
+/* CAIXA COM USERNAME E NOME */
+
+div.userBoxTweet {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+
+/* NOME DO USUÁRIO */
+
+p.postUser {
+    font-size: 24px;
     letter-spacing: 0px;
     color: #292929;
+    align-content: flex-start;
 }
 
-.postUsername {
+
+/* USERNAME */
+
+span.postUsername {
     margin-left: 1vh;
-    margin-top: 3vh;
-    font-size: 20px;
+    font-size: 18px;
     letter-spacing: 0px;
     color: #292929;
     opacity: 0.43;
 }
 
-.postText {
-    width: 400px;
-    position: absolute;
-    margin-top: 8vh;
-    margin-left: 18vh;    
+
+/* TEXTO DO TWEET */
+
+div.postText {
+    width: 95%;
+    margin-top: 1vh;
     word-break: break-all;
 }
 
-.postLink {
-    width: 185px;
-    position: absolute;
-    margin-left: 18vh;
-    margin-top: 20vh;
+
+/* LINK DO TWEET */
+
+div.postLink {
+    width: fit-content;
+    margin-top: 2vh;
     letter-spacing: 0px;
+    font-weight: bold;
     color: #3634F7;
+    cursor: pointer;
 }
+
 
 /* AJUSTES POST BOX - RESPONSIVE */
-@media (max-width: 1500px) {
-    .postText {
-        width: 300px;
-    }
-}
 
 @media (max-width: 1350px) {
-    .postContainer {
-        flex-direction: column;
+    div.postBox {
+        height: 22vh;
+        width: 40%;
     }
-    .postBox {
-        margin-left: 20vh;
+    p.postUser {
+        font-size: 1.9rem;
     }
-    .postText {
-        width: 400px;
+    span.postUsername {
+        font-size: 1.8rem;
     }
-    
+    div.postText {
+        font-size: 1.2rem;
+    }
+    div.postLink {
+        font-size: 1rem;
+    }
 }
 
+
 /* MEDIA TABLET */
+
 @media (max-width: 1050px) {
-
-    .postContainer {
+    div.postContainer {
         flex-direction: column;
+        margin: 3rem 3rem;
     }
-
-    .postBox {
+    div.postBox {
         margin-left: 0;
+        width: 100%;
     }
-
-    .postUsername{
-        margin-left: 2vh;
-        margin-top: 4vh;
+    p.postUser {
+        font-size: 1.1rem;
     }
-
-    .postText {
-        margin-left: 24vh;
-        margin-top: 11vh;
+    span.postUsername {
+        font-size: 1rem;
     }
-
-    .postLink {
-        margin-left: 24vh;
-        margin-top: 26vh;
+    div.postText {
+        font-size: 0.8rem;
     }
-
-    .banner {
+    div.postLink {
+        font-size: 0.8rem;
+    }
+    header.banner {
         background-image: url(./imgs/hero-bg-mobile.jpg);
         background-size: cover;
         background-repeat: no-repeat;
-        height: 90vh;
+        height: 70vh;
         width: 100%;
     }
-
-    div.title {
-        padding: 36px 16px 0  16px;
-    }
-
-    img.logo {
-        width: 40vw;
-    }
-
-    button.aboutButton{
-        width: 22vw;
-        height: 5vh;
-        margin-right: 13px;
-        font-size: 16px;
-    }
-
-    button.loginButton{
-        width: 22vw;
-        height: 5vh;
-        font-size: 16px;
-    }
-
-    img.logoSobre, img.logoLogin {
-        height: 0.6rem;
-    }
-
     div.textBox {
-        margin: 10% 10% 15% 10%;
+        margin: 22% 10% 15% 10%;
     }
-
     h1 {
         font-size: 40px;
     }
-
-    p.subtitle{
+    p.subtitle {
         font-size: 20px;
     }
-
+    div.containerInput {
+        margin-top: 50vh;
+    }
     div.inputDiv {
+        position: relative;
+        top: 0;
+        bottom: 0;
+        left: 0;
+    }
+    form.form {
         position: relative;
         bottom: 2vh;
         left: 4vw;
     }
-
     img.logoSearch {
         height: 15px;
         top: 2.8vh;
         left: 5vw;
     }
-        
     input.searchBar {
         width: 80%;
         height: 7vh;
@@ -317,158 +375,120 @@ div.container {
         font-size: 16px;
         padding-left: 8%;
     }
-
-    .footer {
-        height: 12vh;
-        font-size: 12px;
+    span.limitCaracteres {
+        right: 7vw;
+        top: 2.8vh;
     }
-
+    /* MENSAGEM DE VALIDAÇÃO */
+    div.validationError {
+        position: absolute;
+        bottom: 35vh;
+        left: 14vw;
+        width: 35%;
+        margin: 0;
+        padding: 0;
+        color: red;
+        font-weight: bold;
+        padding-top: 0.5vh;
+        font-size: 14px;
+    }
+    div.validationLimit {
+        position: absolute;
+        bottom: 32vh;
+        left: 19vw;
+        width: 35%;
+        margin: 0;
+        padding: 0;
+        color: red;
+        font-weight: bold;
+        padding-top: 0.5vh;
+        font-size: 14px;
+    }
+    p.errorMessage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1%;
+        border-radius: 5rem;
+        /* background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(5px); */
+    }
+    h1.searchTitle {
+        margin: 0;
+        padding-bottom: 8vh;
+    }
 }
 
-@media (max-width: 900px) {
-    .postBox {
-        display: flex;
-        height: 253px;
-        width: 100%;
-        border: 2px solid red;
-        margin: 0;
-        margin-bottom: 4rem;
-        flex-wrap: wrap;
-        border: 1px solid #5538ee24;
-        background: #FFFFFF 0% 0% no-repeat padding-box;
-        box-shadow: 0px 5px 10px #5538EE14;
-        border-radius: 15px;
-        opacity: 1;
+
+/* AJUSTE DA VALIDAÇÃO  */
+
+@media (max-width: 700px) {
+    div.validationError {
+        width: 55%;
     }
-
-    .postUser {
-        font-size: 28px;
-    }
-
-    .postText {
-        margin-left: 18vw;
-        width: 50%;
-    }
-
-    .postContainer {
-        margin-left: 0;
-        /* align-items: center; */
-        align-items: inherit;
-        margin-left: 50px;
-    }
-
-    .postLink {
-        margin-left: 15vh;
-        margin-top: 26vh;
-    }
-
-    .postUsername {
-        margin-left: 18vh;
-        margin-top: 7vh;
-        position: absolute;
-
-        font-size: 16px;
-        letter-spacing: 0px;
-        color: #292929;
-        opacity: 0.43;
+    div.validationLimit {
+        width: 55%;
     }
 }
 
 @media (max-width: 442px) {
-    .postContainer {
-        align-items: center;
-        margin-left: 5vw;
-        margin-right: 5vw;
-    
+    div.postContainer {
+        flex-direction: column;
+        margin: 3rem 1rem;
     }
-
-    img.postImg {
-        margin-top: 2vh;
-        margin-left: 4vw;
-    }
-
-    div.postUser {
-        margin-top: 2vh;
-    }
-
-    div.postUsername {
-        margin-top: 6vh;
-        margin-left: 26vw;
-
-    }
-
-    div.postText {
-        margin-top: 10vh;
-        margin-left: 26vw;
-        width: 60%;
-    }
-
-    div.postLink {
-        margin-top: 26vh;
-        margin-left: 26vw;
-    }
-
-    .postBox {
-        align-items: flex-start;
+    div.postBox {
         margin-left: 0;
-    
+        width: 100%;
     }
-
+    img.postImg {
+        height: 70px;
+        width: 70px;
+        margin: 2vh 2vw;
+    }
+    p.postUser {
+        font-size: 0.9rem;
+    }
+    span.postUsername {
+        font-size: 0.6rem;
+    }
+    div.postText {
+        font-size: 0.7rem;
+    }
+    div.postLink {
+        font-size: 0.7rem;
+    }
 }
-/* MEDIA MOBILE */
-@media (max-width: 414px) {
 
-    .banner {
+
+/* MEDIA MOBILE */
+
+@media (max-width: 414px) {
+    header.banner {
         height: 70vh;
     }
-
-    div.title {
-        padding: 36px 16px 0  16px;
-    }
-
-    img.logo {
-        width: 130px;
-    }
-
-    button.aboutButton{
-        width: 22vw;
-        height: 4vh;
-        margin-right: 13px;
-        font-size: 10px;
-    }
-
-    button.loginButton{
-        width: 22vw;
-        height: 4vh;
-        font-size: 10px;
-    }
-
-    img.logoSobre, img.logoLogin {
-        height: 0.5rem;
-    }
-
     div.textBox {
-        margin: 10% 10% 15% 10%;
+        margin: 30% 10% 15% 10%;
     }
-
     h1 {
         font-size: 34px;
     }
-
-    p.subtitle{
+    p.subtitle {
         font-size: 16px;
     }
-
-    div.inputDiv {
-        bottom: 1vh; 
+    div.containerInput {
+        margin-top: 46vh;
     }
-
+    div.inputDiv {
+        bottom: 0;
+    }
+    form.form {
+        bottom: 1vh;
+    }
     img.logoSearch {
         height: 15px;
         top: 2.4vh;
         left: 7vw;
     }
-        
     input.searchBar {
         width: 80%;
         height: 7vh;
@@ -476,13 +496,48 @@ div.container {
         font-size: 16px;
         padding-left: 10%;
     }
-
-    .footer {
-        height: 10vh;
-        font-size: 10px;
+    span.limitCaracteres {
+        font-size: 12px;
+        right: 10vw;
+        top: 2.5vh;
     }
-
-
-    
+    h1.searchTitle {
+        margin: 0;
+        padding-bottom: 8vh;
+    }
+    /* MENSAGEM DE VALIDAÇÃO  */
+    div.validationError {
+        position: absolute;
+        bottom: 40vh;
+        left: 22vw;
+        width: 55%;
+        margin: 0;
+        padding: 0;
+        color: red;
+        font-weight: normal;
+        padding-top: 0.5vh;
+        font-size: 14px;
+    }
+    div.validationLimit {
+        position: absolute;
+        bottom: 36vh;
+        left: 22vw;
+        width: 55%;
+        margin: 0;
+        padding: 0;
+        color: red;
+        font-weight: normal;
+        padding-top: 0.5vh;
+        font-size: 14px;
+    }
+    p.errorMessage {
+        font-size: 0.7rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 1%;
+        border-radius: 5rem;
+        background: rgba(255, 255, 255, 0.4);
+        backdrop-filter: blur(5px);
+    }
 }
-

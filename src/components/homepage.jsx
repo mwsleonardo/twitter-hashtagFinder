@@ -1,5 +1,9 @@
 import React from 'react';
 import './homepage.css';
+import { useState, useEffect } from 'react';
+import axios from 'axios'
+import Topo from './topo'
+import Footer from './footer'
 
 // Import do router para transação entre páginas
 import {Link} from 'react-router-dom'
@@ -8,23 +12,13 @@ import {Link} from 'react-router-dom'
 import Carousel from "react-elastic-carousel";
 import Item from './item.js';
 
+// Import do Zoom
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
+
 // Import das imagens e icones usados na homepage
-import logoWhite from "./imgs/logo-white.svg";
-import logoSobre from "./imgs/icon-info-circle.svg";
-import logoLogin from "./imgs/icon-user-alt.svg";
 import logoSearch from "./imgs/icon-search.svg"
 
-// Import das imagens teste para o resultado da busca
-import search1 from "./imgsSearch/search1.png";
-import search2 from "./imgsSearch/search2.png";
-import search3 from "./imgsSearch/search3.png";
-import search4 from "./imgsSearch/search4.png";
-import search5 from "./imgsSearch/search5.png";
-import search6 from "./imgsSearch/search6.png";
-import search7 from "./imgsSearch/search7.png";
-import search8 from "./imgsSearch/search8.png";
-import search9 from "./imgsSearch/search9.png";
-import search10 from "./imgsSearch/search10.png";
 
 // Const para a "quebra de linha" do resultado das imagens
 const breakPoints = [
@@ -35,151 +29,296 @@ const breakPoints = [
 ];
 
 
-// Function retornando todo o conteúdo da homepage
+
 function Homepage() {
+
+    // Const do titulo da hashtag pesquisada
+    const [titulo, setTitulo] = useState('');
+    // Const do conteúdo digitado no input para pesquisa da hashtag
+    const [contentInput, setContentInput] = useState('');
+    // Const menssagem validação
+    const [error, setError] = useState(null);
+    // Const menssagem limite caracteres
+    const [limit, setLimite] = useState(null);
+    // Const para retirar hashtag
+    const [noHashtag, setNoHashtag] = useState('');
+    // Const para habilitar as funcionalidades
+    let [modalShow, setShowModal] = useState(false)
+    // Const para setar imagens da busca
+    let [urlImage, setUrlImage] = useState('')
+    // Tamanho do que foi escrito no input
+    const lengthInput = contentInput.length;
+    // limite inicial do que for inserido no input
+    const limitCaracteres = 20 - lengthInput; 
+
+    // Const que resgata o valor preenchido no input
+    function handleTextChange(event) {
+        setContentInput(event.target.value); // guarda o valor preenchido no content Input
+
+        //Condicional para aparecer mensagem de limite de caracteres
+        if (lengthInput < 20) { // em quanto não tiver 20 caracteres, não mostrar aviso
+            setLimite(null); // variável sem valor - não aparece nada
+            console.log(limit)
+        } if (lengthInput >= 19) { // a partir de 19 caracteres
+            setLimite("Limite de caracteres atingido!"); // aparecer aviso
+            console.log(limit)
+        }
+    }
+
+    // Const que resgata do DOM a div de mensagem de validação
+    const messageValidation = document.getElementsByClassName('validation');
+
+
+     function handleChange(event){
+         let id = event.target.id
+         setUrlImage(document.getElementById(id).style.backgroundImage.replace('url("', "").replace('")', ""))
+         setShowModal(true)
+         setTitulo(event.target.value);
+         setContentInput(event.target.value);
+            if (contentInput.length == 0) { // se o campo estiver vazio, impede que seja registrado
+                setError('Campo obrigatório!');} // faz aparecer a div com a mensagem de campo obrigatório
+                else {
+                    setError(null); // div não aparece - não tem conteúdo
+                    console.log("chama função post")
+                    console.log('CONTEÚDO DIGITADO', contentInput);
+        
+        
+                    // postSearch(); // chamda da função que registra na airtable
+        
+                    // retirada da hashtag para requisição da api do twitter
+                    let takeOutHash = contentInput;
+                    getTweets(takeOutHash.replace(/#/g, ''));
+                    getImages(takeOutHash.replace(/#/g, ''));
+                    setNoHashtag(takeOutHash.replace(/#/g, ''));
+                    setContentInput('');
+        
+                }
+     }
+ 
+    
+
+
+     function showImages(){
+         document.getElementById("postResultsImages").style.display = 'flex'
+         document.getElementById("postResultsText").style.display = 'none'
+         document.getElementById("selectImages").classList.add("active")
+         document.getElementById("selectTweets").classList.remove("active")
+     }
+ 
+     function showText(){
+         document.getElementById("postResultsText").style.display = 'block'
+         document.getElementById("postResultsImages").style.display = 'none'
+         document.getElementById("selectTweets").classList.add("active")
+         document.getElementById("selectImages").classList.remove("active")
+     }
+ 
+     let [tweets, setTweets] = useState([])
+     let [images, setImages] = useState([])
+ 
+     
+     function getTweets(){
+        let hashtag = document.getElementById('enter').value.replace(/#/g, "")
+         axios.get('https://cors.bridged.cc/https://api.twitter.com/1.1/search/tweets.json?q='+hashtag+'&lang=pt&result_type=recent', {
+             method: 'GET',
+             headers: {
+                 Authorization: 'Bearer AAAAAAAAAAAAAAAAAAAAAFlKHgEAAAAApBW4nRyRkiogluzAbXlS4KuHlMU%3DFcR7r8N19LRnMHLVmYlFsod6Be6zUvZD2rxATotl6mLPAh2UEX'
+             },
+         }).then((resp) => {setTweets(resp.data.statuses)})
+     }
+ 
+     function getImages(){
+          let hashtag = document.getElementById('enter').value.replace(/#/g, "")
+         axios.get('https://cors.bridged.cc/https://api.twitter.com/2/tweets/search/recent?query='+hashtag+'%20has:images&max_results=50&expansions=author_id,attachments.media_keys&media.fields=type,url,width,height', {
+             method: 'GET',
+             headers: {
+                 Authorization: 'Bearer AAAAAAAAAAAAAAAAAAAAAFlKHgEAAAAApBW4nRyRkiogluzAbXlS4KuHlMU%3DFcR7r8N19LRnMHLVmYlFsod6Be6zUvZD2rxATotl6mLPAh2UEX'
+             },
+         }).then((resp) => {setImages(resp.data.includes.media)})
+     }
+
+    
+     function postAirtable(){
+         let hashtag = document.getElementById('enter').value.replace(/#/g, "")
+ 
+
+         var data = new Date()
+         var day = String(data.getDate()).padStart(2, '0')
+         var month = String(data.getMonth() + 1).padStart(2, '0')
+         var year = data.getFullYear()
+         var today = day + '/' + month + '/' + year
+ 
+         var hour = String(data.getHours()).padStart(2, '0')
+         var minutes = String(data.getMinutes()).padStart(2, '0')
+         var currentTime = hour + ':' + minutes
+ 
+         var axios = require('axios');
+         var data = JSON.stringify({
+         "records": [
+             {
+             "fields": {
+                 "Squad": "52",
+                 "Hashtag": hashtag,
+                 "Data": today,
+                 "Hora": currentTime
+                 }
+             }
+         ]
+         });
+ 
+         var config = {
+         method: 'post',
+         url: 'https://api.airtable.com/v0/app6wQWfM6eJngkD4/Buscas',
+         headers: {
+             'Authorization': 'Bearer key2CwkHb0CKumjuM',
+             'Content-Type': 'application/json',
+             'Cookie': 'brw=brwT6txT287hmhYVt'
+         },
+         data : data
+         };
+         axios(config)
+         .then(function(response){})
+         .catch(function (error) {
+         console.log(error);
+         });
+     }
+ 
+     const handler = (event) => {
+         if (event.key === 'Enter') {
+            getTweets()
+            getImages()
+            postAirtable()
+         }
+     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     return (
         
         <div>
             <div className="homepage">
-                <header className="banner">
-                    <div className="title">
-                        <img src={logoWhite} alt="Logo" class="logo"></img>
-                        <div className="buttons">
-                            {/* Alterações Giovanni */}
-                            <Link to="/About" className="linkRoute">
-                            <button className="aboutButton">
-                                <img src={logoSobre} alt="logoSobre" class="logoSobre"></img>
-                                <span>Sobre</span>
-                            </button></Link>  
-                            
-                            <Link to="/login" className="linkRoute">
-                            <button className="loginButton">
-                                <img src={logoLogin} alt="logoLogin" class="logoLogin"></img>
-                                <span>Login</span>
-                            </button>
-                            </Link>
-                        </div>
-                    </div>
 
+                {/* HEADER */}
+                <header className="banner">
+                    <Topo />
+                    {/* CAIXA DE TEXTO DO BANNER */}
                     <div className="textBox">
-                        <h1 className="title"> Encontre hashtags de maneira fácil  </h1>
-                        <p className="subtitle"> Digite o que deseja no campo de buscas e confira os resultados do Twitter abaixo </p>
-                    </div>
-                    <div className="inputDiv">
-                        <img src={logoSearch} alt="logoSearch" class="logoSearch"></img>
-                        <input type="text" className="searchBar" placeholder="Buscar..."></input>
+                    <h1 className="title"> Encontre hashtags de maneira fácil  </h1>
+                    <p className="subtitle"> Digite o que deseja no campo de buscas e confira os resultados do Twitter abaixo </p>
                     </div>
                 </header>
 
-
-                <h1 className="searchTitle">Exibindo os 10 resultados mais recentes de #vikings</h1>
-                <div className="carouselImages">
-                    <Carousel breakPoints={breakPoints}>
-                        <Item><img className="resultImage" src={search1}></img></Item>
-                        <Item><img className="resultImage" src={search2}></img></Item>
-                        <Item><img className="resultImage" src={search3}></img></Item>
-                        <Item><img className="resultImage" src={search4}></img></Item>
-                        <Item><img className="resultImage" src={search5}></img></Item>
-                        <Item><img className="resultImage" src={search6}></img></Item>
-                        <Item><img className="resultImage" src={search7}></img></Item>
-                        <Item><img className="resultImage" src={search8}></img></Item>
-                        <Item><img className="resultImage" src={search9}></img></Item>
-                        <Item><img className="resultImage" src={search10}></img></Item>
-                    </Carousel>
-                </div>
-                <div className="resultPosts">
-                    <div className="postContainer">   
-                        <div className="postBox">
-                            <img className="postImg" src={search1}></img>
-                            <div className="postUser">UserName</div>
-                            <div className="postUsername">@twitterusername</div>
-                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                            <div className="postLink">Ver mais no Twitter</div>
-                        </div>
-                        <div className="postBox">
-                            <img className="postImg" src={search1}></img>
-                            <div className="postUser">UserName</div>
-                            <div className="postUsername">@twitterusername</div>
-                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                            <div className="postLink">Ver mais no Twitter</div>
-                        </div>
+                {/* INPUT DA PESQUISA */}
+                <div className="containerInput">
+                    <div className="inputDiv">
+                        <form className="form">
+                            <img src={logoSearch} alt="logoSearch" class="logoSearch"></img>
+                            <input 
+                            id="enter" 
+                            name="searchBar"
+                            type="text" 
+                            className="searchBar" 
+                            placeholder="Buscar..." 
+                            maxlength="20"
+                            data-ls-module="charCounter"
+                            value={contentInput}
+                            onChange={handleTextChange}
+                            onKeyPress={(e) => handler(e)}>
+                            </input>
+                        </form>
                     </div>
-                    <div className="postContainer">   
-                        <div className="postBox">
-                            <img className="postImg" src={search1}></img>
-                            <div className="postUser">UserName</div>
-                            <div className="postUsername">@twitterusername</div>
-                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                            <div className="postLink">Ver mais no Twitter</div>
-                        </div>
-                        <div className="postBox">
-                            <img className="postImg" src={search1}></img>
-                            <div className="postUser">UserName</div>
-                            <div className="postUsername">@twitterusername</div>
-                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                            <div className="postLink">Ver mais no Twitter</div>
-                        </div>
-                    </div>
-                    <div className="postContainer">   
-                        <div className="postBox">
-                            <img className="postImg" src={search1}></img>
-                            <div className="postUser">UserName</div>
-                            <div className="postUsername">@twitterusername</div>
-                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                            <div className="postLink">Ver mais no Twitter</div>
-                        </div>
-                        <div className="postBox">
-                            <img className="postImg" src={search1}></img>
-                            <div className="postUser">UserName</div>
-                            <div className="postUsername">@twitterusername</div>
-                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                            <div className="postLink">Ver mais no Twitter</div>
-                        </div>
-                    </div>
-                    <div className="postContainer">   
-                        <div className="postBox">
-                            <img className="postImg" src={search1}></img>
-                            <div className="postUser">UserName</div>
-                            <div className="postUsername">@twitterusername</div>
-                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                            <div className="postLink">Ver mais no Twitter</div>
-                        </div>
-                        <div className="postBox">
-                            <img className="postImg" src={search1}></img>
-                            <div className="postUser">UserName</div>
-                            <div className="postUsername">@twitterusername</div>
-                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                            <div className="postLink">Ver mais no Twitter</div>
-                        </div>
-                    </div>
-                    <div className="postContainer">   
-                        <div className="postBox">
-                            <img className="postImg" src={search1}></img>
-                            <div className="postUser">UserName</div>
-                            <div className="postUsername">@twitterusername</div>
-                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                            <div className="postLink">Ver mais no Twitter</div>
-                        </div>
-                        <div className="postBox">
-                            <img className="postImg" src={search1}></img>
-                            <div className="postUser">UserName</div>
-                            <div className="postUsername">@twitterusername</div>
-                            <div className="postText">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat...</div>
-                            <div className="postLink">Ver mais no Twitter</div>
-                        </div>
-                    </div>
-
-                    
-
                 </div>
 
+                {/* VALIDAÇÃO */}
+                <div className="validationLimit">
+                    {limit && <p className="errorMessage">{limit}</p>}
+                </div>
+                <div className="validationError">
+                    {error && <p className="errorMessage">{error}</p>}
+                </div>
 
+                <h1 className="searchTitle">Exibindo os 10 resultados mais recentes de #{titulo}</h1>
 
-                <footer className="footer">
-                    @NewTab Academy 2021. Todos os direitos reservados
-                </footer>
+                <div className="postResultSelect">
+                        <div id="selectTweets" className="active" onClick={showText}>
+                            <p>Tweets</p>
+                        </div>
+                        <div id="selectImages" onClick={showImages}>
+                            <p>Imagens</p>
+                        </div>
+                    </div>
+
+                    <div className="containerBody">
+                    <div id="postResultsImages" className="postResultsImages">
+                        <Carousel breakPoints={breakPoints}>
+                        {images.slice(0, 10).map((i, index) => {
+                            return (
+                                <Item><div className="imageContainer" key={index} >
+                                <Zoom><div id={"imageContent"+index} className="imageContent" onClick={(event) => handleChange(event)} style={{backgroundImage: `url(${i.url})`}}></div></Zoom>
+                                
+                                <div className="textContent">
+                                    <p>Postado por: @</p>
+                                    <p>@username</p>
+                                </div>
+                            </div>
+                            </Item>              
+                )
+             })}
+             </Carousel>  
             </div>
+            </div>
+            
+                {/* RESULTADOS DOS TWEETS EM TEXTO */}
+                <div id="postResultsText" className="postResultsText">
+                {tweets.slice(0, 10).map((t, index) => {
+                    return (
+                <div className="resultPosts">
+                    <div className="postContainer" key={index}>   
+                        <div className="postBox">
+                                <img className="postImg" style={{backgroundImage: `url(${t.user.profile_image_url})`}}></img>
+                                <div className="textBoxTweet">
+                                    <div className="userBoxTweet">
+                                        <div className="postUser">{t.user.name}</div>
+                                        <div className="postUsername">@{t.user.screen_name}</div>
+                                    </div>
+                            <div className="postText">{t.text}</div>
+                            <a className="postLink" href={'https://twitter.com/'+t.user.screen_name+'/status/'+t.id_str} target="_blank" rel="noreferrer">Ver mais no Twitter</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                    )
+                    })}        
+                </div>
+            </div>
+
+            <div className="backdrop" style={{display: (modalShow ? 'block' : 'none')}} onClick={() => setShowModal(false)}></div>
+            <div className="modalContainer" style={{display: (modalShow ? 'block' : 'none')}}>
+                <div className="modalContent" style={{backgroundImage: `url(${urlImage})`}}>
+                        <div className="close" style={{display: (modalShow ? 'block' : 'none')}} onClick={() => setShowModal(false)}>
+                            Close
+                        </div>
+                </div>
+            </div>
+
+
+
+
+
+            <Footer/>
         </div>
         
 
