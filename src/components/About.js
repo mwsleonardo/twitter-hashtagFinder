@@ -16,12 +16,12 @@ state = {
     list:[]
   }
 
-  /* =================  PUXANDO API TEXTO DO PROJETO  --------------*/
+ 
   componentDidMount(){
     this.getSobre()
     this.getSquad()
   }
-
+/* ----PUXANDO API TEXTO DO PROJETO ----------*/
    getSobre(){
     fetch("https://api.airtable.com/v0/app6wQWfM6eJngkD4/Projeto?api_key=key2CwkHb0CKumjuM&filterByFormula=({Squad}='52')", {
     })
@@ -31,8 +31,8 @@ state = {
     })
   }
 
-  /*------  PUXANDO INFOS EQUIPE API  --------------------*/
-
+ 
+ /*------  PUXANDO INFOS EQUIPE API  --------------------*/
   getSquad(){
     fetch("https://api.airtable.com/v0/app6wQWfM6eJngkD4/Equipe?api_key=key2CwkHb0CKumjuM&filterByFormula=({Squad}='52')", {
     })
