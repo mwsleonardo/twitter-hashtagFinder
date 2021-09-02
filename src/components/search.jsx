@@ -13,52 +13,53 @@ import InfiniteLoading from "react-simple-infinite-loading";
 function Search() {
 
     
-    const [hashtagList, setHashtagList] = useState([...Array(10)].map((_, index) => index)); // guarda as hashtags registradas na API
-    //const [hasMoreItems, setHasMoreItems] = useState(true); //determina se há hashtags para carregar
+    const [hashtagList, setHashtagList] = useState([...Array(100)].map((_, index) => index)); // guarda as hashtags registradas na API
 
-     
-    const loadMoreItems = () => {
-        const newList = [...Array(10)].map((_, index) => hashtagList.length + index);
+      {/* função que carrega mais resultados depois que o scroll chega no fim da pagina */} 
+    const fetchItems = () => {
+        console.log('fetchItems');
+        const newList = [...Array(100)].map((_, index) => hashtagList.length + index);
+        
 
      //  const newList = () => {
-     //      axios.get("https://api.airtable.com/v0/app6wQWfM6eJngkD4/tbl4mrtX1Owvos7eB?filterByFormula=%7BSquad%7D+%3D+'52'&//maxRecords=100&pageSize=100&sort%5B0%5D%5Bfield%5D=Data&sort%5B0%5D%5Bdirection%5D=asc&sort%5B1%5D%5Bfield%5D=Hora&//sort%5B1%5D%5Bdirection%5D=asc&timeZone=America/Sao_Paulo&api_key=key2CwkHb0CKumjuM", {
-     //     headers: {
-     //          "Authorization": "Bearer key2CwkHb0CKumjuM"
-     //      }
-     //  })
-     //  }
+    //      axios.get("https://api.airtable.com/v0/app6wQWfM6eJngkD4/tbl4mrtX1Owvos7eB?filterByFormula=%7BSquad%7D+%3D+'52'&//maxRecords=100&pageSize=100&sort%5B0%5D%5Bfield%5D=Data&sort%5B0%5D%5Bdirection%5D=asc&sort%5B1%5D%5Bfield%5D=Hora&//sort%5B1%5D%5Bdirection%5D=asc&timeZone=America/Sao_Paulo&api_key=key2CwkHb0CKumjuM", {
+    //     headers: {
+    //          "Authorization": "Bearer key2CwkHb0CKumjuM"
+    //      }
+    //  })
+    //  }
     
         return new Promise(resolve => {
           setTimeout(() => {
             setHashtagList([...hashtagList, ...newList]);
             resolve();
-          }, 10);
+          }, 100);
           
         });
       };
         
 
-    useEffect(() => {
-        axios.get("https://api.airtable.com/v0/app6wQWfM6eJngkD4/tbl4mrtX1Owvos7eB?filterByFormula=%7BSquad%7D+%3D+'52'&maxRecords=100&pageSize=100&sort%5B0%5D%5Bfield%5D=Data&sort%5B0%5D%5Bdirection%5D=asc&sort%5B1%5D%5Bfield%5D=Hora&sort%5B1%5D%5Bdirection%5D=asc&timeZone=America/Sao_Paulo&api_key=key2CwkHb0CKumjuM", {
-            headers: {
-                "Authorization": "Bearer key2CwkHb0CKumjuM"
-            }
-        }).then (response => {
-                const infos = response.data.records.map (
-                    info => {
-                        return {
-                            "squad": '52',
-                            "hashtag": info.fields.Hashtag,
-                            "data": info.fields.Data,
-                            "hora": info.fields.Hora
-                        }
-                    }
-                )
-                setHashtagList(infos);
-                    console.log(infos);
-                }
-        )
-    }, []);
+       useEffect(() => {
+           axios.get("https://api.airtable.com/v0/app6wQWfM6eJngkD4/tbl4mrtX1Owvos7eB?filterByFormula=%7BSquad%7D+%3D+'52'&maxRecords=50&  pageSize=50&sort%5B0%5D%5Bfield%5D=Data&sort%5B0%5D%5Bdirection%5D=asc&sort%5B1%5D%5Bfield%5D=Hora&sort%5B1%5D%5Bdirection%5D=asc&   timeZone=America/Sao_Paulo&api_key=key2CwkHb0CKumjuM", {
+             headers: {
+                 "Authorization": "Bearer key2CwkHb0CKumjuM"
+             }
+         }).then (response => {
+                 const infos = response.data.records.map (
+                     info => {
+                         return {
+                             "squad": '52',
+                             "hashtag": info.fields.Hashtag,
+                             "data": info.fields.Data,
+                             "hora": info.fields.Hora
+                         }
+                     }
+                 )
+                 setHashtagList(infos);
+                     console.log(infos);
+                 }
+         )
+     }, []);
 
 
     return (
@@ -105,26 +106,28 @@ function Search() {
 
         {/* INFINITE LOADING */}
             <InfiniteLoading
-                //hasMoreItems={hasMoreItems}
-                itemHeight={60} //altura das células da tabela
-                loadMoreItems={loadMoreItems} //função que carrega mais resultados depois que o scroll chega no fim da pagina
+                //hasMoreItems
+                itemHeight={50} //altura das células da tabela
+                loadMoreItems={fetchItems} //função que carrega mais resultados depois que o scroll chega no fim da pagina
                 >
             {hashtagList.map ((obj, i) => {
-                return (
+                return(
+                    <div className="App">
                     <table>
                         <tbody>
                             <tr>
-                                <td>{obj.hashtag}</td>
-                                <td>{obj.data}</td>
-                                <td>{obj.hora}</td>
+                               <td>{obj.hashtag}</td>
+                               <td>{obj.data}</td>
+                               <td>{obj.hora}</td>
                             </tr>
                         </tbody>
                     </table>
-                )
+                    </div>
+                 )
             })}
             
           </InfiniteLoading>
-          
+
         </div> 
     
     </div>
