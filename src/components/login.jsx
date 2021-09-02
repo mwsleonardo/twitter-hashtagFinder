@@ -106,7 +106,7 @@ function Login() {
             <div className="backdrop" style={{ display: (modalShow ? 'block' : 'none') }} onSubmit={() => setShowModal(false)}></div>
 
             <div className="modalContainer" style={{ display: (modalShow ? 'block' : 'none') }}>
-                <div className="modalContent"> <h1>Cadastro concluído</h1>
+                <div className="modalContent"> <h1>Acesso liberado</h1>
                     <Link to="/search"><button className="buttonModal" type="submit">Continuar</button></Link>
                 </div>
             </div>

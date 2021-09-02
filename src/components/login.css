@@ -20,10 +20,12 @@ body {
 .modalContainer {
     width: 50vw;
     position: fixed;
-    left: 25vw;
-    top: 120px;
+    left: 40vw;
+    top: 20%;
     border-radius: 30px;
     z-index: 5;
+    width: 300px;
+    height: 300px;
 }
 .modalContainer .modalContent {
     width: 100%;
@@ -36,7 +38,7 @@ body {
     position: relative;
     flex-direction: column;
     background-color: indigo;
-    margin-top: 28%;
+    margin-top: 0%;
 }
 
 .modalContainer .modalContent .close {
@@ -51,7 +53,7 @@ body {
 
 .modalContainer h1 {
     font-size: 30px;
-    margin-top: 2%;
+    margin-top: 40%;
 }
 
 .buttonModal{
@@ -63,6 +65,7 @@ body {
     font-size: 22px;
     margin-top: 20%;
     margin-bottom: 20%;
+    cursor: pointer;
 }
 
 .containerLogin {
