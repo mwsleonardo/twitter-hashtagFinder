@@ -17,7 +17,7 @@ function Login() {
     const [userInput, setUserInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
 
-
+    let [modalShow, setShowModal] = useState(false);
 
     // function validateUser(e) {
     //     const loginUser = [
@@ -73,7 +73,9 @@ function Login() {
                 } else {
                     console.log(response.data.records.length)
                     alert('CADASTRO FUNFOU!')
+                    setShowModal(true)
                     return   true;
+                    
                 }
             })
             .catch(() => {
@@ -91,6 +93,12 @@ function Login() {
     }
 
 
+    const handler = (event) => {
+        if (event.key === 'Enter') {
+        submitForm();
+        }
+    }
+
     return (
         <div className="containerLogin">
             <img src={loginBg} className="backgroundImg"></img>
@@ -100,7 +108,7 @@ function Login() {
             </div>
             <div className="loginBox" >
                 <h1 className="titleBox">Login</h1>
-                <form className="formLogin">
+                <form className="formLogin" onKeyPress={(e) => handler(e)}>
                     <input
                         className="itensLogin"
                         placeholder="Usuário"
@@ -117,8 +125,23 @@ function Login() {
                     />
                     {error2 && <p className="invalidUser">{error2}</p>}
                 </form>
-                <Link to="/search"><button className="buttonLogin" type="submit" onClick={submitForm}> Acessar</button></Link>
+               <button className="buttonLogin" type="submit" onClick={submitForm}> Acessar</button>
             </div>
+
+            <div className="backdrop" style={{ display: (modalShow ? 'block' : 'none') }} onSubmit={() => setShowModal(false)}></div>
+
+            <div className="modalContainer" style={{ display: (modalShow ? 'block' : 'none') }}>
+                <div className="modalContent"> Credenciais validas
+                    <Link to="/search"><button className="buttonLogin" type="submit">Continuar</button></Link>
+                </div>
+            </div>
+
+
+
+
+
+
+
         </div>
     )
 }
