@@ -8,8 +8,8 @@ gh-pages: [twitter-hashtagFinder](https://mwsleonardo.github.io/twitter-hashtagF
 
 ## Tecnologias utilizadas no desenvolvimento
 
-### `React.js`  ### `JavaScript`
-### `HTML`  ### `CSS`
+### `React.js`   `JavaScript`
+### `HTML`   `CSS`
 
 ## Pacotes no desenvolvimento
 
@@ -18,3 +18,11 @@ gh-pages: [twitter-hashtagFinder](https://mwsleonardo.github.io/twitter-hashtagF
 ### `react-router-dom`
 ### `styled-components`
 ### `react-elastic-carousel`
+
+## Desenvolvedores
+
+• [Leonardo](www.linkedin.com/in/mwsleonardo)
+• [Flávio](https://www.linkedin.com/in/flaviohmsilva/)
+• [Juliana](https://www.linkedin.com/in/julianakaorigoia/)
+• [Marcelo](https://www.linkedin.com/in/marcelo-correa-b1218a212/)
+• [Giovanni](https://www.linkedin.com/in/giovanni-shiroma-amaral-9638b0215/)
