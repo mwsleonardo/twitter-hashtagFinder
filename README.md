@@ -1,9 +1,10 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+O objetivo do projeto foi desenvolver uma página web responsiva para visualização de mensagens e imagens com integração a API do Twitter com login e autenticação via Airtable. Realizado com foco na realidade do mercado de trabalho, em Squad e utilizamos ferramentas como ClickUp, metodologias ágeis - Scrum e kanban. gh-pages: [twitter-hashtagFinder](https://mwsleonardo.github.io/twitter-hashtagFinder/).
 
 ## Available Scripts
 
+No projeto utilizamos HTML, CSS, JavaScript e ReactJS
 In the project directory, you can run:
 
 ### `npm start`
