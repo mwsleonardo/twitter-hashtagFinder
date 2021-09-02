@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Projeto em React para o módulo de Front-end em Squad
 
 O objetivo do projeto foi desenvolver uma página web responsiva para visualização de mensagens e imagens com integração a API do Twitter com login e autenticação via Airtable. Realizado com foco na realidade do mercado de trabalho, em Squad e utilizamos ferramentas como ClickUp, metodologias ágeis - Scrum e kanban. 
 
@@ -6,12 +6,12 @@ O projeto consiste em ser uma ferramenta de busca dos últimos 10 posts e 10 ima
 
 gh-pages: [twitter-hashtagFinder](https://mwsleonardo.github.io/twitter-hashtagFinder/).
 
-## Available Scripts
+## Tecnologias utilizadas no desenvolvimento
 
-No projeto utilizamos HTML, CSS, JavaScript e ReactJS
-In the project directory, you can run:
-
-### `npm start`
+### `HTML`
+### `CSS`
+### `JavaScript`
+### `React.js`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
