@@ -48,15 +48,15 @@ function Topo() {
                     {/* BOTÃO SOBRE */}
                     <Link to="/About" className="linkRoute">
                         <button className="aboutButton">
-                            <img src={logoSobre} alt="logoSobre" className="logoSobre"></img>
-                            <span>Sobre</span>
+                            <img src={logoSobre} alt="logoSobre" className="buttonLogo"></img>
+                            <span className="buttonText">Sobre</span>
                         </button></Link>
 
                     {/* BOTÃO LOGIN */}
                     <Link to="/login" className="linkRoute">
                         <button className="loginButton">
-                            <img src={logoLogin} alt="logoLogin" className="logoLogin"></img>
-                            <span>Login</span>
+                            <img src={logoLogin} alt="logoLogin" className="buttonLogo"></img>
+                            <span className="buttonText">Login</span>
                         </button>
                     </Link>
                 </div>

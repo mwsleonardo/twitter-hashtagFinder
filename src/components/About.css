@@ -13,6 +13,8 @@ body {
 
 div.aboutWrapper {
     width: 100%;
+    margin: 0;
+    padding: 0;
     /* height: 100vh; */
 }
 
@@ -22,6 +24,11 @@ div.aboutHeader {
     background-repeat: no-repeat;
     width: 100%;
     height: 26.375em;
+}
+
+div.headerContent {
+    margin: 0;
+    padding: 0;
 }
 
 
@@ -101,10 +108,10 @@ h1.aboutWe {
 /*CONTAINER DOS CARTOES*/
 
 div.aboutTeam {
-    margin-right: 1.5rem;
-    padding-bottom: 10.3125rem;
-    width: 108rem;
-    margin: 0 auto;
+    /* margin-right: 1.5rem; */
+    width: 100%;
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -120,9 +127,13 @@ div.aboutCard {
     border-radius: 10px;
     border: 1px solid rgba(85, 56, 238, .1411764705882353);
     height: 32.8125rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-div.about-team-wrapper {
+div.aboutTeamWrapper {
     margin-right: 10px;
     width: 20rem;
     display: flex;
@@ -138,9 +149,10 @@ div.aboutPhoto {
     margin-top: 2.5rem;
     border-radius: 100%;
     box-shadow: rgb(85 56 238 / 10%) 7px 23px 6px -13px;
-    background-color: rgb(255, 255, 255)
+    background-color: rgb(255, 255, 255);
 }
 
+/* FOTO DO MEMBRO */
 div.aboutPhoto img {
     width: 100%;
     border: 1px solid #5538EE24;
@@ -148,6 +160,7 @@ div.aboutPhoto img {
     height: 100%;
 }
 
+/* NOME DO MEMBRO */
 div.aboutCard h2 {
     color: #292929;
     font-size: 2em;
@@ -156,6 +169,7 @@ div.aboutCard h2 {
     margin-bottom: 1.5625rem;
 }
 
+/* DESCRIÇÃO DO MEMBRO */
 div.aboutCard p {
     color: #292929;
     margin-top: 0;
@@ -164,17 +178,20 @@ div.aboutCard p {
     text-align: center;
     margin-bottom: 1.75rem;
     letter-spacing: 0.23px;
+    padding: 0 1vw;
 }
 
+/* DIV QUE CONTEM AS REDES SOCIAIS */
 div.aboutSocials {
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
     width: 100%;
-    justify-content: center;
 }
 
+/* LOGOS DAS REDES SOCIAIS */
 div.aboutSocials img {
     font-size: 1.5625rem;
-    margin-right: 2.0625rem;
 }
 
 footer.footer {
@@ -195,6 +212,10 @@ footer.footer {
 @media (min-width: 1050px) {
     html {
         font-size: .833vw;
+    }
+    div.headerContent {
+        margin: 0;
+        padding: 0;
     }
     .header .headerContent .headerButtons button {
         width: 70px;
@@ -219,6 +240,10 @@ footer.footer {
     /* reponsividade header*/
     div.aboutHeader {
         height: 35vh;
+    }
+    div.headerContent {
+        margin: 0;
+        padding: 0;
     }
     /* box com logo e botões */
     section.header {
@@ -284,37 +309,66 @@ footer.footer {
         flex-direction: row;
         flex-wrap: wrap;
     }
+    /*CONTAINER DOS CARTOES*/
     div.aboutTeam {
         margin: 0;
-        width: 50%;
+        width: 100%;
         display: flex;
         justify-content: space-evenly;
+        flex-wrap: wrap;
     }
-    .aboutCard {
+    div.aboutTeamWrapper {
+        margin: 0;
         width: 100%;
-        margin-right: 0px;
-        height: initial;
-        margin-bottom: 2.875rem;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
     }
-    .aboutPhoto {
-        height: 11.375rem;
-        width: 11.375rem;
-        margin-top: 2.25rem;
-        margin-bottom: 1.375em;
+    /*cards da equipe*/
+    div.aboutCard {
+        width: 40%;
+        margin: 3vh 1vw;
+        height: initial;  
     }
-    .aboutCard h2 {
-        font-size: 28px;
-        margin-bottom: 24px;
+    div.aboutPhoto {
+        height: 12.6875rem;
+        width: 12.6875rem;
+        margin-bottom: 1.5625rem;
+        margin-top: 2.5rem;
+        border-radius: 100%;
+        box-shadow: rgb(85 56 238 / 10%) 7px 23px 6px -13px;
+        background-color: rgb(255, 255, 255);
     }
-    .aboutSocials {
-        padding-bottom: 37px;
+    
+    /* FOTO DO MEMBRO */
+    div.aboutPhoto img {
+        width: 100%;
+        border: 1px solid #5538EE24;
+        border-radius: 100%;
+        height: 100%;
     }
-    .aboutSocials img {
+    /* NOME DO MEMBRO */
+    div.aboutCard h2 {
+        font-size: 1.5em;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 1.5625rem;
+    }
+    div.aboutCard p {
+        margin: 0 1vw 1.75rem 1vw;
+        margin-top: 0;
+        font-size: 0.8rem;
+
+    }
+    div.aboutSocials {
+        padding: 1vh 0;
+    }
+    img.iconAbout{
         font-size: 27px;
-        margin-right: 30px;
     }
 }
 
+/* AJUASTE RESPONSIVO ABOUT DOS MEMEBROS */
 @media (max-width: 660px) {
     /* reponsividade header*/
     div.aboutHeader {
@@ -323,6 +377,10 @@ footer.footer {
         background-repeat: no-repeat;
         width: 100%;
         height: 40vh;
+    }
+    div.headerContent {
+        margin: 0;
+        padding: 0;
     }
     /* box com logo e botões */
     section.header {
@@ -378,23 +436,47 @@ footer.footer {
         font-size: 24px;
         padding: 2vh 5vw;
     }
+    /*cards da equipe*/
     div.aboutTeam {
         margin: 5px 5px;
-        /* width: 100%;*/
-        display: inline-block;
-        justify-content: center;
-    }
-    .aboutCard {
         width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+    div.aboutCard {
+        width: 40%;
+        margin: 3vh 1vw;
+        height: initial;  
+    }
+    div.aboutTeamWrapper {
+        margin: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    div.aboutCard {
+        width: 50%;
         margin-right: 0px;
-        height: initial;
+        /* height: initial; */
         margin-bottom: 2.875rem;
     }
-    .aboutPhoto {
-        height: 11.375rem;
-        width: 11.375rem;
-        margin-top: 2.25rem;
-        margin-bottom: 1.375em;
+    div.aboutPhoto {
+        height: 10rem;
+        width: 10rem;
+        margin-bottom: 1.5625rem;
+        margin-top: 2.5rem;
+        border-radius: 100%;
+        box-shadow: rgb(85 56 238 / 10%) 7px 23px 6px -13px;
+        background-color: rgb(255, 255, 255);
+    }
+    
+    /* FOTO DO MEMBRO */
+    div.aboutPhoto img {
+        height: 10rem;
+        width: 10rem;
+        border: 1px solid #5538EE24;
+        border-radius: 100%;
     }
     .aboutCard h2 {
         font-size: 28px;
@@ -405,7 +487,6 @@ footer.footer {
     }
     .aboutSocials img {
         font-size: 27px;
-        margin-right: 30px;
     }
 }
 
@@ -435,4 +516,56 @@ footer.footer {
     h1.aboutProject {
         font-size: 30px;
     }
+    /* CARDS DOS MEMBROS */
+    div.aboutTeam {
+        margin: 5px 5px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+    /* CARD INDIVIDUAL */
+    div.aboutCard {
+        width: 70%;
+        margin-bottom: 1rem;
+    }
+    div.aboutTeamWrapper {
+        margin: 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    /* FOTO DO MEMBRO */
+    div.aboutPhoto {
+        height: 8rem;
+        width: 8rem;
+        margin-bottom: 1.5625rem;
+        margin-top: 2.5rem;
+        border-radius: 100%;
+        box-shadow: rgb(85 56 238 / 10%) 7px 23px 6px -13px;
+        background-color: rgb(255, 255, 255);
+    }
+    
+    /* FOTO DO MEMBRO */
+    div.aboutPhoto img {
+        height: 8rem;
+        width: 8rem;
+        border: 1px solid #5538EE24;
+        border-radius: 100%;
+    }
+    
+    /* NOME DO MEMBRO */
+    div.aboutCard h2 {
+        font-size: 1.5rem;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 1.5625rem;
+    }
+    div.aboutCard p {
+        margin: 0 1vw 1.75rem 1vw;
+        margin-top: 0;
+        font-size: 1rem;
+
+    }
+    
 }

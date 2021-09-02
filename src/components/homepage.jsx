@@ -215,7 +215,7 @@ function Homepage() {
 
                     {/* CAIXA DE TEXTO DO BANNER */}
                     <div className="textBox">
-                        <h1 className="title"> Encontre hashtags de maneira fácil  </h1>
+                        <h1 className="title"> Encontre hashtags de maneira fácil </h1>
                         <p className="subtitle"> Digite o que deseja no campo de buscas e confira os resultados do Twitter abaixo </p>
                     </div>
                 </header>
@@ -255,9 +255,9 @@ function Homepage() {
                 {/* CORPO DO SITE COM OS RESULTADOS DA PESQUISA */}
 
                 {/* TÍTULO DOS RESULTADOS */}
-                <h1 className="searchTitle">
+                <h2 className="searchTitle">
                     Exibindo os 10 resultados mais recentes de #{titulo}
-                </h1>
+                </h2>
 
                 <div className="postResultSelect">
                     <div id="selectTweets" className="active" onClick={showText}>

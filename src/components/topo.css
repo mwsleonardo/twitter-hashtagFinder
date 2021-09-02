@@ -77,10 +77,10 @@ button.loginButton {
 
 /* ÍCONES DOS BOTÕES SOBRE E LOGIN */
 
-img.logoSobre,
-img.logoLogin {
+img.buttonLogo {
+    height: 12px;
     padding-right: 4px;
-    height: 0.7rem;
+    padding-top: 1px;
 }
 
 .linkRoute {
@@ -112,9 +112,13 @@ img.logoLogin {
         height: 5vh;
         font-size: 16px;
     }
-    img.logoSobre,
-    img.logoLogin {
-        height: 0.6rem;
+    span.buttonText {
+        font-size: 10px;
+    }
+    img.buttonLogo {
+        height: 8px;
+        padding-right: 3px;
+        padding-top: 1px;
     }
 }
 
@@ -133,15 +137,19 @@ img.logoLogin {
         width: 20vw;
         height: 4vh;
         margin-right: 6px;
-        font-size: 8px;
+        font-size: 6px;
     }
     button.loginButton {
         width: 20vw;
         height: 4vh;
-        font-size: 8px;
+        font-size: 6px;
     }
-    img.logoSobre,
-    img.logoLogin {
-        height: 0.5rem;
+    span.buttonText {
+        font-size: 7px;
+    }
+    img.buttonLogo {
+        height: 6px;
+        padding-right: 3px;
+        padding-top: 1px;
     }
 }
