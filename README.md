@@ -8,8 +8,7 @@ gh-pages: [twitter-hashtagFinder](https://mwsleonardo.github.io/twitter-hashtagF
 
 ## Tecnologias utilizadas no desenvolvimento
 
-### `React.js`   `JavaScript`
-### `HTML`   `CSS`
+### `React.js`   `JavaScript`   `HTML`   `CSS`
 
 ## Pacotes no desenvolvimento
 
