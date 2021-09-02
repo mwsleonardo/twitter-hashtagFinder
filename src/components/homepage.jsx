@@ -114,21 +114,6 @@ function Homepage() {
 
     }
 
-    // Função para mostrar os resultados das imagens
-    function showImages() {
-        document.getElementById("resultPostsImgs").style.display = 'flex'
-        document.getElementById("resultPostsText").style.display = 'none'
-        document.getElementById("selectImages").classList.add("active")
-        document.getElementById("selectTweets").classList.remove("active")
-    }
-
-    // Função para mostrar os resultados em texto
-    function showText() {
-        document.getElementById("resultPostsText").style.display = 'block'
-        document.getElementById("rersultPostsImgs").style.display = 'none'
-        document.getElementById("selectTweets").classList.add("active")
-        document.getElementById("selectImages").classList.remove("active")
-    }
 
     // Função com axios que faz a requisição dos tweets em texto na API do Twitter
     function pullTweets() {
@@ -255,14 +240,6 @@ function Homepage() {
                     Exibindo os 10 resultados mais recentes de #{titulo}
                 </h2>
 
-                <div className="postResultSelect">
-                    <div id="selectTweets" className="active" onClick={showText}>
-                        <p>Tweets</p>
-                    </div>
-                    <div id="selectImages" onClick={showImages}>
-                        <p>Imagens</p>
-                    </div>
-                </div>
 
                  {/* CAROUSEL DAS IMAGENS */}
                  <div id="resultPostsText" className="resultPostsText">
