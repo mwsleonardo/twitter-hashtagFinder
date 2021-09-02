@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import "./login.css"
-import loginBg from './imgs/login-bg.jpg'
-import logoWhite from './imgs/logo-white.svg'
-import iconHome from './imgs/icon-home.svg'
-import { Link } from 'react-router-dom'
-import axios from 'axios'
+import "./login.css";
+import loginBg from './imgs/login-bg.jpg';
+import logoWhite from './imgs/logo-white.svg';
+import iconHome from './imgs/icon-home.svg';
+import { Link, useHistory } from 'react-router-dom';
+import axios from 'axios';
 
 
 function Login() {
@@ -15,8 +15,9 @@ function Login() {
     // Inputs no form 
     const [userInput, setUserInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
+    // Hook history para fazer direcionamento de páginas
+    const history = useHistory();
 
-    let [modalShow, setShowModal] = useState(false);
 
     function submitForm(event) {
         // event.preventDefault(); // evita recarregamento da página
@@ -25,12 +26,14 @@ function Login() {
             setError('Campo obrigatório!'); // Aparece mensagem de erro
             event.preventDefault();
             return false;
+
         } else if (passwordInput.length == 0) {
             // Campo não preechido 
             setError('')
             setError2('Campo obrigatório!') // Aparece mensagem de erro 
             event.preventDefault();
             return false;
+            
         } else {
             // Mensagem de erro é apagada 
             setError(null);
@@ -45,11 +48,14 @@ function Login() {
                 if (response.data.records.length == 0) {
                     alert('Email e/ou Senha inválidos')
                     event.preventDefault();
+
                     return false;
                 } else {
                     console.log(response.data.records.length)
-                    setShowModal(true)
-                    return true;
+
+                    // MEXI AQUI
+                    console.log('chegou aqui')
+                    return history.push("/Search");;
 
                 }
             })
@@ -59,6 +65,7 @@ function Login() {
         }
     }
 
+    
     function handleTextChange(event) {
         setUserInput(event.target.value); // guarda o valor preenchido no content Input
     }
@@ -103,13 +110,6 @@ function Login() {
                 <button className="buttonLogin" type="submit" onClick={submitForm}> Acessar </button>
             </div>
 
-            <div className="backdrop" style={{ display: (modalShow ? 'block' : 'none') }} onSubmit={() => setShowModal(false)}></div>
-
-            <div className="modalContainer" style={{ display: (modalShow ? 'block' : 'none') }}>
-                <div className="modalContent"> <h1>Acesso liberado</h1>
-                    <Link to="/search"><button className="buttonModal" type="submit">Continuar</button></Link>
-                </div>
-            </div>
         </div>
     )
 }
