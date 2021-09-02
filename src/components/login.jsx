@@ -6,10 +6,7 @@ import iconHome from './imgs/icon-home.svg'
 import { Link } from 'react-router-dom'
 // import { faExclamation } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios'
-// import api from './apiLogin';
-// 
-
-
+// import api from './apiLogin'; 
 
 function Login() {
 
@@ -20,23 +17,31 @@ function Login() {
     const [userInput, setUserInput] = useState('');
     const [passwordInput, setPasswordInput] = useState('');
 
-    const[posts, setPosts ] = useState([])
 
 
-    useEffect(() => {
-        axios.get("https://api.airtable.com/v0/app6wQWfM6eJngkD4/Login?maxRecords=3&view=Grid%20view", {
-            headers: {
-                "Authorization": "Bearer key2CwkHb0CKumjuM"
-            }
-        }).then((response) => {
-            console.log(response.data)
-        })
-            .catch(() => {
-                console.log('deu errado')
-            })
-    })
+    // function validateUser(e) {
+    //     const loginUser = [
+    //         { id: "recXC8gVKwJdnU2yr", 
+    //         Squad: "2", 
+    //         Senha: "123456", 
+    //         Email: "contato@newtab.academy" }
+    //     ];
 
+    //     if (userInput === loginUser.Email) { // se o campo estiver vazio, impede que seja registrado
+    //         alert('erro de usuario')
+    //         e.preventDefault()
+    //         return false;
+    //     } else if (passwordInput === loginUser.Senha) {
+    //         alert('erro de senha')
+    //         e.preventDefault();
+    //         return false;
+    //     } else {
+    //         alert("Usuario cadastrado");
+    //         return true;
+    //     }
+    // }
 
+    
     function submitForm(event) {
         // event.preventDefault(); // evita recarregamento da página
         if (userInput.length == 0) { // se o campo estiver vazio, impede que seja registrado
@@ -49,16 +54,33 @@ function Login() {
             setError('')
             setError2('Campo obrigatório!') // Aparece mensagem de erro 
             event.preventDefault();
+            return false;
         } else {
             // Mensagem de erro é apagada 
             setError(null);
             setError2(null);
             console.log('CREDENCIAIS DE USUARIO =>', 'USER:', userInput, "SENHA:", passwordInput);
-            return true;
+            // console.log('passou')
+            axios.get('https://api.airtable.com/v0/app6wQWfM6eJngkD4/Login?maxRecords=3&view=Grid%20view&filterByFormula=(AND({Email}=%22'+userInput+'%22,{Senha}=%22'+passwordInput+'%22))', {
+                headers: {
+                    "Authorization": "Bearer key2CwkHb0CKumjuM"
+                }
+            }).then((response) => {
+                if (response.data.records.length == 0 ){
+                    alert('deu errado')
+                    event.preventDefault();
+                    return false;
+                } else {
+                    console.log(response.data.records.length)
+                    alert('CADASTRO FUNFOU!')
+                    return   true;
+                }
+            })
+            .catch(() => {
+                console.log('deu errado')
+            })
         }
     }
-
-
 
     function handleTextChange(event) {
         setUserInput(event.target.value); // guarda o valor preenchido no content Input
@@ -67,9 +89,6 @@ function Login() {
     function handleTextChange2(event) {
         setPasswordInput(event.target.value); // guarda o valor preenchido no content Input
     }
-
-
-
 
 
     return (
@@ -81,7 +100,7 @@ function Login() {
             </div>
             <div className="loginBox" >
                 <h1 className="titleBox">Login</h1>
-                <form className="formLogin" onSubmit={useEffect}>
+                <form className="formLogin">
                     <input
                         className="itensLogin"
                         placeholder="Usuário"
