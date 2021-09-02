@@ -6,6 +6,64 @@
 body {
     font-family: 'Rubik', sans-serif;
 }
+/* MODAL IMAGES */
+
+.backdrop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+}
+
+.modalContainer {
+    width: 50vw;
+    position: fixed;
+    left: 25vw;
+    top: 120px;
+    border-radius: 30px;
+    z-index: 5;
+}
+.modalContainer .modalContent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 30px;
+    position: relative;
+    flex-direction: column;
+    background-color: indigo;
+    margin-top: 28%;
+}
+
+.modalContainer .modalContent .close {
+    position: absolute;
+    font-size: 25px;
+    font-weight: bold;
+    color: #72EFDB;
+    top: 15px;
+    right: 20px;
+    text-shadow: 0px 0px 10px black;
+}
+
+.modalContainer h1 {
+    font-size: 30px;
+    margin-top: 2%;
+}
+
+.buttonModal{
+    color: white;
+    background-color: #3634f7;
+    border-radius: 2vw;
+    width: 9vw;
+    height: 3vw;
+    font-size: 22px;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
 
 .containerLogin {
         display: flex;

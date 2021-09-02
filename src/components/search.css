@@ -5,57 +5,6 @@ body {
     font-family: 'Rubik';
     /* background-image: url(./images_v01/login-bg.jpg); */
 }
-
-
-/* MODAL IMAGES */
-
-.backdrop {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    top: 0;
-    left: 0;
-}
-
-.modalContainer {
-    width: 80vw;
-    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
-    -webkit-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.75);
-    position: fixed;
-    left: 10vw;
-    top: 120px;
-    border-radius: 30px;
-    z-index: 5;
-}
-
-.modalContainer .modalContent {
-    width: 100%;
-    padding-bottom: 90%;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 30px;
-    position: relative;
-}
-
-.modalContainer .modalContent .close {
-    position: absolute;
-    font-size: 25px;
-    font-weight: bold;
-    color: #72EFDB;
-    top: 15px;
-    right: 20px;
-    text-shadow: 0px 0px 10px black;
-}
-
-
-
-
-
-
-
 /* Alterações Giovanni  */
 
 .backgroundImg {
