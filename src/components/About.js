@@ -1,6 +1,6 @@
 import React from 'react';
 import './About.css';
-import Topo from './topo'
+import Topo from './imgs/topo'
 
 //Icons
 import svg from './imgs/about-illustration.svg';
