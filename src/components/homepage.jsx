@@ -1,14 +1,17 @@
+// Imports básicos para funcionalidade da página
 import React from 'react';
-import './homepage.css';
-import { useState, useEffect } from 'react';
 import axios from 'axios'
+import { useState, useEffect } from 'react';
+
+// Import dos componentes visuais externos
+import './homepage.css';
 import Topo from './topo'
 import Footer from './footer'
 
 // Import do router para transação entre páginas
 import { Link } from 'react-router-dom'
 
-// Import do carousel e styled-components(css) das imagens 
+// Import do carousel e styled-components das imagens 
 import Carousel from "react-elastic-carousel";
 import Item from './item.js';
 
@@ -16,7 +19,7 @@ import Item from './item.js';
 import logoSearch from "./imgs/icon-search.svg"
 
 
-// Const para a "quebra de linha" do resultado das imagens
+// Const para a "quebra de linha" do resultado das imagens no carousel
 const breakPoints = [
     { width: 1, itemsToShow: 1 },
     { width: 550, itemsToShow: 2 },
@@ -38,8 +41,11 @@ function Homepage() {
     const [limit, setLimite] = useState(null);
     // Const para retirar hashtag
     const [noHashtag, setNoHashtag] = useState('');
+
+
     // Const para habilitar as funcionalidades
-    // let [modalShow, setShowModal] = useState(false);
+    let [modalShow, setShowModal] = useState(false);
+    
     // Const para setar imagens da busca
     let [urlImage, setUrlImage] = useState('');
     // Const dos tweets (resultado da busca)
@@ -85,8 +91,8 @@ function Homepage() {
 
             // retirada da hashtag para requisição da api do twitter
             let takeOutHash = contentInput;
-            getTweets(takeOutHash.replace(/#/g, ''));
-            getImages(takeOutHash.replace(/#/g, ''));
+            pullTweets(takeOutHash.replace(/#/g, ''));
+            pullImages(takeOutHash.replace(/#/g, ''));
             setNoHashtag(takeOutHash.replace(/#/g, ''));
             setContentInput('');
 
@@ -94,40 +100,38 @@ function Homepage() {
 
         // Condicional que chama as funções de pesquisa ao apertar a tecla Enter
         if (event.key === 'Enter') {
-            getTweets()
-            getImages()
+            pullTweets()
+            pullImages()
             postAirtable()
         }
     }
 
     // Função onClick para dar zoom na imagem do resultado
-    function handleChange(event) {
+    function zoomImages(event) {
         let id = event.target.id
         setUrlImage(document.getElementById(id).style.backgroundImage.replace('url("', "").replace('")', ""))
-        // setShowModal(true)
-
-        setContentInput(event.target.value);
+        setShowModal(true)
 
     }
 
     // Função para mostrar os resultados das imagens
     function showImages() {
-        document.getElementById("postResultsImages").style.display = 'flex'
-        document.getElementById("postResultsText").style.display = 'none'
+        document.getElementById("resultPostsImgs").style.display = 'flex'
+        document.getElementById("resultPostsText").style.display = 'none'
         document.getElementById("selectImages").classList.add("active")
         document.getElementById("selectTweets").classList.remove("active")
     }
 
     // Função para mostrar os resultados em texto
     function showText() {
-        document.getElementById("postResultsText").style.display = 'block'
-        document.getElementById("postResultsImages").style.display = 'none'
+        document.getElementById("resultPostsText").style.display = 'block'
+        document.getElementById("rersultPostsImgs").style.display = 'none'
         document.getElementById("selectTweets").classList.add("active")
         document.getElementById("selectImages").classList.remove("active")
     }
 
     // Função com axios que faz a requisição dos tweets em texto na API do Twitter
-    function getTweets() {
+    function pullTweets() {
         let hashtag = document.getElementById('enter').value.replace(/#/g, "")
         axios.get('https://cors.bridged.cc/https://api.twitter.com/1.1/search/tweets.json?q=' + hashtag + '&lang=pt&result_type=recent', {
             method: 'GET',
@@ -138,7 +142,7 @@ function Homepage() {
     }
 
     // Função com axios que faz a requisição dos tweets em imagem na API do Twitter
-    function getImages() {
+    function pullImages() {
         let hashtag = document.getElementById('enter').value.replace(/#/g, "")
         axios.get('https://cors.bridged.cc/https://api.twitter.com/2/tweets/search/recent?query=' + hashtag + '%20has:images&max_results=50&expansions=author_id,attachments.media_keys&media.fields=type,url,width,height', {
             method: 'GET',
@@ -195,14 +199,6 @@ function Homepage() {
                 console.log(error);
             });
     }
-
-    // const handler = (event) => {
-    //     if (event.key === 'Enter') {
-    //         getTweets()
-    //         getImages()
-    //         postAirtable()
-    //     }
-    // }
 
     return (
 
@@ -269,7 +265,7 @@ function Homepage() {
                 </div>
 
                  {/* CAROUSEL DAS IMAGENS */}
-                 <div id="postResultsImages" className="postResultsImages">
+                 <div id="resultPostsText" className="resultPostsText">
                     <Carousel className="carousel" breakPoints={breakPoints}>
                         {images.slice(0, 10).map((i, index) => {
                             return (
@@ -281,8 +277,8 @@ function Homepage() {
                                         <div
                                             id={"imageContent" + index}
                                             className="imageContent"
-                                            // onClick={(event) =>
-                                            //     handleChange(event)}
+                                            onClick={(event) =>
+                                                zoomImages(event)}
                                             style={{ backgroundImage: `url(${i.url})` }}>
 
                                         </div>
@@ -301,7 +297,7 @@ function Homepage() {
 
 
                 {/* RESULTADOS DOS TWEETS EM TEXTO */}
-                <div id="postResultsText" className="postResultsText">
+                <div id="resultPostsText" className="resultPostsText">
                     <div className="resultPosts">
                         <div className="postContainer" >
                             {/* MAP PARA EXIBIR OS RESULTADOS DE TEXTO */}
@@ -331,15 +327,14 @@ function Homepage() {
             </div>
 
             {/* MODAIS DO ZOOM DAS IMAGENS BUSCADAS */}
-            {/* <div className="backdrop" style={{ display: (modalShow ? 'block' : 'none') }} onClick={() => setShowModal(false)}></div>
-
+            <div className="backdrop" style={{ display: (modalShow ? 'block' : 'none') }} onClick={() => setShowModal(false)}></div>
             <div className="modalContainer" style={{ display: (modalShow ? 'block' : 'none') }}>
                 <div className="modalContent" style={{ backgroundImage: `url(${urlImage})` }}>
-                    <div className="close" style={{ display: (modalShow ? 'block' : 'none') }} onClick={() => setShowModal(false)}>
-                        Close
+                    <div className="closeImg" style={{ display: (modalShow ? 'block' : 'none') }} onClick={() => setShowModal(false)}>
+                        ×
                     </div>
                 </div>
-            </div> */}
+            </div>
 
             {/* ROTA DO FOOTER */}
             <Footer />

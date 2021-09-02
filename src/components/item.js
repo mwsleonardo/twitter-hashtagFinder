@@ -14,4 +14,5 @@ export default styled.div`
   border-radius: 21px;
   box-shadow: 0px 9px 27px #5538EE29;
   flex-direction: row;
+  cursor: pointer;
 `;  
