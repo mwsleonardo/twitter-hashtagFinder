@@ -1,6 +1,8 @@
 # Getting Started with Create React App
 
-O objetivo do projeto foi desenvolver uma página web responsiva para visualização de mensagens e imagens com integração a API do Twitter com login e autenticação via Airtable. Realizado com foco na realidade do mercado de trabalho, em Squad e utilizamos ferramentas como ClickUp, metodologias ágeis - Scrum e kanban. gh-pages: [twitter-hashtagFinder](https://mwsleonardo.github.io/twitter-hashtagFinder/).
+O objetivo do projeto foi desenvolver uma página web responsiva para visualização de mensagens e imagens com integração a API do Twitter com login e autenticação via Airtable. Realizado com foco na realidade do mercado de trabalho, em Squad e utilizamos ferramentas como ClickUp, metodologias ágeis - Scrum e kanban. O projeto consiste em buscar os últimos 10 posts e 10 imagens públicadas com a # pesquisada, com sistema de login e histórico de pesquisa.
+
+gh-pages: [twitter-hashtagFinder](https://mwsleonardo.github.io/twitter-hashtagFinder/).
 
 ## Available Scripts
 
