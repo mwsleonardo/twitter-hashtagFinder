@@ -6,6 +6,64 @@
 body {
     font-family: 'Rubik', sans-serif;
 }
+/* MODAL IMAGES */
+
+.backdrop {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    top: 0;
+    left: 0;
+}
+
+.modalContainer {
+    width: 50vw;
+    position: fixed;
+    left: 25vw;
+    top: 120px;
+    border-radius: 30px;
+    z-index: 5;
+}
+.modalContainer .modalContent {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 30px;
+    position: relative;
+    flex-direction: column;
+    background-color: indigo;
+    margin-top: 28%;
+}
+
+.modalContainer .modalContent .close {
+    position: absolute;
+    font-size: 25px;
+    font-weight: bold;
+    color: #72EFDB;
+    top: 15px;
+    right: 20px;
+    text-shadow: 0px 0px 10px black;
+}
+
+.modalContainer h1 {
+    font-size: 30px;
+    margin-top: 2%;
+}
+
+.buttonModal{
+    color: white;
+    background-color: #3634f7;
+    border-radius: 2vw;
+    width: 9vw;
+    height: 3vw;
+    font-size: 22px;
+    margin-top: 20%;
+    margin-bottom: 20%;
+}
 
 .containerLogin {
         display: flex;
@@ -23,8 +81,6 @@ body {
     display: flex;
     position: relative;
     justify-content: space-between;
-    
-
 }
 
 
@@ -54,8 +110,8 @@ body {
     position: relative;
     align-items: center;
     border-radius: 1vw;
-    width: 25vw;
-    margin-left: 37vw;
+    width: 30vw;
+    margin-left: 35vw;
     margin-top: 7vw;
     padding: 4vw 3vw;
     margin-bottom: 10vw;
@@ -74,6 +130,7 @@ body {
 .titleLogin {
     margin: 2vw;
 }
+
 
 .itensLogin {
     width: 22vw;
@@ -99,8 +156,13 @@ body {
     height: 3vw;
     font-size: 22px;
 }
-
-
+/* ----------ERRO----------  */
+.invalidUser {
+    color: red;
+    margin-left: 2vw;
+    margin-bottom: 1vw;
+}
+/* ----------VERSÃO TAB----------  */
 @media screen and (max-width:1100px) {
     .itensLogin {
         font-size: 20px;
@@ -143,7 +205,6 @@ body {
         width: 17vw;
         height: 5vw;
         border-radius: 10vw;
-        
     }
 
     .butHome span {
@@ -208,5 +269,4 @@ button {
     .headerLogin {
         padding: 2vw;
     }
-
 }
