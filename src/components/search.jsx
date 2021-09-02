@@ -6,7 +6,6 @@ import exitIcon from './images_v01/icon-power-off.svg'
 import {Link} from 'react-router-dom'
 import loginBg from './imgs/login-bg.jpg'
 import { useEffect, useState } from 'react';
-import InfiniteLoading from "react-simple-infinite-loading";
 
 
 
@@ -105,7 +104,7 @@ function Search() {
 
 
         {/* INFINITE LOADING */}
-            <InfiniteLoading
+            <div
                 //hasMoreItems
                 itemHeight={50} //altura das células da tabela
                 loadMoreItems={fetchItems} //função que carrega mais resultados depois que o scroll chega no fim da pagina
@@ -126,7 +125,7 @@ function Search() {
                  )
             })}
             
-          </InfiniteLoading>
+          </div>
 
         </div> 
     
