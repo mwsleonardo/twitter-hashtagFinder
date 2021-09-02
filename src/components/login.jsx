@@ -33,7 +33,7 @@ function Login() {
             setError2('Campo obrigatório!') // Aparece mensagem de erro 
             event.preventDefault();
             return false;
-            
+
         } else {
             // Mensagem de erro é apagada 
             setError(null);
@@ -65,7 +65,7 @@ function Login() {
         }
     }
 
-    
+
     function handleTextChange(event) {
         setUserInput(event.target.value); // guarda o valor preenchido no content Input
     }
@@ -84,10 +84,17 @@ function Login() {
     return (
         <div className="containerLogin">
             <img src={loginBg} className="backgroundImg"></img>
+            {/* TOPO */}
             <div className="headerLogin">
-                <img src={logoWhite} className="itensHeader"></img>
-                <Link to="/"><button className="butHome itensHeader"><img src={iconHome}></img> <span>Home</span></button></Link>
+                <img src={logoWhite} className="logo"></img>
+                <Link to="/">
+                    <button className="butHome">
+                        <img src={iconHome} className="butIcon"></img>
+                        <span className="butTitle">Home</span>
+                    </button>
+                </Link>
             </div>
+            {/* FIM DO TOPO */}
             <div className="loginBox" >
                 <h1 className="titleBox">Login</h1>
                 <form className="formLogin" onKeyPress={(e) => handler(e)}>

@@ -11,7 +11,6 @@ body {
 
 
 /* MENU TOPO FIXO NO BANNER */
-
 div.topFixed {
     position: absolute;
     top: 0;
@@ -37,6 +36,10 @@ div.topUnfixed {
     height: 10vh;
     background: rgba(255, 255, 255, 0.4);
     backdrop-filter: blur(5px);
+}
+
+img.logo {
+    width: 280px;
 }
 
 
@@ -99,7 +102,7 @@ img.buttonLogo {
         padding: 2% 3% 2% 3%;
     }
     img.logo {
-        width: 195px;
+        width: 150px;
     }
     button.aboutButton {
         width: 21vw;
@@ -125,7 +128,7 @@ img.buttonLogo {
 @media (max-width: 414px) {
     div.topFixed {
         width: 100%;
-        padding: 36px 16px 0 16px;
+        padding: 36px 10px 0 10px;
     }
     div.topUnfixed {
         padding: 3% 3% 3% 3%;
@@ -134,15 +137,15 @@ img.buttonLogo {
         width: 130px;
     }
     button.aboutButton {
-        width: 20vw;
+        width: 18vw;
         height: 4vh;
         margin-right: 6px;
-        font-size: 6px;
+        font-size: 0.5rem;
     }
     button.loginButton {
-        width: 20vw;
+        width: 18vw;
         height: 4vh;
-        font-size: 6px;
+        font-size: 0.5rem;
     }
     span.buttonText {
         font-size: 7px;

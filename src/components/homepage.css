@@ -1,9 +1,7 @@
 /* IMPORT DA FONTE RUBIK (GOOGLE) */
-
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800&display=swap');
 
 /* CONFIGURAÇÕES GLOBAIS */
-
 * {
     margin: 0;
     padding: 0;
@@ -13,24 +11,6 @@ body {
     font-family: 'Rubik', sans-serif;
     height: 100vh;
 }
-
-
-/* TESTE MANUAL */
-
-div.itemContainer {
-    width: 100%;
-}
-
-div.itemOrganizer {
-    display: flex;
-    overflow-x: auto;
-}
-
-div.item {
-    flex: none;
-    background-image: url(./imgs/giovani.jpeg);
-}
-
 
 /* AJUSTES CAROUSEL */
 
@@ -648,4 +628,4 @@ a.postLink {
         background: rgba(255, 255, 255, 0.4);
         backdrop-filter: blur(5px);
     }
-}
+} 
