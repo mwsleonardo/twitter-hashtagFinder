@@ -4,63 +4,73 @@
     box-sizing: border-box;
 }
 
-body{
-    font-family: "Rubik",sans-serif;
+body {
+    font-family: "Rubik", sans-serif;
 }
 
+
 /*header*/
-div.aboutWrapper{
+
+div.aboutWrapper {
     width: 100%;
     /* height: 100vh; */
 }
 
-div.aboutHeader{   
+div.aboutHeader {
     background-image: url(./imgs/about-bg.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     width: 100%;
-    height: 26.375em;    
+    height: 26.375em;
 }
 
+
 /*TOP COM HASHTAG E BOTOES*/
-section.header{             
+
+section.header {
     width: 95vw;
     height: 80px;
     opacity: 1;
-    padding: 0 16px;
-    margin: 0;    
+    padding: 0;
+    margin: 0;
 }
 
- /*ESCRITA NO TOPO SOBRE PROJETO*/
-h1.aboutProject{
+
+/*ESCRITA NO TOPO SOBRE PROJETO*/
+
+h1.aboutProject {
     color: #ffff;
     font-size: 5.625em;
     margin-top: 8.25rem;
     padding-left: 8.75rem;
 }
 
+
 /*descrição do projeto projeto TEXTO LOREMIPSIM*/
-div.aboutAside{
+
+div.aboutAside {
     width: 35.8125em;
     margin-right: 4vw;
 }
 
+
 /*O QUE É*/
-div.aboutAside h3{
+
+div.aboutAside h3 {
     color: #3634F7;
     margin-top: 0;
     font-size: 2.75em;
     margin-bottom: 1.5625rem;
 }
 
-div.aboutAside p{
+div.aboutAside p {
     text-align: left;
     letter-spacing: 0px;
     color: #292929;
     font-size: 1.5625em;
 }
 
-div.aboutText{
+div.aboutText {
     padding-top: 12.0625rem;
     text-align: left;
     align-items: flex-start;
@@ -75,9 +85,10 @@ img.aboutSvg {
     margin-left: 5vw;
 }
 
+
 /*quem somos nós*/
-h1.aboutWe{
-  
+
+h1.aboutWe {
     padding-top: 12.0625rem;
     color: #3634F7;
     font-size: 2.75em;
@@ -86,8 +97,10 @@ h1.aboutWe{
     margin: 0 auto;
 }
 
-/*CONTAINER DOS CARTOES*/  
-div.aboutTeam{
+
+/*CONTAINER DOS CARTOES*/
+
+div.aboutTeam {
     margin-right: 1.5rem;
     padding-bottom: 10.3125rem;
     width: 108rem;
@@ -97,17 +110,19 @@ div.aboutTeam{
     align-items: center;
 }
 
+
 /*cards da equipe*/
-div.aboutCard{
+
+div.aboutCard {
     margin-right: 2rem;
     /*width: 19rem;*/
     box-shadow: 0 5px 10px rgb(85 56 238 / 8%);
     border-radius: 10px;
-    border: 1px solid rgba(85,56,238,.1411764705882353);
+    border: 1px solid rgba(85, 56, 238, .1411764705882353);
     height: 32.8125rem;
 }
 
-div.about-team-wrapper{
+div.about-team-wrapper {
     margin-right: 10px;
     width: 20rem;
     display: flex;
@@ -116,7 +131,7 @@ div.about-team-wrapper{
     flex-direction: column;
 }
 
-div.aboutPhoto{
+div.aboutPhoto {
     height: 12.6875rem;
     width: 12.6875rem;
     margin-bottom: 1.5625rem;
@@ -126,22 +141,22 @@ div.aboutPhoto{
     background-color: rgb(255, 255, 255)
 }
 
-div.aboutPhoto img{
+div.aboutPhoto img {
     width: 100%;
     border: 1px solid #5538EE24;
     border-radius: 100%;
     height: 100%;
 }
 
-div.aboutCard h2{
+div.aboutCard h2 {
     color: #292929;
     font-size: 2em;
     margin-top: 0;
-    text-align:left;
+    text-align: left;
     margin-bottom: 1.5625rem;
 }
 
-div.aboutCard p{
+div.aboutCard p {
     color: #292929;
     margin-top: 0;
     font-size: 1rem;
@@ -151,14 +166,14 @@ div.aboutCard p{
     letter-spacing: 0.23px;
 }
 
-div.aboutSocials{
+div.aboutSocials {
     display: flex;
     width: 100%;
     justify-content: center;
 }
 
-div.aboutSocials img{
-    font-size: 1.5625rem;   
+div.aboutSocials img {
+    font-size: 1.5625rem;
     margin-right: 2.0625rem;
 }
 
@@ -174,57 +189,51 @@ footer.footer {
     align-items: center;
 }
 
+
 /* MEDIA QUERY */
 
-@media (min-width: 1050px){
-
-    html{
+@media (min-width: 1050px) {
+    html {
         font-size: .833vw;
     }
-
-    .header .headerContent .headerButtons button{
+    .header .headerContent .headerButtons button {
         width: 70px;
     }
-    
-    .header .headerContent .headerButtons .aboutBtn{
+    .header .headerContent .headerButtons .aboutBtn {
         margin-right: 13px;
         font-size: 13px;
         width: 106px;
         height: 30px;
     }
-
-    .header .headerContent .headerButtons .aboutBtnLogin{
+    .header .headerContent .headerButtons .aboutBtnLogin {
         font-size: 13px;
         width: 106px;
         height: 30px;
     }
 }
 
-/* MEDIA TABLET */
-@media (max-width: 1050px) {
 
+/* MEDIA TABLET */
+
+@media (max-width: 1050px) {
     /* reponsividade header*/
     div.aboutHeader {
         height: 35vh;
     }
-
     /* box com logo e botões */
     section.header {
         padding: 0;
     }
-
     /* box com a logo */
     div.headerLogo {
         display: flex;
         align-items: left;
         margin: 8vw;
     }
-    
     /* logo */
     img.logoWhite {
         width: 40vw;
     }
-
     /* título sobre o porjeto */
     h1.aboutProject {
         margin-top: 8vh;
@@ -233,7 +242,6 @@ footer.footer {
         display: flex;
         justify-content: center;
     }
-
     /* reponsividade descrição do projeto*/
     div.aboutText {
         padding: 0 5vw;
@@ -242,37 +250,30 @@ footer.footer {
         display: flex;
         flex-direction: column;
     }
-
     div.aboutAside {
         margin: 4vh 0;
         padding: 0 4vw;
         width: 100%;
     }
-
     div.aboutAside h3 {
         font-size: 34px;
     }
-
     div.aboutAside p {
         width: 100%;
         font-size: 24px;
     }
-
     img.aboutSvg {
         width: 80vw;
         height: 50vh;
         margin: 2vh 0 0 0;
     }
-
     /*reponsividade seção quem somos nós*/
     h1.aboutWe {
         width: 100%;
         font-size: 34px;
         padding: 6vh 10vw;
     }
-
     /*reponsividade cards equipe*/
-
     /*EMBRULHO FOTOS*/
     div.wrapperPhoto {
         padding: 0;
@@ -283,49 +284,38 @@ footer.footer {
         flex-direction: row;
         flex-wrap: wrap;
     }
-
-    div.aboutTeam{
+    div.aboutTeam {
         margin: 0;
         width: 50%;
         display: flex;
         justify-content: space-evenly;
     }
-
-    .aboutCard{
+    .aboutCard {
         width: 100%;
         margin-right: 0px;
-        height: initial;    
+        height: initial;
         margin-bottom: 2.875rem;
     }
-
-    .aboutPhoto{
+    .aboutPhoto {
         height: 11.375rem;
         width: 11.375rem;
         margin-top: 2.25rem;
         margin-bottom: 1.375em;
     }
-
-    .aboutCard h2{
+    .aboutCard h2 {
         font-size: 28px;
         margin-bottom: 24px;
     }
-
-    .aboutSocials{
+    .aboutSocials {
         padding-bottom: 37px;
     }
-
-    .aboutSocials img{
+    .aboutSocials img {
         font-size: 27px;
         margin-right: 30px;
     }
-    
-
-    
-
 }
 
-@media (max-width: 660px){
-
+@media (max-width: 660px) {
     /* reponsividade header*/
     div.aboutHeader {
         background-image: url(./imgs/about-bg.jpg);
@@ -334,24 +324,20 @@ footer.footer {
         width: 100%;
         height: 40vh;
     }
-
     /* box com logo e botões */
     section.header {
         padding: 0;
     }
-
     /* box com a logo */
     div.headerLogo {
         display: flex;
         align-items: left;
         margin: 8vw;
     }
-  
     /* logo */
     img.logoWhite {
         width: 35vw;
     }
-
     /* título sobre o porjeto */
     h1.aboutProject {
         margin-top: 8vh;
@@ -360,7 +346,6 @@ footer.footer {
         display: flex;
         justify-content: center;
     }
-
     /* reponsividade descrição do projeto*/
     div.aboutText {
         padding: 0;
@@ -369,68 +354,56 @@ footer.footer {
         display: flex;
         flex-direction: column;
     }
-
     div.aboutAside {
         margin: 4vh 0;
         padding: 0 4vw;
         width: 100%;
     }
-
     div.aboutAside h3 {
         font-size: 24px;
     }
-
     div.aboutAside p {
         width: 100%;
         font-size: 16px;
         padding-right: 6vw;
     }
-
     img.aboutSvg {
         width: 80vw;
         height: 50vh;
         margin: 2vh 0 0 0;
     }
-
     /*reponsividade seção quem somos nós*/
     h1.aboutWe {
         width: 100%;
         font-size: 24px;
         padding: 2vh 5vw;
     }
-
-    
-    div.aboutTeam{
-        margin: 5px 5px ;
-       /* width: 100%;*/
+    div.aboutTeam {
+        margin: 5px 5px;
+        /* width: 100%;*/
         display: inline-block;
         justify-content: center;
     }
-
-    .aboutCard{
+    .aboutCard {
         width: 100%;
         margin-right: 0px;
-        height: initial;    
+        height: initial;
         margin-bottom: 2.875rem;
     }
-
-    .aboutPhoto{
+    .aboutPhoto {
         height: 11.375rem;
         width: 11.375rem;
         margin-top: 2.25rem;
         margin-bottom: 1.375em;
     }
-
-    .aboutCard h2{
+    .aboutCard h2 {
         font-size: 28px;
         margin-bottom: 24px;
     }
-
-    .aboutSocials{
+    .aboutSocials {
         padding-bottom: 37px;
     }
-
-    .aboutSocials img{
+    .aboutSocials img {
         font-size: 27px;
         margin-right: 30px;
     }
@@ -438,36 +411,28 @@ footer.footer {
 
 
 /* MEDIA MOBILE */
-@media (max-width: 414px) {
 
+@media (max-width: 414px) {
     /* reponsividade header*/
     div.aboutHeader {
         height: 30vh;
     }
-
     /* box com logo e botões */
     section.header {
         padding: 0;
     }
-
     /* box com a logo */
     div.headerLogo {
         display: flex;
         align-items: left;
         margin: 8vw;
     }
-
     div.headerContent {
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
+        margin: 0;
+        padding: 0;
     }
-    
     /* título sobre o porjeto */
     h1.aboutProject {
         font-size: 30px;
     }
-
 }
-
