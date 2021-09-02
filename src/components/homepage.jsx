@@ -39,7 +39,7 @@ function Homepage() {
     // Const para retirar hashtag
     const [noHashtag, setNoHashtag] = useState('');
     // Const para habilitar as funcionalidades
-    let [modalShow, setShowModal] = useState(false);
+    // let [modalShow, setShowModal] = useState(false);
     // Const para setar imagens da busca
     let [urlImage, setUrlImage] = useState('');
     // Const dos tweets (resultado da busca)
@@ -104,7 +104,7 @@ function Homepage() {
     function handleChange(event) {
         let id = event.target.id
         setUrlImage(document.getElementById(id).style.backgroundImage.replace('url("', "").replace('")', ""))
-        setShowModal(true)
+        // setShowModal(true)
 
         setContentInput(event.target.value);
 
@@ -281,8 +281,8 @@ function Homepage() {
                                         <div
                                             id={"imageContent" + index}
                                             className="imageContent"
-                                            onClick={(event) =>
-                                                handleChange(event)}
+                                            // onClick={(event) =>
+                                            //     handleChange(event)}
                                             style={{ backgroundImage: `url(${i.url})` }}>
 
                                         </div>
@@ -331,7 +331,7 @@ function Homepage() {
             </div>
 
             {/* MODAIS DO ZOOM DAS IMAGENS BUSCADAS */}
-            <div className="backdrop" style={{ display: (modalShow ? 'block' : 'none') }} onClick={() => setShowModal(false)}></div>
+            {/* <div className="backdrop" style={{ display: (modalShow ? 'block' : 'none') }} onClick={() => setShowModal(false)}></div>
 
             <div className="modalContainer" style={{ display: (modalShow ? 'block' : 'none') }}>
                 <div className="modalContent" style={{ backgroundImage: `url(${urlImage})` }}>
@@ -339,7 +339,7 @@ function Homepage() {
                         Close
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             {/* ROTA DO FOOTER */}
             <Footer />
