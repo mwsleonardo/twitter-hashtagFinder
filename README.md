@@ -21,7 +21,11 @@ gh-pages: [twitter-hashtagFinder](https://mwsleonardo.github.io/twitter-hashtagF
 ## Desenvolvedores
 
 • [Leonardo](www.linkedin.com/in/mwsleonardo)
+
 • [Flávio](https://www.linkedin.com/in/flaviohmsilva/)
+
 • [Juliana](https://www.linkedin.com/in/julianakaorigoia/)
+
 • [Marcelo](https://www.linkedin.com/in/marcelo-correa-b1218a212/)
+
 • [Giovanni](https://www.linkedin.com/in/giovanni-shiroma-amaral-9638b0215/)
